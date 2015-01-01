@@ -11,11 +11,11 @@ void GameDesk::setCellState(const Point& point, bool state) {
     /* get global coordinate from horizontal and
        vertical coordinates
     */
-    desk_[point.col * width + point.row] = state;
+    desk_[point.col * width_ + point.row] = state;
 }
 
 bool GameDesk::getCellState(const Point& point) const {
-    return desk_[point.col * width + point.row];
+    return desk_[point.col * width_ + point.row];
 }
 
 void GameDesk::resize(int width, int length) {
