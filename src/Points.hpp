@@ -1,6 +1,7 @@
 /*
  * Battleship, classic battleship game
  * Copyright (C) 2014 Pavel Dolgov
+ *
  * See the LICENSE file for terms of use.
  */
 
