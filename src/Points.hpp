@@ -8,7 +8,7 @@
 #ifndef POINTS_HPP_
 #define POINTS_HPP_
 
-/** Structure contains cell coordinates.
+/** Structure Point contains cell coordinates.
 */
 struct Point {
     /** Vertical coordinate */
