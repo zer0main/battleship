@@ -10,6 +10,8 @@
 
 #include <vector>
 
+#include "Point.hpp"
+
 /** Main model class. Use to save game board's state.
 */
 class GameDesk {
