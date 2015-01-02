@@ -42,6 +42,17 @@ void GameDesk::setVisibility(const Point& point, bool
     }
 }
 
+bool GameDesk::getVisibility(const Point& point,
+        bool player) const {
+    if (player) {
+        return players_desk_[point.col * width_
+            + point.row].is_visible;
+    } else {
+        return enemys_desk_[point.col * width_
+            + point.row].is_visible;
+    }
+}
+
 void GameDesk::resize(int width, int length) {
     int square = width * length;
     players_desk_.resize(square);
