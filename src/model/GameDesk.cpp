@@ -7,20 +7,34 @@
 
 #include "GameDesk.hpp"
 
-void GameDesk::setCellState(const Point& point, bool state) {
+void GameDesk::setCellState(const Point& point,
+        bool state, bool player) {
     /* get global coordinate from horizontal and
        vertical coordinates
     */
-    desk_[point.col * width_ + point.row] = state;
+    int global_coordinate = point.col * width_ + point.row;
+    if (player) {
+        players_desk_[global_coordinate].is_ship = state;
+    } else {
+        enemys_desk_[global_coordinate].is_ship = state;
+    }
 }
 
-bool GameDesk::getCellState(const Point& point) const {
-    return desk_[point.col * width_ + point.row];
+bool GameDesk::getCellState(const Point& point,
+        bool player) const {
+    if (player) {
+        return players_desk_[point.col * width_
+            + point.row].is_ship;
+    } else {
+        return enemys_desk_[point.col * width_
+            + point.row].is_ship;
+    }
 }
 
 void GameDesk::resize(int width, int length) {
     int square = width * length;
-    desk_.resize(square);
+    players_desk_.resize(square);
+    enemys_desk_.resize(square);
     width_ = width;
     length_ = length;
 }
