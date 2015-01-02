@@ -31,7 +31,7 @@ public:
     bool getCellState(const Point& point, bool
             player) const;
 
-    /** Resize desk_ vector */
+    /** Resize players_desk_ and enemys_desk_ vectors */
     void resize(int width, int length);
 
     /** Get width of game board */
