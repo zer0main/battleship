@@ -31,6 +31,14 @@ public:
     bool getCellState(const Point& point, bool
             player) const;
 
+    /** Set visibility of cell specified in Point
+    structure.
+    \boolean variable player is true if cell belongs to
+    player (situated on player's territory)
+    */
+    void setVisibility(const Point& point, bool state,
+            bool player);
+
     /** Resize players_desk_ and enemys_desk_ vectors */
     void resize(int width, int length);
 

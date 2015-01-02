@@ -31,6 +31,17 @@ bool GameDesk::getCellState(const Point& point,
     }
 }
 
+void GameDesk::setVisibility(const Point& point, bool
+        state, bool player) {
+    int global_coordinate = point.col * width_ + point.row;
+    if (player) {
+        players_desk_[global_coordinate].is_visible =
+            state;
+    } else {
+        enemys_desk_[global_coordinate].is_visible = state;
+    }
+}
+
 void GameDesk::resize(int width, int length) {
     int square = width * length;
     players_desk_.resize(square);
