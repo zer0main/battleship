@@ -26,7 +26,7 @@ public:
 
     /** Get state of cell specified in Point structure.
     \boolean variable player is true if cell belongs to
-    player (situated on enemy's territory)
+    player (situated on player's territory)
     */
     bool getCellState(const Point& point, bool
             player) const;
@@ -49,12 +49,12 @@ public:
     int getLength() const;
 
 private:
-    /** Vector players_desk_ contains states of all
-    player's cells (which situated on player's territory)
+    /** Vector players_desk_ contains all player's cells
+    (which situated on player's territory)
     */
     std::vector<Cell> players_desk_;
-    /** Vector enemys_desk_ contains states of all
-    enemy's cells (which situated on enemy's territory)
+    /** Vector enemys_desk_ contains all enemy's cells
+    (which situated on enemy's territory)
     */
     std::vector<Cell> enemys_desk_;
     int width_;
