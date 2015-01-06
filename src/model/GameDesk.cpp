@@ -35,8 +35,8 @@ bool GameDesk::getCellState(const Point& point,
     }
 }
 
-void GameDesk::setVisibility(const Point& point, bool
-                             state, bool player) {
+void GameDesk::setVisibility(const Point& point,
+                             bool state, bool player) {
     int index = getIndex(point, width_);
     if (player) {
         players_desk_[index].is_visible = state;

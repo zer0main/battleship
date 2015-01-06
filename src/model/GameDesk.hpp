@@ -28,8 +28,8 @@ public:
     \boolean variable player is true if cell belongs to
     player (situated on player's territory)
     */
-    bool getCellState(const Point& point, bool
-                      player) const;
+    bool getCellState(const Point& point,
+                      bool player) const;
 
     /** Set visibility of cell specified in Point
     structure.
