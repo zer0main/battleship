@@ -16,7 +16,7 @@ static int getIndex(const Point& point, int width) {
 }
 
 void GameDesk::setCellState(const Point& point,
-        bool state, bool player) {
+                            bool state, bool player) {
     int index = getIndex(point, width_);
     if (player) {
         players_desk_[index].is_ship = state;
@@ -26,7 +26,7 @@ void GameDesk::setCellState(const Point& point,
 }
 
 bool GameDesk::getCellState(const Point& point,
-        bool player) const {
+                            bool player) const {
     int index = getIndex(point, width_);
     if (player) {
         return players_desk_[index].is_ship;
@@ -36,7 +36,7 @@ bool GameDesk::getCellState(const Point& point,
 }
 
 void GameDesk::setVisibility(const Point& point, bool
-        state, bool player) {
+                             state, bool player) {
     int index = getIndex(point, width_);
     if (player) {
         players_desk_[index].is_visible = state;
@@ -46,7 +46,7 @@ void GameDesk::setVisibility(const Point& point, bool
 }
 
 bool GameDesk::getVisibility(const Point& point,
-        bool player) const {
+                             bool player) const {
     int index = getIndex(point, width_);
     if (player) {
         return players_desk_[index].is_visible;
