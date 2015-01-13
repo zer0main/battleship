@@ -15,6 +15,7 @@ struct Cell {
     this cell
     */
     bool is_ship;
+
     /** is_visible is true if enemy can see what is
     situated in this cell
     */

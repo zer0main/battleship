@@ -13,6 +13,7 @@
 struct Point {
     /** Vertical coordinate */
     int col;
+
     /** Horizontal coordinate */
     int row;
 };

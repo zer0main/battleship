@@ -61,10 +61,12 @@ private:
     (which situated on player's territory)
     */
     std::vector<Cell> players_desk_;
+
     /** Vector enemys_desk_ contains all enemy's cells
     (which situated on enemy's territory)
     */
     std::vector<Cell> enemys_desk_;
+
     int width_;
     int length_;
 };
