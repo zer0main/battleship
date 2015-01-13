@@ -35,6 +35,26 @@ bool GameDesk::getCellState(const Point& point,
     }
 }
 
+void GameDesk::setFlooding(const Point& point,
+                           bool is_sunken, bool player) {
+    int index = getIndex(point, width_);
+    if (player) {
+        players_desk_[index].is_sunken_ship = is_sunken;
+    } else {
+        enemys_desk_[index].is_sunken_ship = is_sunken;
+    }
+}
+
+bool GameDesk::getFlooding(const Point& point,
+                           bool player) const {
+    int index = getIndex(point, width_);
+    if (player) {
+        return players_desk_[index].is_sunken;
+    } else {
+        return enemys_desk_[index].is_sunken;
+    }
+}
+
 void GameDesk::setVisibility(const Point& point,
                              bool state, bool player) {
     int index = getIndex(point, width_);
