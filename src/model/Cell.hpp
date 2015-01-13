@@ -16,6 +16,11 @@ struct Cell {
     */
     bool is_ship;
 
+    /** is_sunken_ship is true if sunken ship/part of sunken
+    ship situated in this cell
+    */
+    bool is_sunken_ship;
+
     /** is_visible is true if enemy can see what is
     situated in this cell
     */
