@@ -31,6 +31,24 @@ public:
     bool getCellState(const Point& point,
                       bool player) const;
 
+    /** Set flooding of ship.
+    \boolean variable is_sunken is true if sunken
+    ship/part of sunken ship situated in cell specified
+    in Point structure.
+    \boolean variable player is true if cell belongs to
+    player (situated on player's territory)
+    */
+    void setFlooding(const Point& point, bool is_sunken,
+                     bool player);
+
+    /** Returns true if sunken ship (or part of sunken
+    ship) situated in cell specified in Point structure.
+    \boolean variable player is true if cell belongs to
+    player (situated on player's territory)
+    */
+    bool getFlooding(const Point& point,
+                     bool player) const;
+
     /** Set visibility of cell specified in Point
     structure.
     \boolean variable player is true if cell belongs to
