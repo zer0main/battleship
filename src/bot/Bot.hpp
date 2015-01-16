@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef GAME_DESK_HPP_
-#define GAME_DESK_HPP_
+#ifndef BOT_HPP_
+#define BOT_HPP_
 
 #include "GameDesk.hpp"
 

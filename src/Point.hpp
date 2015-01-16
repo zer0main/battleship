@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef POINTS_HPP_
-#define POINTS_HPP_
+#ifndef POINT_HPP_
+#define POINT_HPP_
 
 /** Structure Point contains cell coordinates.
 */
