@@ -31,6 +31,11 @@ private:
     This method will be called from getIndex function.
     */
     bool checkCoordinate(const Point& point) const;
+
+    /** Check that cell with coordinates described in
+    point hasn't sunken ship near itself
+    */
+    bool checkNeighboringCells(const Point& point) const;
 };
 
 #endif
