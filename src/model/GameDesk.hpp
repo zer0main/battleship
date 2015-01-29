@@ -18,54 +18,54 @@
 class GameDesk {
 public:
     /** Set state of cell specified in Point structure.
-    \boolean variable player is true if cell belongs to
-    player (situated on player's territory)
+    \player_number argument defines player(1 or 2) on
+    whose territory current cell is situated
     */
     void setCellState(const Point& point, bool state,
-                      bool player);
+                      int player_number);
 
     /** Get state of cell specified in Point structure.
-    \boolean variable player is true if cell belongs to
-    player (situated on player's territory)
+    \player_number argument defines player(1 or 2) on
+    whose territory current cell is situated
     */
     bool getCellState(const Point& point,
-                      bool player) const;
+                      int player_number) const;
 
     /** Set flooding of ship.
-    \boolean variable is_sunken is true if sunken
-    ship/part of sunken ship situated in cell specified
-    in Point structure.
-    \boolean variable player is true if cell belongs to
-    player (situated on player's territory)
+    \is_sunken argument must be true if sunken
+    ship/part of sunken ship must be situated in cell
+    specified in Point structure.
+    \player_number argument defines player(1 or 2) on
+    whose territory current cell is situated
     */
     void setFlooding(const Point& point, bool is_sunken,
-                     bool player);
+                     int player_number);
 
     /** Returns true if sunken ship (or part of sunken
     ship) situated in cell specified in Point structure.
-    \boolean variable player is true if cell belongs to
-    player (situated on player's territory)
+    \player_number argument defines player(1 or 2) on
+    whose territory current cell is situated
     */
     bool getFlooding(const Point& point,
-                     bool player) const;
+                     int player_number) const;
 
     /** Set visibility of cell specified in Point
     structure.
-    \boolean variable player is true if cell belongs to
-    player (situated on player's territory)
+    \player_number argument defines player(1 or 2) on
+    whose territory current cell is situated
     */
-    void setVisibility(const Point& point, bool state,
-                       bool player);
+    void setVisibility(const Point& point, bool is_visible,
+                       int player_number);
 
     /** Get visibility of cell specified in Point
     structure.
-    \boolean variable player is true if cell belongs to
-    player (situated on player's territory)
+    \player_number argument defines player(1 or 2) on
+    whose territory current cell is situated
     */
     bool getVisibility(const Point& point,
-                       bool player) const;
+                       int player_number) const;
 
-    /** Resize players_desk_ and enemys_desk_ vectors */
+    /** Resize player1_desk_ and player2_desk_ vectors */
     void resize(int width, int length);
 
     /** Get width of game board */
@@ -75,15 +75,15 @@ public:
     int getLength() const;
 
 private:
-    /** Vector players_desk_ contains all player's cells
-    (which situated on player's territory)
+    /** Vector player1_desk_ contains all player1's cells
+    (which situated on player1's territory)
     */
-    std::vector<Cell> players_desk_;
+    std::vector<Cell> player1_desk_;
 
-    /** Vector enemys_desk_ contains all enemy's cells
-    (which situated on enemy's territory)
+    /** Vector player2_desk_ contains all player2's cells
+    (which situated on player2's territory)
     */
-    std::vector<Cell> enemys_desk_;
+    std::vector<Cell> player2_desk_;
 
     int width_;
     int length_;

@@ -16,69 +16,70 @@ static int getIndex(const Point& point, int width) {
 }
 
 void GameDesk::setCellState(const Point& point,
-                            bool state, bool player) {
+                            bool state, int player_number) {
     int index = getIndex(point, width_);
-    if (player) {
-        players_desk_[index].is_ship = state;
-    } else {
-        enemys_desk_[index].is_ship = state;
+    if (player_number == 1) {
+        player1_desk_[index].is_ship = state;
+    } else if (player_number == 2) {
+        player2_desk_[index].is_ship = state;
     }
 }
 
 bool GameDesk::getCellState(const Point& point,
-                            bool player) const {
+                            int player_number) const {
     int index = getIndex(point, width_);
-    if (player) {
-        return players_desk_[index].is_ship;
-    } else {
-        return enemys_desk_[index].is_ship;
+    if (player_number == 1) {
+        return player1_desk_[index].is_ship;
+    } else if (player_number == 2) {
+        return player2_desk_[index].is_ship;
     }
 }
 
 void GameDesk::setFlooding(const Point& point,
-                           bool is_sunken, bool player) {
+                           bool is_sunken, int player_number) {
     int index = getIndex(point, width_);
-    if (player) {
-        players_desk_[index].is_sunken_ship = is_sunken;
-    } else {
-        enemys_desk_[index].is_sunken_ship = is_sunken;
+    if (player_number == 1) {
+        player1_desk_[index].is_sunken_ship = is_sunken;
+    } else if (player_number == 2) {
+        player2_desk_[index].is_sunken_ship = is_sunken;
     }
 }
 
 bool GameDesk::getFlooding(const Point& point,
-                           bool player) const {
+                           int player_number) const {
     int index = getIndex(point, width_);
-    if (player) {
-        return players_desk_[index].is_sunken;
-    } else {
-        return enemys_desk_[index].is_sunken;
+    if (player_number == 1) {
+        return player1_desk_[index].is_sunken;
+    } else if (player_number == 2) {
+        return player2_desk_[index].is_sunken;
     }
 }
 
 void GameDesk::setVisibility(const Point& point,
-                             bool state, bool player) {
+                             bool is_visible,
+                             int player_number) {
     int index = getIndex(point, width_);
-    if (player) {
-        players_desk_[index].is_visible = state;
-    } else {
-        enemys_desk_[index].is_visible = state;
+    if (player_number == 1) {
+        player1_desk_[index].is_visible = is_visible;
+    } else if (player_number == 2) {
+        player2_desk_[index].is_visible = is_visible;
     }
 }
 
 bool GameDesk::getVisibility(const Point& point,
-                             bool player) const {
+                             int player_number) const {
     int index = getIndex(point, width_);
-    if (player) {
-        return players_desk_[index].is_visible;
-    } else {
-        return enemys_desk_[index].is_visible;
+    if (player_number == 1) {
+        return player1_desk_[index].is_visible;
+    } else if (player_number == 2) {
+        return player2_desk_[index].is_visible;
     }
 }
 
 void GameDesk::resize(int width, int length) {
     int square = width * length;
-    players_desk_.resize(square);
-    enemys_desk_.resize(square);
+    player1_desk_.resize(square);
+    player2_desk_.resize(square);
     width_ = width;
     length_ = length;
 }
