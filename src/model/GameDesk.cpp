@@ -16,7 +16,8 @@ static int getIndex(const Point& point, int width) {
 }
 
 void GameDesk::setCellState(const Point& point,
-                            bool state, int player_number) {
+                            bool state,
+                            int player_number) {
     int index = getIndex(point, width_);
     if (player_number == 1) {
         player1_desk_[index].is_ship = state;
@@ -36,7 +37,8 @@ bool GameDesk::getCellState(const Point& point,
 }
 
 void GameDesk::setFlooding(const Point& point,
-                           bool is_sunken, int player_number) {
+                           bool is_sunken,
+                           int player_number) {
     int index = getIndex(point, width_);
     if (player_number == 1) {
         player1_desk_[index].is_sunken_ship = is_sunken;
