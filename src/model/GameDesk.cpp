@@ -51,9 +51,9 @@ bool GameDesk::getFlooding(const Point& point,
                            int player_number) const {
     int index = getIndex(point, width_);
     if (player_number == 1) {
-        return player1_desk_[index].is_sunken;
+        return player1_desk_[index].is_sunken_ship;
     } else if (player_number == 2) {
-        return player2_desk_[index].is_sunken;
+        return player2_desk_[index].is_sunken_ship;
     }
 }
 
