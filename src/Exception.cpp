@@ -5,6 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
+#include "Exception.hpp"
+
 Exception::Exception(const std::string& message) {
     message_(message);
 }
