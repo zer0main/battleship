@@ -23,6 +23,9 @@ void GameDesk::setCellState(const Point& point,
         player1_desk_[index].is_ship = state;
     } else if (player_number == 2) {
         player2_desk_[index].is_ship = state;
+    } else {
+        throw Exception("Invalid player number. It must "
+                        "be 1 or 2");
     }
 }
 
@@ -33,6 +36,9 @@ bool GameDesk::getCellState(const Point& point,
         return player1_desk_[index].is_ship;
     } else if (player_number == 2) {
         return player2_desk_[index].is_ship;
+    } else {
+        throw Exception("Invalid player number. It must "
+                        "be 1 or 2");
     }
 }
 
@@ -44,6 +50,9 @@ void GameDesk::setFlooding(const Point& point,
         player1_desk_[index].is_sunken_ship = is_sunken;
     } else if (player_number == 2) {
         player2_desk_[index].is_sunken_ship = is_sunken;
+    } else {
+        throw Exception("Invalid player number. It must "
+                        "be 1 or 2");
     }
 }
 
@@ -54,6 +63,9 @@ bool GameDesk::getFlooding(const Point& point,
         return player1_desk_[index].is_sunken_ship;
     } else if (player_number == 2) {
         return player2_desk_[index].is_sunken_ship;
+    } else {
+        throw Exception("Invalid player number. It must "
+                        "be 1 or 2");
     }
 }
 
@@ -65,6 +77,9 @@ void GameDesk::setVisibility(const Point& point,
         player1_desk_[index].is_visible = is_visible;
     } else if (player_number == 2) {
         player2_desk_[index].is_visible = is_visible;
+    } else {
+        throw Exception("Invalid player number. It must "
+                        "be 1 or 2");
     }
 }
 
@@ -75,6 +90,9 @@ bool GameDesk::getVisibility(const Point& point,
         return player1_desk_[index].is_visible;
     } else if (player_number == 2) {
         return player2_desk_[index].is_visible;
+    } else {
+        throw Exception("Invalid player number. It must "
+                        "be 1 or 2");
     }
 }
 
