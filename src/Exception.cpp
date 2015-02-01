@@ -7,8 +7,8 @@
 
 #include "Exception.hpp"
 
-Exception::Exception(const std::string& message) {
-    message_(message);
+Exception::Exception(const std::string& message):
+    message_(message) {
 }
 
 Exception::~Exception() throw() {
