@@ -55,7 +55,7 @@ private:
 
     /** Number of player which will be restricted by Proxy
     */
-    int player_number;
+    int player_number_;
 };
 
 #endif
