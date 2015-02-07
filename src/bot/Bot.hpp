@@ -26,13 +26,13 @@ public:
 private:
     const GameDesk* desk_;
 
-    /** This method returns true if bot wants cell with
+    /* This method returns true if bot wants cell with
     coordinates described in point to shoot.
     This method will be called from getIndex function.
     */
     bool checkCoordinate(const Point& point) const;
 
-    /** Check that cell with coordinates described in
+    /* Check that cell with coordinates described in
     point hasn't sunken ship near itself
     */
     bool checkNeighboringCells(const Point& point) const;

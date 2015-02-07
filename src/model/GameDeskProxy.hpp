@@ -52,9 +52,6 @@ public:
 
 private:
     const GameDesk* desk_;
-
-    /** Number of player which will be restricted by Proxy
-    */
     int player_number_;
 };
 

@@ -76,12 +76,12 @@ public:
     int getLength() const;
 
 private:
-    /** Vector player1_desk_ contains all player1's cells
+    /* Vector player1_desk_ contains all player1's cells
     (which situated on player1's territory)
     */
     std::vector<Cell> player1_desk_;
 
-    /** Vector player2_desk_ contains all player2's cells
+    /* Vector player2_desk_ contains all player2's cells
     (which situated on player2's territory)
     */
     std::vector<Cell> player2_desk_;
