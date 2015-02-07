@@ -7,8 +7,22 @@
 
 #include "GameDeskProxy.hpp"
 
-GameDeskProxy::GameDeskProxy(const GameDesk* desk,
-                             int player_number):
-    desk_(desk),
-    player_number_(player_number) {
+GameDeskProxy::GameDeskProxy() {
+}
+
+GameDeskProxy* GameDeskProxy::make(const GameDesk* desk,
+                                   int player_number) {
+    if ((player_number != 1) && (player_number != 2)) {
+        throw Exception("Invalid payer number when try to "
+                        "create GameDeskProxy");
+    } else if (desk == NULL) {
+        throw Exception("Received NULL pointer to "
+                        "GameDesk when try to create "
+                        "GameDeskProxy");
+    } else {
+        GameDeskProxy* proxy = new GameDeskProxy();
+        proxy->desk_ = desk;
+        proxy_->player_number_ = player_number;
+        return proxy;
+    }
 }

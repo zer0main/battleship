@@ -15,11 +15,12 @@ Restricts access to data available to 1 of players.
 */
 class GameDeskProxy {
 public:
-    /** Constructor.
+    /** Create new instance.
     \param desk Source of data for proxy
     \param player_number Player number (1, 2)
     */
-    GameDeskProxy(const GameDesk* desk, int player_number);
+    static GameDeskProxy* make(const GameDesk* desk,
+                               int player_number);
 
     /** Get state of cell specified in Point structure.
     \param player_number Defines player(1 or 2) on
@@ -53,6 +54,8 @@ public:
 private:
     const GameDesk* desk_;
     int player_number_;
+
+    GameDeskProxy();
 };
 
 #endif
