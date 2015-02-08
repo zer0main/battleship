@@ -26,3 +26,36 @@ GameDeskProxy* GameDeskProxy::make(const GameDesk* desk,
         return proxy;
     }
 }
+
+bool GameDeskProxy::getCellState(const Point& point,
+                                 int player_number) const {
+    if (player_number == player_number_) {
+        return desk_->getCellState(point, player_number);
+    } else if (desk_->getVisibility(point,
+                                    player_number)) {
+        return desk_->getCellState(point, player_number);
+    } else {
+        throw Exception("Player tries to get state of "
+                        "cell that is not visible for "
+                        "him.");
+    }
+}
+
+bool GameDeskProxy::getFlooding(const Point& point,
+                                int player_number) const {
+    return desk_->getFlooding(point, player_number);
+}
+
+bool GameDeskProxy::getVisibility(const Point& point,
+                                  int player_number) const
+{
+    return desk_->getVisibility(point, player_number);
+}
+
+int GameDeskProxy::getWidth() const {
+    return desk_->getWidth();
+}
+
+int GameDeskProxy::getLength() const {
+    return desk_->getLength();
+}
