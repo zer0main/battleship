@@ -24,10 +24,11 @@ Point Bot::getIndex() const {
        hasn't sunken ship near itself
     */
     bool is_visible = true;
+    Point pt;
     while ((!checkNeighboringCells(pt)) || (is_visible)) {
         pt.col = std::rand() % desk_->getLength();
         pt.row = std::rand() % desk_->getWidth();
-        bool is_visible = desk_->getVisibility(pt, true);
+        bool is_visible = desk_->getVisibility(pt, 1);
     }
     return pt;
 }
