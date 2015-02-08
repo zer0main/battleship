@@ -14,9 +14,9 @@
 */
 class Bot {
 public:
-    /** Set pointer to model class GameDesk
+    /** Set pointer to model class GameDeskProxy
     */
-    void setDesk(const GameDesk* desk);
+    void setDesk(const GameDeskProxy* desk);
 
     /** This method returns Point structure which contains
     coordinates of cell that bot wants to shoot
@@ -24,7 +24,7 @@ public:
     Point getIndex() const;
 
 private:
-    const GameDesk* desk_;
+    const GameDeskProxy* desk_;
 
     /* This method returns true if bot wants cell with
     coordinates described in point to shoot.
