@@ -9,6 +9,15 @@
 
 #include "Bot.hpp"
 
+static bool isSunkOrBurning(const Point& point) {
+    if (desk_->getVisibility(point, 1)) {
+        if (desk_->getCellState(point, 1)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Bot::setDesk(const GameDeskProxy* desk) {
     if (desk == NULL) {
         throw Exception("Received NULL pointer to "
@@ -41,3 +50,4 @@ Point Bot::getIndex() const {
     }
     return pt;
 }
+
