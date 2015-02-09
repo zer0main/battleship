@@ -9,6 +9,15 @@
 
 #include "Bot.hpp"
 
+void Bot::setDesk(const GameDeskProxy* desk) {
+    if (desk == NULL) {
+        throw Exception("Received NULL pointer to "
+                        "GameDeskProxy when try to "
+                        "set desk for bot");
+    }
+    desk_ = desk;
+}
+
 Point Bot::getIndex() const {
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
