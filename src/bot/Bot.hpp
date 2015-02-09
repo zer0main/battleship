@@ -8,7 +8,7 @@
 #ifndef BOT_HPP_
 #define BOT_HPP_
 
-#include "GameDesk.hpp"
+#include "GameDeskProxy.hpp"
 
 /** Bot class contains all bot logic.
 */
