@@ -11,6 +11,14 @@
    vertical coordinates
 */
 static int getIndex(const Point& point, int width) {
+    bool less = ((point.col < 0) || (point.row < 0));
+    bool greater = ((point.col >= length_) || (poit.row >=
+                     width_));
+    if (less || greater) {
+        throw Exception("Model: index of cell in some "
+                        "argument's of GameDesk's methods "
+                        "is out of range.");
+    }
     int index = point.col * width + point.row;
     return index;
 }
