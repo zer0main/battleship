@@ -111,6 +111,18 @@ bool GameDesk::getVisibility(const Point& point,
 }
 
 void GameDesk::resize(int width, int length) {
+    const int min_width = 8;
+    const int max_width = 20;
+    const int min_length = 8;
+    const int max_length = 20;
+    if ((width < min_width) || (width > max_width)) {
+        throw Exception("width of desk is out of "
+                        "allowable range");
+    } else if ((length < min_length) || (length >
+                max_length)) {
+        throw Exception("length of desk is out of "
+                        "allowable range");
+    }
     int square = width * length;
     player1_desk_.resize(square);
     player2_desk_.resize(square);
