@@ -51,3 +51,19 @@ Point Bot::getIndex() const {
     return pt;
 }
 
+bool Bot::checkNeighboringCells(const Point& p) const {
+    for (int i = p.row - 1; i <= p.row + 1; i++) {
+        for (int j = p.col - 1; j <= p.col + 1; j++) {
+            if ((i == p.row) && (j == p.col)) {
+                continue;
+            }
+            Point pt;
+            pt.row = i;
+            pt.col = j;
+            if (isSunkOrBurning(pt)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
