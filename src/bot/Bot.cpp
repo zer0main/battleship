@@ -60,7 +60,11 @@ bool Bot::checkNeighboringCells(const Point& p) const {
             Point pt;
             pt.row = i;
             pt.col = j;
-            if (isSunkOrBurning(pt)) {
+            if ((i == p.row) || (j == p.col)) {
+                if (desk_->getFlooding(pt, 1)) {
+                    return false;
+                }
+            } else if (isSunkOrBurning(pt)) {
                 return false;
             }
         }

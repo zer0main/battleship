@@ -33,7 +33,8 @@ private:
     bool checkCoordinate(const Point& point) const;
 
     /* Check that cell with coordinates described in
-    point hasn't sunken or burning ships near itself
+    point hasn't sunken ships near itself or burning
+    ships diagonally.
     */
     bool checkNeighboringCells(const Point& point) const;
 };
