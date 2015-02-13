@@ -37,6 +37,11 @@ private:
     ships diagonally.
     */
     bool checkNeighboringCells(const Point& point) const;
+
+    /* Check that the current state of the board allows
+    to make a move.
+    */
+    bool thereAreMoves() const;
 };
 
 #endif

@@ -119,3 +119,19 @@ bool Bot::checkNeighboringCells(const Point& p) const {
     }
     return true;
 }
+
+bool Bot::thereAreMoves() const {
+    for (int i = 0; i < desk_->getLength(); i++) {
+        for (int x = 0; x < desk_->getWidth(); x++) {
+            Point pt;
+            pt.col = i;
+            pt.row = x;
+            if (checkNeighboringCells(pt)) {
+                if (!desk_->getVisibility(pt, 1)) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
