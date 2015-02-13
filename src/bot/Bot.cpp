@@ -18,6 +18,18 @@ static bool isSunkOrBurning(const Point& point) {
     return false;
 }
 
+static bool isGoodNeighbor(const Point& p1,
+                           const Point& p2) {
+    if ((p1.row == p2.row) || (p1.row == p2.col)) {
+        if (desk_->getFlooding(p1, 1)) {
+            return false;
+        }
+    } else if (isSunkOrBurning(p1)) {
+        return false;
+    }
+    return true;
+}
+
 void Bot::setDesk(const GameDeskProxy* desk) {
     if (desk == NULL) {
         throw Exception("Received NULL pointer to "
@@ -53,18 +65,22 @@ Point Bot::getIndex() const {
 
 bool Bot::checkNeighboringCells(const Point& p) const {
     for (int i = p.row - 1; i <= p.row + 1; i++) {
+        if (i < 0) {
+            continue;
+        } else if (i >= desk_->getWidth()) {
+            break;
+        }
         for (int j = p.col - 1; j <= p.col + 1; j++) {
-            if ((i == p.row) && (j == p.col)) {
+            if ((j < 0) || ((i == p.row) &&
+                (j == p.col))) {
                 continue;
+            } else if (j >= desk_->getLength()) {
+                break;
             }
             Point pt;
             pt.row = i;
             pt.col = j;
-            if ((i == p.row) || (j == p.col)) {
-                if (desk_->getFlooding(pt, 1)) {
-                    return false;
-                }
-            } else if (isSunkOrBurning(pt)) {
+            if (!isGoodNeighbor(pt, p)) {
                 return false;
             }
         }
