@@ -40,6 +40,11 @@ void Bot::setDesk(const GameDeskProxy* desk) {
 }
 
 Point Bot::getIndex() const {
+    if (!thereAreMoves()) {
+        throw Exception("Bot can't make any move, there "
+                        "is no possibility to make moves "
+                        "with this state of board");
+    }
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
             Point pt;
