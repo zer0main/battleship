@@ -20,7 +20,7 @@ static bool isSunkOrBurning(const Point& point) {
 
 static bool isGoodNeighbor(const Point& p1,
                            const Point& p2) {
-    if ((p1.row == p2.row) || (p1.row == p2.col)) {
+    if ((p1.row == p2.row) || (p1.col == p2.col)) {
         if (desk_->getFlooding(p1, 1)) {
             return false;
         }
