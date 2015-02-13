@@ -63,6 +63,38 @@ Point Bot::getIndex() const {
     return pt;
 }
 
+bool Bot::checkCoordinate(const Point& p) const {
+    if (desk_->getVisibility(p, 1)) {
+        return false;
+    } else if (!checkNeighboringCells(p)) {
+        return false;
+    }
+    for (int i = p.row - 1; i <= p.row + 1; i++) {
+        if (i < 0) {
+            continue;
+        } else if (i >= desk_->getWidth()) {
+            break;
+        }
+        for (int j = p.col - 1; j <= p.col + 1; j++) {
+            if ((j < 0) || ((j != p.col) &&
+                (i != p.row)) || ((i == p.row) &&
+                (j == p.col))) {
+                continue;
+            } else if (j >= desk_->getLength()) {
+                break;
+            }
+            Point pt;
+            pt.row = i;
+            pt.col = j;
+            if (isSunkOrBurning(pt) &&
+                !desk_->getFlooding(pt, 1)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 bool Bot::checkNeighboringCells(const Point& p) const {
     for (int i = p.row - 1; i <= p.row + 1; i++) {
         if (i < 0) {
