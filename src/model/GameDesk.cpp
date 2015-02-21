@@ -23,6 +23,28 @@ static int getIndex(const Point& point, int width) {
     return index;
 }
 
+GameDesk* GameDesk::make(int width, int length) {
+    const int MIN_WIDTH = 8;
+    const int MAX_WIDTH = 20;
+    const int MIN_LENGTH = 8;
+    const int MAX_LENGTH = 20;
+    if ((width < MIN_WIDTH) || (width > MAX_WIDTH)) {
+        throw Exception("width of desk is out of "
+                        "allowable range");
+    } else if ((length < MIN_LENGTH) || (length >
+                MAX_LENGTH)) {
+        throw Exception("length of desk is out of "
+                        "allowable range");
+    }
+    GameDesk* desk = new GameDesk();
+    int square = width * length;
+    desk->player1_desk_.resize(square);
+    desk->player2_desk_.resize(square);
+    desk->width_ = width;
+    desk->length_ = length;
+    return desk;
+}
+
 void GameDesk::setCellState(const Point& point,
                             bool state,
                             int player_number) {
@@ -110,30 +132,13 @@ bool GameDesk::getVisibility(const Point& point,
     }
 }
 
-void GameDesk::resize(int width, int length) {
-    const int min_width = 8;
-    const int max_width = 20;
-    const int min_length = 8;
-    const int max_length = 20;
-    if ((width < min_width) || (width > max_width)) {
-        throw Exception("width of desk is out of "
-                        "allowable range");
-    } else if ((length < min_length) || (length >
-                max_length)) {
-        throw Exception("length of desk is out of "
-                        "allowable range");
-    }
-    int square = width * length;
-    player1_desk_.resize(square);
-    player2_desk_.resize(square);
-    width_ = width;
-    length_ = length;
-}
-
 int GameDesk::getWidth() const {
     return width_;
 }
 
 int GameDesk::getLength() const {
     return length_;
+}
+
+GameDesk::GameDesk() {
 }

@@ -18,6 +18,12 @@
 */
 class GameDesk {
 public:
+    /** Create new instance.
+    \param width Width of game board
+    \param length Length of game board
+    */
+    static GameDesk* make(int width, int length);
+
     /** Set state of cell specified in Point structure.
     \param player_number Defines player(1 or 2) on
     whose territory current cell is situated
@@ -66,9 +72,6 @@ public:
     bool getVisibility(const Point& point,
                        int player_number) const;
 
-    /** Resize player1_desk_ and player2_desk_ vectors */
-    void resize(int width, int length);
-
     /** Get width of game board */
     int getWidth() const;
 
@@ -88,6 +91,8 @@ private:
 
     int width_;
     int length_;
+
+    GameDesk();
 };
 
 #endif
