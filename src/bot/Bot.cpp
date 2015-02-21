@@ -36,13 +36,19 @@ static bool isGoodNeighbor(const Point& p1,
     return true;
 }
 
-void Bot::setDesk(const GameDeskProxy* desk) {
+Bot* Bot::make(const GameDeskProxy* desk, int bot_number) {
     if (desk == NULL) {
         throw Exception("Received NULL pointer to "
-                        "GameDeskProxy when try to "
-                        "set desk for bot");
+                        "GameDeskProxy when try to create "
+                        "Bot");
+    } else if ((bot_number != 1) && (bot_number != 2)) {
+        throw Exception("Invalid bot's number when try to "
+                        "create Bot");
     }
-    desk_ = desk;
+    Bot* bot = new Bot();
+    bot->bot_number_ = bot_number;
+    bot->desk_ = desk;
+    return bot;
 }
 
 Point Bot::getIndex() const {
@@ -150,4 +156,7 @@ bool Bot::thereAreMoves() const {
         }
     }
     return false;
+}
+
+Bot::Bot() {
 }

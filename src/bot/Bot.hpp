@@ -14,9 +14,12 @@
 */
 class Bot {
 public:
-    /** Set pointer to model class GameDeskProxy
+    /** Create new instance.
+    \param desk Proxy and source of data for Bot
+    \param bot_number Number of player for Bot (1, 2)
     */
-    void setDesk(const GameDeskProxy* desk);
+    static Bot* make(const GameDeskProxy* desk,
+                     int bot_number);
 
     /** This method returns Point structure which contains
     coordinates of cell that bot wants to shoot
@@ -44,6 +47,8 @@ private:
     to make a move.
     */
     bool thereAreMoves() const;
+
+    Bot();
 };
 
 #endif
