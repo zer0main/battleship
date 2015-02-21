@@ -9,6 +9,10 @@
 
 #include "Bot.hpp"
 
+static int getEnemysNumber(int my_number) {
+    return 3 - my_number;
+}
+
 static bool isSunkOrBurning(const Point& point,
                             int bot_number) {
     if (desk_->getVisibility(point, bot_number)) {
@@ -62,17 +66,18 @@ Point Bot::getIndex() const {
     */
     bool is_visible = true;
     Point pt;
+    int enemy = getEnemysNumber(bot_number_);
     while ((!checkNeighboringCells(pt)) || (is_visible)) {
         pt.col = std::rand() % desk_->getLength();
         pt.row = std::rand() % desk_->getWidth();
-        is_visible = desk_->getVisibility(pt,
-                                          bot_number_);
+        is_visible = desk_->getVisibility(pt, enemy);
     }
     return pt;
 }
 
 bool Bot::checkCoordinate(const Point& p) const {
-    if (desk_->getVisibility(p, bot_number_)) {
+    int enemy = getEnemysNumber(bot_number_);
+    if (desk_->getVisibility(p, enemy)) {
         return false;
     } else if (!checkNeighboringCells(p)) {
         return false;
@@ -94,8 +99,8 @@ bool Bot::checkCoordinate(const Point& p) const {
             Point pt;
             pt.row = i;
             pt.col = j;
-            if (isSunkOrBurning(pt, bot_number_) &&
-                !desk_->getFlooding(pt, bot_number_)) {
+            if (isSunkOrBurning(pt, enemy) &&
+                !desk_->getFlooding(pt, enemy)) {
                 return true;
             }
         }
@@ -104,6 +109,7 @@ bool Bot::checkCoordinate(const Point& p) const {
 }
 
 bool Bot::checkNeighboringCells(const Point& p) const {
+    int enemy = getEnemysNumber(bot_number_);
     for (int i = p.row - 1; i <= p.row + 1; i++) {
         if (i < 0) {
             continue;
@@ -120,7 +126,7 @@ bool Bot::checkNeighboringCells(const Point& p) const {
             Point pt;
             pt.row = i;
             pt.col = j;
-            if (!isGoodNeighbor(pt, p, bot_number_)) {
+            if (!isGoodNeighbor(pt, p, enemy)) {
                 return false;
             }
         }
@@ -129,6 +135,7 @@ bool Bot::checkNeighboringCells(const Point& p) const {
 }
 
 bool Bot::thereAreMoves() const {
+    int enemy = getEnemysNumber(bot_number_);
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
             Point pt;
@@ -136,7 +143,7 @@ bool Bot::thereAreMoves() const {
             pt.row = x;
             if (checkNeighboringCells(pt)) {
                 if (!desk_->getVisibility(pt,
-                                          bot_number_)) {
+                                          enemy)) {
                     return true;
                 }
             }
