@@ -65,8 +65,8 @@ Point Bot::getIndex() const {
     while ((!checkNeighboringCells(pt)) || (is_visible)) {
         pt.col = std::rand() % desk_->getLength();
         pt.row = std::rand() % desk_->getWidth();
-        bool is_visible = desk_->getVisibility(pt,
-                                               bot_number_);
+        is_visible = desk_->getVisibility(pt,
+                                          bot_number_);
     }
     return pt;
 }
