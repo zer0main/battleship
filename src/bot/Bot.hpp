@@ -26,6 +26,8 @@ public:
 private:
     const GameDeskProxy* desk_;
 
+    int bot_number_;
+
     /* This method returns true if bot wants cell with
     coordinates described in point to shoot.
     This method will be called from getIndex function.
