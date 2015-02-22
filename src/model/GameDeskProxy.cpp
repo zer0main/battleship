@@ -22,7 +22,7 @@ GameDeskProxy* GameDeskProxy::make(const GameDesk* desk,
     } else {
         GameDeskProxy* proxy = new GameDeskProxy();
         proxy->desk_ = desk;
-        proxy_->player_number_ = player_number;
+        proxy->player_number_ = player_number;
         return proxy;
     }
 }

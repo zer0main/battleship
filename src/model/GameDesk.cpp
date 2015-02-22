@@ -13,7 +13,7 @@
 static int getIndex(const Point& point, int width,
                     int length) {
     bool less = ((point.col < 0) || (point.row < 0));
-    bool greater = ((point.col >= length) || (poit.row >=
+    bool greater = ((point.col >= length) || (point.row >=
                      width));
     if (less || greater) {
         throw Exception("Model: index of cell in some "

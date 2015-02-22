@@ -14,9 +14,10 @@ static int getEnemysNumber(int my_number) {
 }
 
 static bool isSunkOrBurning(const Point& point,
-                            int bot_number) {
-    if (desk_->getVisibility(point, bot_number)) {
-        if (desk_->getCellState(point, bot_number)) {
+                            int bot_number,
+                            const GameDeskProxy* desk) {
+    if (desk->getVisibility(point, bot_number)) {
+        if (desk->getCellState(point, bot_number)) {
             return true;
         }
     }
@@ -25,12 +26,13 @@ static bool isSunkOrBurning(const Point& point,
 
 static bool isGoodNeighbor(const Point& p1,
                            const Point& p2,
-                           int bot_number) {
+                           int bot_number,
+                           const GameDeskProxy* desk) {
     if ((p1.row == p2.row) || (p1.col == p2.col)) {
-        if (desk_->getFlooding(p1, bot_number)) {
+        if (desk->getFlooding(p1, bot_number)) {
             return false;
         }
-    } else if (isSunkOrBurning(p1, bot_number)) {
+    } else if (isSunkOrBurning(p1, bot_number, desk)) {
         return false;
     }
     return true;
@@ -105,7 +107,7 @@ bool Bot::checkCoordinate(const Point& p) const {
             Point pt;
             pt.row = i;
             pt.col = j;
-            if (isSunkOrBurning(pt, enemy) &&
+            if (isSunkOrBurning(pt, enemy, desk_) &&
                 !desk_->getFlooding(pt, enemy)) {
                 return true;
             }
@@ -132,7 +134,7 @@ bool Bot::checkNeighboringCells(const Point& p) const {
             Point pt;
             pt.row = i;
             pt.col = j;
-            if (!isGoodNeighbor(pt, p, enemy)) {
+            if (!isGoodNeighbor(pt, p, enemy, desk_)) {
                 return false;
             }
         }
