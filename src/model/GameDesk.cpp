@@ -10,13 +10,14 @@
 /* get global coordinate from horizontal and
    vertical coordinates
 */
-static int getIndex(const Point& point, int width) {
+static int getIndex(const Point& point, int width,
+                    int length) {
     bool less = ((point.col < 0) || (point.row < 0));
-    bool greater = ((point.col >= length_) || (poit.row >=
-                     width_));
+    bool greater = ((point.col >= length) || (poit.row >=
+                     width));
     if (less || greater) {
         throw Exception("Model: index of cell in some "
-                        "argument's of GameDesk's methods "
+                        "arguments of GameDesk's methods "
                         "is out of range.");
     }
     int index = point.col * width + point.row;
@@ -48,7 +49,7 @@ GameDesk* GameDesk::make(int width, int length) {
 void GameDesk::setCellState(const Point& point,
                             bool state,
                             int player_number) {
-    int index = getIndex(point, width_);
+    int index = getIndex(point, width_, length_);
     if (player_number == 1) {
         player1_desk_[index].is_ship = state;
     } else if (player_number == 2) {
@@ -62,7 +63,7 @@ void GameDesk::setCellState(const Point& point,
 
 bool GameDesk::getCellState(const Point& point,
                             int player_number) const {
-    int index = getIndex(point, width_);
+    int index = getIndex(point, width_, length_);
     if (player_number == 1) {
         return player1_desk_[index].is_ship;
     } else if (player_number == 2) {
@@ -77,7 +78,7 @@ bool GameDesk::getCellState(const Point& point,
 void GameDesk::setFlooding(const Point& point,
                            bool is_sunken,
                            int player_number) {
-    int index = getIndex(point, width_);
+    int index = getIndex(point, width_, length_);
     if (player_number == 1) {
         player1_desk_[index].is_sunken_ship = is_sunken;
     } else if (player_number == 2) {
@@ -91,7 +92,7 @@ void GameDesk::setFlooding(const Point& point,
 
 bool GameDesk::getFlooding(const Point& point,
                            int player_number) const {
-    int index = getIndex(point, width_);
+    int index = getIndex(point, width_, length_);
     if (player_number == 1) {
         return player1_desk_[index].is_sunken_ship;
     } else if (player_number == 2) {
@@ -106,7 +107,7 @@ bool GameDesk::getFlooding(const Point& point,
 void GameDesk::setVisibility(const Point& point,
                              bool is_visible,
                              int player_number) {
-    int index = getIndex(point, width_);
+    int index = getIndex(point, width_, length_);
     if (player_number == 1) {
         player1_desk_[index].is_visible = is_visible;
     } else if (player_number == 2) {
@@ -120,7 +121,7 @@ void GameDesk::setVisibility(const Point& point,
 
 bool GameDesk::getVisibility(const Point& point,
                              int player_number) const {
-    int index = getIndex(point, width_);
+    int index = getIndex(point, width_, length_);
     if (player_number == 1) {
         return player1_desk_[index].is_visible;
     } else if (player_number == 2) {
