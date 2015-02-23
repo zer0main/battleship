@@ -28,6 +28,9 @@ struct Points {
 
     /** End of ship */
     Point p2;
+
+    /** Direction of ship. True if it is horizontal */
+    bool is_horizontal;
 };
 
 #endif
