@@ -25,8 +25,8 @@ bool nextNeighbor(Point& out, const T& desk,
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
-        } else if (p.col != 0) {
-            out.col = p.col - 1;
+        } else if (p.col != desk.getLength() - 1) {
+            out.col = p.col + 1;
             out.row = p.row;
             if (desk.getCellState(p, player_number)) {
                 return true;
@@ -39,8 +39,8 @@ bool nextNeighbor(Point& out, const T& desk,
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
-        } else if (p.col != desk.getLength() - 1) {
-            out.col = p.col + 1;
+        } else if (p.col != 0) {
+            out.col = p.col - 1;
             out.row = p.row;
             if (desk.getCellState(p, player_number)) {
                 return true;
@@ -65,8 +65,12 @@ Points getShipCoordinates(const T& desk, const Point& p,
     }
     if (out.p1.col == out.p2.col) {
         out.is_horizontal = true;
+        out.p1.row += 2;
+        out.p2.row -= 2;
     } else {
         out.is_horizontal = false;
+        out.p1.col += 2;
+        out.p2.col -= 2;
     }
     return out;
 }
