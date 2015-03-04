@@ -25,7 +25,8 @@ bool nextNeighbor(Point& out, const T& desk,
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
-        } else if (p.col != desk.getLength() - 1) {
+        }
+        if (p.col != desk.getLength() - 1) {
             out.col = p.col + 1;
             out.row = p.row;
             if (desk.getCellState(p, player_number)) {
@@ -39,7 +40,8 @@ bool nextNeighbor(Point& out, const T& desk,
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
-        } else if (p.col != 0) {
+        }
+        if (p.col != 0) {
             out.col = p.col - 1;
             out.row = p.row;
             if (desk.getCellState(p, player_number)) {
@@ -54,6 +56,11 @@ bool nextNeighbor(Point& out, const T& desk,
 template<typename T>
 Points getShipCoordinates(const T& desk, const Point& p,
                          int player_number) {
+    if (!desk.getCellState(p, player_number)) {
+        throw Exception("No possibility to get "
+                        "coordinates of nonexistent "
+                        "ship");
+    }
     Points out;
     out.p1 = p;
     out.p2 = p;
