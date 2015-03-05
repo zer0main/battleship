@@ -7,6 +7,7 @@
 
 #include "GameController.hpp"
 #include "getShipCoordinates.hpp"
+#include "spaceForShip.hpp"
 
 static int getEnemysNumber(int player_number) {
     return 3 - player_number;
@@ -49,6 +50,27 @@ void GameController::makeMove(int player_number,
                 desk_->setFlooding(pt, true, enemy);
             }
         }
+    }
+}
+
+void GameController::setShip(int player_number,
+                             const Points& ship) {
+    if (spaceForShip(*desk_, ship, player_number)) {
+        int beginning = (ship.is_horizontal) ?
+                        ship.p1.row : ship.p1.col;
+        int end = (ship.is_horizontal) ?
+                  ship.p2.row : ship.p2.col;
+        for (int i = beginning; i <= end; i++) {
+            Point pt;
+            pt.col = (ship.is_horizontal) ?
+                     ship.p1.col : i;
+            pt.row = (ship.is_horizontal) ? i :
+                     ship.p1.row;
+            desk_->setCellState(pt, true, player_number);
+        }
+    } else {
+        throw Exception("Can't set ship in cells with "
+                        "this location");
     }
 }
 

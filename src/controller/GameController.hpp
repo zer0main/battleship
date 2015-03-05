@@ -26,6 +26,13 @@ public:
     */
     void makeMove(int player_number, const Point& point);
 
+    /** Set ship at the beginning of game.
+    \param player_number Defines whose ship is setting
+    (1 or 2)
+    \param ship Specifies ship to set
+    */
+    void setShip(int player_number, const Points& ship);
+
     /** Move ship at the beginning of game.
     \param payer_number Defines who wants to move (1 or 2)
     \param starting_position Specifies position of ship
