@@ -56,7 +56,7 @@ void GameController::makeMove(int player_number,
             int beginning = (pts.is_horizontal) ?
                             pts.p1.row : pts.p1.col;
             int end = (pts.is_horizontal) ?
-                            pts.p2.row : pts.p2.col;
+                      pts.p2.row : pts.p2.col;
             for (int i = beginning; i <= end; i++) {
                 Point pt;
                 pt.col = (pts.is_horizontal) ?
