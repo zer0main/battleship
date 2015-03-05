@@ -32,7 +32,7 @@ int shipItemsNumber(const T& desk, const Point& p,
             Point pt;
             pt.row = i;
             pt.col = j;
-            if (des.getCellState(pt, player_number)) {
+            if (desk.getCellState(pt, player_number)) {
                 number++;
             }
         }
