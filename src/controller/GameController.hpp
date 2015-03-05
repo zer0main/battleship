@@ -20,6 +20,11 @@ public:
     */
     static GameController* make(GameDesk* desk);
 
+    /** Set the initial state of game board.
+    (no ships, no visible cells, nu sunken ships).
+    */
+    void initialStateOfBoard();
+
     /** Shoot at some cell of game board.
     \param player_number Defines who is shooting (1 or 2)
     \param point Specifies cell to being shot

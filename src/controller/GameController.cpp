@@ -24,6 +24,22 @@ GameController* GameController::make(GameDesk* desk) {
     return controller;
 }
 
+void GameController::initialStateOfBoard() {
+    for (int i = 0; i < desk_->getLength(); i++) {
+        for (int x = 0; x < desk_->getWidth(); x++) {
+            Point pt;
+            pt.col = i;
+            pt.row = x;
+            desk_->setCellState(pt, false, 1);
+            desk_->setCellState(pt, false, 2);
+            desk_->setFlooding(pt, false, 1);
+            desk_->setFlooding(pt, false, 2);
+            desk_->setVisibility(pt, false, 1);
+            desk_->setVisibility(pt, false, 2);
+        }
+    }
+}
+
 void GameController::makeMove(int player_number,
                               const Point& point) {
     int enemy = getEnemysNumber(player_number);
