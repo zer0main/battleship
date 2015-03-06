@@ -13,22 +13,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_QuitButton_clicked()
+void MainWindow::on_quitButton_clicked()
 {
     QApplication::quit();
 }
 
-void MainWindow::on_BotVsBot_clicked()
+void MainWindow::on_botVsBot_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
-void MainWindow::on_BotVsHuman_clicked()
+void MainWindow::on_botVsHuman_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
-void MainWindow::on_HumanVsHuman_clicked()
+void MainWindow::on_humanVsHuman_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }

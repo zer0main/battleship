@@ -17,13 +17,13 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
-    void on_QuitButton_clicked();
+    void on_quitButton_clicked();
 
-    void on_BotVsBot_clicked();
+    void on_botVsBot_clicked();
 
-    void on_BotVsHuman_clicked();
+    void on_botVsHuman_clicked();
 
-    void on_HumanVsHuman_clicked();
+    void on_humanVsHuman_clicked();
 };
 
 #endif // MAINWINDOW_H

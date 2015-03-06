@@ -25,7 +25,7 @@
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QPushButton" name="BotVsBot">
+           <widget class="QPushButton" name="botVsBot">
             <property name="text">
              <string>Bot vs Bot</string>
             </property>
@@ -59,7 +59,7 @@
         <item row="0" column="1">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QPushButton" name="BotVsHuman">
+           <widget class="QPushButton" name="botVsHuman">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(170, 0, 0);
 color: rgb(255, 255, 255);</string>
@@ -97,7 +97,7 @@ color: rgb(255, 255, 255);</string>
         <item row="0" column="2">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QPushButton" name="HumanVsHuman">
+           <widget class="QPushButton" name="humanVsHuman">
             <property name="text">
              <string>Human vs Human</string>
             </property>
@@ -129,7 +129,7 @@ color: rgb(255, 255, 255);</string>
          </layout>
         </item>
         <item row="2" column="1">
-         <widget class="QPushButton" name="QuitButton">
+         <widget class="QPushButton" name="quitButton">
           <property name="text">
            <string>Quit</string>
           </property>
