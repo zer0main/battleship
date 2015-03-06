@@ -28,3 +28,7 @@ CTestTestfile.cmake
 cmake_install.cmake
 install_manifest.txt
 CTestCostData.txt
+
+ui_*.h
+moc_*.cpp
+src/view/battleship/battleship
