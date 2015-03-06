@@ -15,6 +15,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void on_QuitButton_clicked();
+
+    void on_BotVsBot_clicked();
+
+    void on_BotVsHuman_clicked();
+
+    void on_HumanVsHuman_clicked();
 };
 
 #endif // MAINWINDOW_H
