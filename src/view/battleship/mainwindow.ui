@@ -17,6 +17,9 @@
    <layout class="QGridLayout" name="gridLayout" rowstretch="1,0">
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="startpage">
        <layout class="QGridLayout" name="gridLayout" rowstretch="1,0,0,0">
         <item row="0" column="0">
@@ -32,6 +35,9 @@
            <widget class="QLabel" name="label">
             <property name="text">
              <string>Bot vs Bot mode</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -68,6 +74,9 @@ color: rgb(255, 255, 255);</string>
             <property name="text">
              <string>Play with hardcore bot </string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
            </widget>
           </item>
           <item>
@@ -98,6 +107,9 @@ color: rgb(255, 255, 255);</string>
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>Play with other human</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
