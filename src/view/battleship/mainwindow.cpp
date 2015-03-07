@@ -38,4 +38,11 @@ void MainWindow::on_playButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
     ui->board1->setModel(new TableModel(this));
+    ui->board1->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->board1->horizontalHeader()
+    ->setMinimumSectionSize(25);
+    ui->board1->horizontalHeader()
+    ->setResizeMode(QHeaderView::Stretch);
+    ui->board1->verticalHeader()
+    ->setResizeMode(QHeaderView::Stretch);
 }
