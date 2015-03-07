@@ -59,3 +59,7 @@ int GameDeskProxy::getWidth() const {
 int GameDeskProxy::getLength() const {
     return desk_->getLength();
 }
+
+int GameDeskProxy::getPlayerNumber() const {
+    return player_number_;
+}

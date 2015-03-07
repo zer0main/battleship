@@ -51,6 +51,9 @@ public:
     /** Get length of game board */
     int getLength() const;
 
+    /** Get number of player serviced by this proxy */
+    int getPlayerNumber() const;
+
 private:
     const GameDesk* desk_;
     int player_number_;
