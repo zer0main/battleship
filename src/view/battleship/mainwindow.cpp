@@ -40,9 +40,13 @@ void MainWindow::on_playButton_clicked()
     ui->board1->setModel(new TableModel(this));
     ui->board1->setSelectionMode(QAbstractItemView::NoSelection);
     ui->board1->horizontalHeader()
-    ->setMinimumSectionSize(25);
-    ui->board1->horizontalHeader()
     ->setResizeMode(QHeaderView::Stretch);
     ui->board1->verticalHeader()
+    ->setResizeMode(QHeaderView::Stretch);
+    ui->board2->setModel(new TableModel(this));
+    ui->board2->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->board2->horizontalHeader()
+    ->setResizeMode(QHeaderView::Stretch);
+    ui->board2->verticalHeader()
     ->setResizeMode(QHeaderView::Stretch);
 }

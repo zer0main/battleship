@@ -13,18 +13,18 @@ TableModel::TableModel(QObject* parent) {
 }
 
 int TableModel::rowCount(const Index& /*parent*/) const {
-    return 100;
+    return 10;
 }
 
 int TableModel::columnCount(
         const Index& /*parent*/) const {
-    return 100;
+    return 10;
 }
 
 QVariant TableModel::data(const Index& index,
                           int role) const {
     if (role == Qt::DecorationRole) {
-        return QIcon("image.png");
+        return QImage("images/water.png");
     }
     return QVariant();
 }
