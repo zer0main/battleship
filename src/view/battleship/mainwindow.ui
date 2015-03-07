@@ -283,6 +283,7 @@ background-color: rgb(255, 255, 255);</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="gamepage"/>
      </widget>
     </item>
    </layout>

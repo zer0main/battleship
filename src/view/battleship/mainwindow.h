@@ -24,6 +24,8 @@ private slots:
     void on_botVsHuman_clicked();
 
     void on_humanVsHuman_clicked();
+
+    void on_playButton_clicked();
 };
 
 #endif // MAINWINDOW_H

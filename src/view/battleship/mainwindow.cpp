@@ -32,3 +32,8 @@ void MainWindow::on_humanVsHuman_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
+
+void MainWindow::on_playButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->gamepage);
+}
