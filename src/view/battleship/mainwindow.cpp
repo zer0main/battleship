@@ -1,3 +1,4 @@
+#include "tb.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -36,4 +37,5 @@ void MainWindow::on_humanVsHuman_clicked()
 void MainWindow::on_playButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
+    ui->board1->setModel(new TableModel(this));
 }
