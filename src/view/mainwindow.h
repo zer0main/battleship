@@ -16,6 +16,8 @@ public:
 private:
     Ui::MainWindow *ui;
 
+    void settingOfBoards();
+
 private slots:
     void on_quitButton_clicked();
 
