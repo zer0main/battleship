@@ -299,7 +299,8 @@ background-color: rgb(255, 255, 255);</string>
           <item>
            <widget class="QLabel" name="label_4">
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(0, 0, 255);</string>
+             <string notr="true">background-color: rgb(0, 0, 255);
+background-color: rgb(0, 255, 0);</string>
             </property>
             <property name="text">
              <string/>
@@ -310,6 +311,9 @@ background-color: rgb(255, 255, 255);</string>
            <widget class="QTableView" name="board1">
             <property name="contextMenuPolicy">
              <enum>Qt::DefaultContextMenu</enum>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
             </property>
            </widget>
           </item>
