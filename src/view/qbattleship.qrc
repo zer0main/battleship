@@ -1,0 +1,9 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/ship.png</file>
+    <file>images/burning_ship.png</file>
+    <file>images/water.png</file>
+    <file>images/sunken_ship.png</file>
+    <file>images/not_visible.png</file>
+</qresource>
+</RCC>
