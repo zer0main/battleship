@@ -1,6 +1,9 @@
 battleship
 ==========
 
+[![Build Status](https://travis-ci.org/zer0main/battleship.png?branch=master)](https://travis-ci.org/zer0main/battleship)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen.png)](LICENSE)
+
 Classic battleship game.
 [Rules](https://en.wikipedia.org/wiki/Battleship_%28game%29)
 
