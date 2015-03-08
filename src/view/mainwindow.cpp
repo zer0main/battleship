@@ -1,4 +1,3 @@
-#include "tb.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -37,13 +36,11 @@ void MainWindow::on_humanVsHuman_clicked()
 void MainWindow::on_playButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
-    ui->board1->setModel(new TableModel(this));
     ui->board1->setSelectionMode(QAbstractItemView::NoSelection);
     ui->board1->horizontalHeader()
     ->setResizeMode(QHeaderView::Stretch);
     ui->board1->verticalHeader()
     ->setResizeMode(QHeaderView::Stretch);
-    ui->board2->setModel(new TableModel(this));
     ui->board2->setSelectionMode(QAbstractItemView::NoSelection);
     ui->board2->horizontalHeader()
     ->setResizeMode(QHeaderView::Stretch);
