@@ -1,0 +1,11 @@
+language: c
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install g++ cmake make libqt4-dev
+
+script:
+  - mkdir build-dir
+  - cd build-dir
+  - cmake ..
+  - make
