@@ -15,16 +15,16 @@
 
 /** Contains all classes necessary for game */
 struct Game {
-    GameDesk* desk;
-    GameDeskProxy* proxy1;
-    GameDeskProxy* proxy2;
-    Bot* bot1;
-    Bot* bot2;
-    TableModel* t_model1;
-    TableModel* t_model2;
-    TableModel* t_model3;
-    TableModel* t_model4;
-    GameController* controller;
+    QSharedPointer<GameDesk> desk;
+    QSharedPointer<GameDeskProxy> proxy1;
+    QSharedPointer<GameDeskProxy> proxy2;
+    QSharedPointer<Bot> bot1;
+    QSharedPointer<Bot> bot2;
+    QSharedPointer<TableModel> t_model1;
+    QSharedPointer<TableModel> t_model2;
+    QSharedPointer<TableModel> t_model3;
+    QSharedPointer<TableModel> t_model4;
+    QSharedPointer<GameController> controller;
 };
 
 #endif
