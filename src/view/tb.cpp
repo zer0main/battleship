@@ -24,7 +24,7 @@ int TableModel::columnCount(
 QVariant TableModel::data(const Index& index,
                           int role) const {
     if (role == Qt::DecorationRole) {
-        return QImage("images/water.png");
+        return QImage(":/images/water.png");
     }
     return QVariant();
 }
