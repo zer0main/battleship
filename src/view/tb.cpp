@@ -9,22 +9,58 @@
 
 typedef QModelIndex Index;
 
-TableModel::TableModel(QObject* parent) {
+TableModel::TableModel(QObject* parent,
+                       const GameDeskProxy* desk,
+                       bool hostile):
+    QAbstractTableModel(parent), desk_(desk),
+    hostile_(hostile) {
 }
 
 int TableModel::rowCount(const Index& /*parent*/) const {
-    return 10;
+    return desk_->getWidth();
 }
 
 int TableModel::columnCount(
         const Index& /*parent*/) const {
-    return 10;
+    return desk_->getLength();
 }
 
 QVariant TableModel::data(const Index& index,
                           int role) const {
     if (role == Qt::DecorationRole) {
-        return QImage(":/images/water.png");
+        Point pt;
+        // See Point.hpp
+        pt.col = index.row();
+        pt.row = index.column();
+        int pn = desk_->getPlayerNumber();
+        if (hostile_) {
+            if (desk_->getVisibility(pt, pn)) {
+                if (desk_->getFlooding(pt, pn)) {
+                    return QImage(":/images/sunken_ship"
+                                  ".png");
+                } else if (desk_->getCellState(pt, pn)) {
+                    return QImage(":/images/burning_ship"
+                                  ".png");
+                } else {
+                    return QImage(":/images/water.png");
+                }
+            } else {
+                return QImage(":/images/not_visible.png");
+            }
+        } else {
+            if (desk_->getFlooding(pt, pn)) {
+                return QImage(":/images/sunken_ship.png");
+            } else if (desk_->getCellState(pt, pn)) {
+                if (desk_->getVisibility(pt, pn)) {
+                    return QImage(":/images/burning_ship"
+                                  ".png");
+                } else {
+                    return QImage(":/images/ship.png");
+                }
+            } else {
+                return QImage(":/images/water.png");
+            }
+        }
     }
     return QVariant();
 }
