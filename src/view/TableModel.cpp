@@ -33,12 +33,14 @@ QVariant TableModel::data(const Index& index,
         pt.col = index.row();
         pt.row = index.column();
         int pn = desk_->getPlayerNumber();
+        // Enemy's number
+        int en = 3 - pn;
         if (hostile_) {
-            if (desk_->getVisibility(pt, pn)) {
-                if (desk_->getFlooding(pt, pn)) {
+            if (desk_->getVisibility(pt, en)) {
+                if (desk_->getFlooding(pt, en)) {
                     return QImage(":/images/sunken_ship"
                                   ".png");
-                } else if (desk_->getCellState(pt, pn)) {
+                } else if (desk_->getCellState(pt, en)) {
                     return QImage(":/images/burning_ship"
                                   ".png");
                 } else {
