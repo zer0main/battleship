@@ -5,7 +5,7 @@
  * See the LICENSE file for terms of use.
  */
 
-#include "TableModel.h"
+#include "TableModel.hpp"
 
 typedef QModelIndex Index;
 

@@ -11,7 +11,7 @@
 #include "GameController.hpp"
 #include "Bot.hpp"
 #include "GameDeskProxy.hpp"
-#include "TableModel.h"
+#include "TableModel.hpp"
 
 /** Contains all classes necessary for game */
 struct Game {

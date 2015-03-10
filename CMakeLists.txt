@@ -21,7 +21,7 @@ file(GLOB sources "src/model/*.cpp", "src/bot/*.cpp",
     "src/desk_functions/*.cpp", "src/view/*.cpp",
     "src/*.cpp")
 file(GLOB uis "src/view/*.ui")
-file(GLOB qheaders "src/view/*.h")
+file(GLOB qheaders "src/view/*.hpp")
 
 QT4_WRAP_UI(UISrcs ${uis})
 QT4_WRAP_CPP(MOCrcs ${qheaders})
