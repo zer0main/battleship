@@ -21,7 +21,7 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="startpage">
-       <layout class="QGridLayout" name="gridLayout" rowstretch="1,0,0,0">
+       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,0,0,0">
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
