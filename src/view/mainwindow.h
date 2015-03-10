@@ -1,3 +1,10 @@
+/*
+ * Battleship, classic battleship game
+ * Copyright (C) 2014-2015 Pavel Dolgov
+ *
+ * See the LICENSE file for terms of use.
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
