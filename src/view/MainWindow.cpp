@@ -5,6 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
+#include "placeShips.hpp"
+#include "startGame.hpp"
 #include "MainWindow.hpp"
 #include "ui_MainWindow.h"
 
@@ -60,4 +62,13 @@ void MainWindow::on_playButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->gamepage);
     settingOfBoards();
+    int width = ui->boardWidth->value();
+    int length = ui->boardHeight->value();
+    QSharedPointer<Game> game = startGame(this, width,
+                                          length);
+    game->controller->initialStateOfBoard();
+    placeShips(*(game->controller), *(game->desk), 1);
+    placeShips(*(game->controller), *(game->desk), 2);
+    ui->board1->setModel(game->t_model1.data());
+    ui->board2->setModel(game->t_model2.data());
 }
