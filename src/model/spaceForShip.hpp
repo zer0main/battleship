@@ -17,6 +17,7 @@ template<typename T>
 int shipItemsNumber(const T& desk, const Point& p,
                     int player_number) {
     int number = 0;
+    int correct_cells_number = 0;
     for (int i = p.row - 1; i <= p.row + 1; i++) {
         if (i < 0) {
             continue;
@@ -32,10 +33,14 @@ int shipItemsNumber(const T& desk, const Point& p,
             Point pt;
             pt.row = i;
             pt.col = j;
+            correct_cells_number++;
             if (desk.getCellState(pt, player_number)) {
                 number++;
             }
         }
+    }
+    if (correct_cells_number < 4) {
+        number = 1;
     }
     return number;
 }
