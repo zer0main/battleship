@@ -64,11 +64,10 @@ void MainWindow::on_playButton_clicked()
     settingOfBoards();
     int width = ui->boardWidth->value();
     int length = ui->boardHeight->value();
-    QSharedPointer<Game> game = startGame(this, width,
-                                          length);
-    game->controller->initialStateOfBoard();
-    placeShips(*(game->controller), *(game->desk), 1);
-    placeShips(*(game->controller), *(game->desk), 2);
-    ui->board1->setModel(game->t_model1.data());
-    ui->board2->setModel(game->t_model2.data());
+    game_ = startGame(this, width, length);
+    game_->controller->initialStateOfBoard();
+    placeShips(*(game_->controller), *(game_->desk), 1);
+    placeShips(*(game_->controller), *(game_->desk), 2);
+    ui->board1->setModel(game_->t_model1.data());
+    ui->board2->setModel(game_->t_model2.data());
 }
