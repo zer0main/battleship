@@ -25,10 +25,10 @@ static int getIndex(const Point& point, int width,
 }
 
 GameDesk* GameDesk::make(int width, int length) {
-    const int MIN_WIDTH = 12;
-    const int MAX_WIDTH = 25;
-    const int MIN_LENGTH = 12;
-    const int MAX_LENGTH = 25;
+    const int MIN_WIDTH = 10;
+    const int MAX_WIDTH = 16;
+    const int MIN_LENGTH = 10;
+    const int MAX_LENGTH = 16;
     if ((width < MIN_WIDTH) || (width > MAX_WIDTH)) {
         throw Exception("width of desk is out of "
                         "allowable range");
