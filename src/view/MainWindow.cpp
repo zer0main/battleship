@@ -46,16 +46,19 @@ void MainWindow::on_quitButton_clicked()
 
 void MainWindow::on_botVsBot_clicked()
 {
+    game_type_ = BOT_VS_BOT;
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
 void MainWindow::on_botVsHuman_clicked()
 {
+    game_type_ = BOT_VS_HUMAN;
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
 void MainWindow::on_humanVsHuman_clicked()
 {
+    game_type_ = HUMAN_VS_HUMAN;
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
