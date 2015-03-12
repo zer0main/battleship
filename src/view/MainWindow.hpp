@@ -8,7 +8,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtGui>
+
+#include "Game.hpp"
 
 namespace Ui {
     class MainWindow;
@@ -22,6 +24,8 @@ public:
 
 private:
     Ui::MainWindow* ui;
+
+    QSharedPointer<Game> game_;
 
     void settingOfBoards();
 
