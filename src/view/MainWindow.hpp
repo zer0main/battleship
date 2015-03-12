@@ -33,6 +33,8 @@ private:
 
     QSharedPointer<Game> game_;
 
+    GameType game_type_;
+
     void settingOfBoards();
 
 private slots:
