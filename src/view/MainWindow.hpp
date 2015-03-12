@@ -12,6 +12,12 @@
 
 #include "Game.hpp"
 
+enum GameType {
+    BOT_VS_BOT,
+    BOT_VS_HUMAN,
+    HUMAN_VS_HUMAN
+};
+
 namespace Ui {
     class MainWindow;
 }
