@@ -37,6 +37,8 @@ private:
 
     void settingOfBoards();
 
+    void errorHandling(std::exception& e);
+
 private slots:
     void on_quitButton_clicked();
 
