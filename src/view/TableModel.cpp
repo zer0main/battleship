@@ -30,8 +30,8 @@ QVariant TableModel::data(const Index& index,
     if (role == Qt::DecorationRole) {
         Point pt;
         // See Point.hpp
-        pt.col = index.row();
-        pt.row = index.column();
+        pt.col = index.column();
+        pt.row = index.row();
         int pn = desk_->getPlayerNumber();
         // Enemy's number
         int en = 3 - pn;

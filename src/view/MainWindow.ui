@@ -168,7 +168,7 @@ color: rgb(255, 255, 255);</string>
         <item row="0" column="0">
          <widget class="QLabel" name="widthOfGameBoardLabel">
           <property name="text">
-           <string>Width of game board</string>
+           <string>Height of game board</string>
           </property>
          </widget>
         </item>
@@ -188,7 +188,7 @@ color: rgb(255, 255, 255);</string>
         <item row="2" column="0">
          <widget class="QLabel" name="heightOfGameBoardLabel">
           <property name="text">
-           <string>Height of game board</string>
+           <string>Width of game board</string>
           </property>
          </widget>
         </item>
