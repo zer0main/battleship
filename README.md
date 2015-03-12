@@ -10,7 +10,7 @@ Classic battleship game.
 Run dependencies
 ----------------
 
- - Qt
+ - Qt library (version not less than 4.6)
  - Standard library of C language
  - Standard library of C++ language
 
