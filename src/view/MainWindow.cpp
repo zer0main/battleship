@@ -128,8 +128,16 @@ void MainWindow::on_board2_clicked(const QModelIndex&
     if (game_type_ == BOT_VS_HUMAN) {
         game_->controller->makeMove(2, pt);
         game_->t_model2->updateData();
-        game_->controller->
-            makeMove(1, game_->bot1->getIndex());
-        game_->t_model1->updateData();
+        if (game_->desk->getCellState(pt, 1)) {
+            return;
+        }
+        bool success = true;
+        while (success) {
+            Point p = game_->bot1->getIndex();
+            game_->controller->
+                makeMove(1, p);
+            game_->t_model1->updateData();
+            success = game_->desk->getCellState(p, 2);
+        }
     }
 }
