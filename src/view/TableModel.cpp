@@ -60,7 +60,12 @@ QVariant TableModel::data(const Index& index,
                     return QImage(":/images/ship.png");
                 }
             } else {
-                return QImage(":/images/water.png");
+                if (desk_->getVisibility(pt, pn)) {
+                    return QImage(":/images/water.png");
+                } else {
+                    return QImage(":/images/not_visible"
+                                  ".png");
+                }
             }
         }
     }
