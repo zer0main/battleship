@@ -29,6 +29,8 @@ public:
     QVariant data(const QModelIndex& index, int role =
                   Qt::DisplayRole) const;
 
+    void updateData();
+
 private:
     const GameDeskProxy* desk_;
 

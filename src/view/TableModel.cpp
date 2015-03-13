@@ -66,3 +66,7 @@ QVariant TableModel::data(const Index& index,
     }
     return QVariant();
 }
+
+void TableModel::updateData() {
+    reset();
+}
