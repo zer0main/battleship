@@ -41,6 +41,10 @@ private:
 
     void helpMessage();
 
+    void botVsHumanMove();
+
+    void humanVsHumanMove();
+
 private slots:
     void on_quitButton_clicked();
 

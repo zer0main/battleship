@@ -62,6 +62,23 @@ void MainWindow::helpMessage() {
     QErrorMessage::qtHandler()->showMessage(help_message);
 }
 
+void MainWindow::botVsHumanMove()
+{
+    bool success = true;
+    while (success) {
+        Point p = game_->bot1->getIndex();
+        game_->controller->
+            makeMove(1, p);
+        game_->t_model1->updateData();
+        success = game_->desk->getCellState(p, 2);
+    }
+}
+
+void MainWindow::humanVsHumanMove()
+{
+    ui->stackedWidget->setCurrentWidget(ui->waitingpage);
+}
+
 void MainWindow::on_quitButton_clicked()
 {
     QApplication::quit();
@@ -125,19 +142,18 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         helpMessage();
         return;
     }
-    if (game_type_ == BOT_VS_HUMAN) {
+    try {
         game_->controller->makeMove(2, pt);
         game_->t_model2->updateData();
         if (game_->desk->getCellState(pt, 1)) {
             return;
         }
-        bool success = true;
-        while (success) {
-            Point p = game_->bot1->getIndex();
-            game_->controller->
-                makeMove(1, p);
-            game_->t_model1->updateData();
-            success = game_->desk->getCellState(p, 2);
+        if (game_type_ == BOT_VS_HUMAN) {
+            botVsHumanMove();
+        } else if (game_type_ == HUMAN_VS_HUMAN) {
+            humanVsHumanMove();
         }
+    } catch (std::exception& e) {
+        errorHandling(e);
     }
 }
