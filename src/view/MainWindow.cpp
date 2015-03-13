@@ -107,3 +107,18 @@ void MainWindow::on_playButton_clicked()
         errorHandling(e);
     }
 }
+
+void MainWindow::on_board2_clicked(const QModelIndex&
+                                   index)
+{
+    if (game_type_ == BOT_VS_HUMAN) {
+        Point pt;
+        pt.col = index.column();
+        pt.row = index.row();
+        game_->controller->makeMove(2, pt);
+        game_->t_model2->updateData();
+        game_->controller->
+            makeMove(1, game_->bot1->getIndex());
+        game_->t_model1->updateData();
+    }
+}

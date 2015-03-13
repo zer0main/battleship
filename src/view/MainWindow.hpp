@@ -49,6 +49,8 @@ private slots:
     void on_humanVsHuman_clicked();
 
     void on_playButton_clicked();
+
+    void on_board2_clicked(const QModelIndex& index);
 };
 
 #endif // MAINWINDOW_H
