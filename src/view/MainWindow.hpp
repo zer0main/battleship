@@ -39,6 +39,8 @@ private:
 
     void errorHandling(std::exception& e);
 
+    void helpMessage();
+
 private slots:
     void on_quitButton_clicked();
 

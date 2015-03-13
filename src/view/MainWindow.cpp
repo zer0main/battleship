@@ -55,6 +55,13 @@ void MainWindow::errorHandling(std::exception& e)
     QErrorMessage::qtHandler()->showMessage(m);
 }
 
+void MainWindow::helpMessage() {
+    QString help_message = "<b>Do not shoot at cell which "
+                           "has already shot down.</b>";
+    QErrorMessage::qtHandler()->resize(400, 300);
+    QErrorMessage::qtHandler()->showMessage(help_message);
+}
+
 void MainWindow::on_quitButton_clicked()
 {
     QApplication::quit();
@@ -111,10 +118,14 @@ void MainWindow::on_playButton_clicked()
 void MainWindow::on_board2_clicked(const QModelIndex&
                                    index)
 {
+    Point pt;
+    pt.col = index.column();
+    pt.row = index.row();
+    if (game_->desk->getVisibility(pt, 1)) {
+        helpMessage();
+        return;
+    }
     if (game_type_ == BOT_VS_HUMAN) {
-        Point pt;
-        pt.col = index.column();
-        pt.row = index.row();
         game_->controller->makeMove(2, pt);
         game_->t_model2->updateData();
         game_->controller->
