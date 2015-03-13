@@ -15,39 +15,43 @@
 // Retunrns true if the neighbor is ship's item.
 // Save neighbor's coordinate to p.
 template<typename T>
-bool nextNeighbor(Point& out, const T& desk,
-                  Point p,
+bool nextNeighbor(const T& desk, Point& p,
                   int player_number, bool direction) {
+    Point p_saver = p;
     if (direction) {
         if (p.row != desk.getWidth() - 1) {
-            out.row = p.row + 1;
-            out.col = p.col;
+            p.row += 1;
+            p.col = p.col;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
         }
+        p = p_saver;
         if (p.col != desk.getLength() - 1) {
-            out.col = p.col + 1;
-            out.row = p.row;
+            p.col += 1;
+            p.row = p.row;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
         }
+        p = p_saver;
     } else {
         if (p.row != 0) {
-            out.row = p.row - 1;
-            out.col = p.col;
+            p.row -= 1;
+            p.col = p.col;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
         }
+        p = p_saver;
         if (p.col != 0) {
-            out.col = p.col - 1;
-            out.row = p.row;
+            p.col -= 1;
+            p.row = p.row;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
         }
+        p = p_saver;
     }
     return false;
 }
@@ -64,20 +68,16 @@ Points getShipCoordinates(const T& desk, const Point& p,
     Points out;
     out.p1 = p;
     out.p2 = p;
-    while (nextNeighbor<T>(out.p1, desk, out.p1,
-                           player_number, false)) {
+    while (nextNeighbor<T>(desk, out.p1, player_number,
+                           false)) {
     }
-    while (nextNeighbor<T>(out.p2, desk, out.p2,
-                           player_number, true)) {
+    while (nextNeighbor<T>(desk, out.p2, player_number,
+                           true)) {
     }
     if (out.p1.col == out.p2.col) {
         out.is_horizontal = true;
-        out.p1.row += 2;
-        out.p2.row -= 2;
     } else {
         out.is_horizontal = false;
-        out.p1.col += 2;
-        out.p2.col -= 2;
     }
     return out;
 }
