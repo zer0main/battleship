@@ -21,13 +21,13 @@ public:
                bool hostile);
 
     int rowCount(const QModelIndex& parent =
-                 QModelIndex()) const;
+                     QModelIndex()) const;
 
     int columnCount(const QModelIndex& parent =
-                    QModelIndex()) const;
+                        QModelIndex()) const;
 
     QVariant data(const QModelIndex& index, int role =
-                  Qt::DisplayRole) const;
+                      Qt::DisplayRole) const;
 
     void updateData();
 

@@ -98,8 +98,9 @@ bool Bot::checkCoordinate(const Point& p) const {
         }
         for (int j = p.col - 1; j <= p.col + 1; j++) {
             if ((j < 0) || ((j != p.col) &&
-                (i != p.row)) || ((i == p.row) &&
-                (j == p.col))) {
+                            (i != p.row)) ||
+                           ((i == p.row) &&
+                            (j == p.col))) {
                 continue;
             } else if (j >= desk_->getLength()) {
                 break;
@@ -108,7 +109,7 @@ bool Bot::checkCoordinate(const Point& p) const {
             pt.row = i;
             pt.col = j;
             if (isSunkOrBurning(pt, enemy, desk_) &&
-                !desk_->getFlooding(pt, enemy)) {
+                    !desk_->getFlooding(pt, enemy)) {
                 return true;
             }
         }
@@ -126,7 +127,7 @@ bool Bot::checkNeighboringCells(const Point& p) const {
         }
         for (int j = p.col - 1; j <= p.col + 1; j++) {
             if ((j < 0) || ((i == p.row) &&
-                (j == p.col))) {
+                            (j == p.col))) {
                 continue;
             } else if (j >= desk_->getLength()) {
                 break;

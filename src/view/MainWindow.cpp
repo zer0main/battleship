@@ -12,19 +12,16 @@
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+    ui(new Ui::MainWindow) {
     ui->setupUi(this);
     setWindowIcon(QIcon(":/images/battleship.ico"));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::settingOfBoards()
-{
+void MainWindow::settingOfBoards() {
     ui->board1
     ->setSelectionMode(QAbstractItemView::NoSelection);
     ui->board1->horizontalHeader()
@@ -39,8 +36,7 @@ void MainWindow::settingOfBoards()
     ->setResizeMode(QHeaderView::Stretch);
 }
 
-void MainWindow::errorHandling(std::exception& e)
-{
+void MainWindow::errorHandling(std::exception& e) {
     QString what = QString::fromStdString(e.what());
     QString error = "<b>The error occurred</b>."
                     "<br/><br/>Contact developers! "
@@ -62,48 +58,41 @@ void MainWindow::helpMessage() {
     QErrorMessage::qtHandler()->showMessage(help_message);
 }
 
-void MainWindow::botVsHumanMove()
-{
+void MainWindow::botVsHumanMove() {
     bool success = true;
     while (success) {
         Point p = game_->bot1->getIndex();
-        game_->controller->
-            makeMove(1, p);
+        game_->controller
+        ->makeMove(1, p);
         game_->t_model1->updateData();
         success = game_->desk->getCellState(p, 2);
     }
 }
 
-void MainWindow::humanVsHumanMove()
-{
+void MainWindow::humanVsHumanMove() {
     ui->stackedWidget->setCurrentWidget(ui->waitingpage);
 }
 
-void MainWindow::on_quitButton_clicked()
-{
+void MainWindow::on_quitButton_clicked() {
     QApplication::quit();
 }
 
-void MainWindow::on_botVsBot_clicked()
-{
+void MainWindow::on_botVsBot_clicked() {
     game_type_ = BOT_VS_BOT;
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
-void MainWindow::on_botVsHuman_clicked()
-{
+void MainWindow::on_botVsHuman_clicked() {
     game_type_ = BOT_VS_HUMAN;
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
-void MainWindow::on_humanVsHuman_clicked()
-{
+void MainWindow::on_humanVsHuman_clicked() {
     game_type_ = HUMAN_VS_HUMAN;
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
-void MainWindow::on_playButton_clicked()
-{
+void MainWindow::on_playButton_clicked() {
     try {
         ui->stackedWidget->setCurrentWidget(ui->gamepage);
         settingOfBoards();
@@ -133,8 +122,7 @@ void MainWindow::on_playButton_clicked()
 }
 
 void MainWindow::on_board2_clicked(const QModelIndex&
-                                   index)
-{
+                                   index) {
     Point pt;
     pt.col = index.column();
     pt.row = index.row();

@@ -21,7 +21,7 @@ int TableModel::rowCount(const Index& /*parent*/) const {
 }
 
 int TableModel::columnCount(
-        const Index& /*parent*/) const {
+    const Index& /*parent*/) const {
     return desk_->getLength();
 }
 

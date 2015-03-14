@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOW_HPP_
+#define MAINWINDOW_HPP_
 
 #include <QtGui>
 
@@ -19,7 +19,7 @@ enum GameType {
 };
 
 namespace Ui {
-    class MainWindow;
+class MainWindow;
 }
 
 class MainWindow : public QMainWindow {
@@ -59,4 +59,4 @@ private slots:
     void on_board2_clicked(const QModelIndex& index);
 };
 
-#endif // MAINWINDOW_H
+#endif

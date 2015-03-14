@@ -14,7 +14,7 @@ static int getIndex(const Point& point, int width,
                     int length) {
     bool less = ((point.col < 0) || (point.row < 0));
     bool greater = ((point.col >= length) || (point.row >=
-                     width));
+                    width));
     if (less || greater) {
         throw Exception("Model: index of cell in some "
                         "arguments of GameDesk's methods "
@@ -33,7 +33,7 @@ GameDesk* GameDesk::make(int width, int length) {
         throw Exception("width of desk is out of "
                         "allowable range");
     } else if ((length < MIN_LENGTH) || (length >
-                MAX_LENGTH)) {
+                                         MAX_LENGTH)) {
         throw Exception("length of desk is out of "
                         "allowable range");
     }
