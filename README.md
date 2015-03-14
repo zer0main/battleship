@@ -21,3 +21,13 @@ Build dependencies
  - cmake
  - make
  - c compiler
+
+Build instructions (for Linux)
+------------------------------
+
+```bash
+$ mkdir build-dir
+$ cd build-dir
+$ cmake /path/to/battleship
+$ make
+```
