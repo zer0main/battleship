@@ -37,6 +37,8 @@ private:
 
     int moving_player_number_;
 
+    void configureBoard(QTableView* board);
+
     void settingOfBoards();
 
     void errorHandling(std::exception& e);

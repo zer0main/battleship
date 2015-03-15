@@ -21,19 +21,20 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::configureBoard(QTableView* board) {
+    board
+    ->setSelectionMode(QAbstractItemView::NoSelection);
+    board->horizontalHeader()
+    ->setResizeMode(QHeaderView::Stretch);
+    board->verticalHeader()
+    ->setResizeMode(QHeaderView::Stretch);
+}
+
 void MainWindow::settingOfBoards() {
-    ui->board1
-    ->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->board1->horizontalHeader()
-    ->setResizeMode(QHeaderView::Stretch);
-    ui->board1->verticalHeader()
-    ->setResizeMode(QHeaderView::Stretch);
-    ui->board2
-    ->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->board2->horizontalHeader()
-    ->setResizeMode(QHeaderView::Stretch);
-    ui->board2->verticalHeader()
-    ->setResizeMode(QHeaderView::Stretch);
+    configureBoard(ui->board1);
+    configureBoard(ui->board2);
+    configureBoard(ui->board3);
+    configureBoard(ui->board4);
 }
 
 void MainWindow::errorHandling(std::exception& e) {
