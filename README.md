@@ -20,7 +20,7 @@ Build dependencies
  - All the run dependencies
  - cmake
  - make
- - c compiler
+ - C++ compiler
 
 Build instructions (for Linux)
 ------------------------------
