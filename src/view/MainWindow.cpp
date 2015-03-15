@@ -172,7 +172,35 @@ void MainWindow::on_board2_clicked(const QModelIndex&
     }
 }
 
+void MainWindow::on_board4_clicked(const QModelIndex&
+                                   index) {
+    if (moving_player_number_ != 1) {
+        return;
+    }
+    Point pt;
+    pt.col = index.column();
+    pt.row = index.row();
+    if (game_->desk->getVisibility(pt, 2)) {
+        helpMessage();
+        return;
+    }
+    try {
+        game_->controller->makeMove(1, pt);
+        game_->t_model4->updateData();
+        if (game_->desk->getCellState(pt, 2)) {
+            return;
+        }
+        setCursor(Qt::ArrowCursor);
+        moving_player_number_ = 2;
+        QTimer::singleShot(3000, this,
+                           SLOT(humanVsHumanMove()));
+    } catch (std::exception& e) {
+        errorHandling(e);
+    }
+}
+
 void MainWindow::on_nextMove_clicked() {
+    setCursor(Qt::PointingHandCursor);
     if (moving_player_number_ == 1) {
         ui->stackedWidget->setCurrentWidget(ui->gamepage2);
     } else {
