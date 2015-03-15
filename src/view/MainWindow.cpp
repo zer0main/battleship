@@ -80,6 +80,7 @@ void MainWindow::botVsHumanMove() {
                            SLOT(botVsHumanMove()));
     } else {
         moving_player_number_ = 2;
+        changeCursor();
     }
 }
 
@@ -104,6 +105,7 @@ void MainWindow::on_humanVsHuman_clicked() {
 
 void MainWindow::on_playButton_clicked() {
     moving_player_number_ = 2;
+    changeCursor();
     try {
         ui->stackedWidget->setCurrentWidget(ui->gamepage);
         settingOfBoards();
@@ -152,10 +154,12 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         }
         if (game_type_ == BOT_VS_HUMAN) {
             moving_player_number_ = 1;
+            changeCursor();
             QTimer::singleShot(3000, this,
                                SLOT(botVsHumanMove()));
         } else if (game_type_ == HUMAN_VS_HUMAN) {
             moving_player_number_ = 1;
+            changeCursor();
             QTimer::singleShot(3000, this,
                                SLOT(humanVsHumanMove()));
         }
