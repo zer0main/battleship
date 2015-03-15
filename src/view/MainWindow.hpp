@@ -61,6 +61,8 @@ private slots:
     void on_playButton_clicked();
 
     void on_board2_clicked(const QModelIndex& index);
+
+    void on_nextMove_clicked();
 };
 
 #endif

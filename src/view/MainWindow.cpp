@@ -155,3 +155,11 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         errorHandling(e);
     }
 }
+
+void MainWindow::on_nextMove_clicked() {
+    if (moving_player_number_ == 1) {
+        ui->stackedWidget->setCurrentWidget(ui->gamepage2);
+    } else {
+        ui->stackedWidget->setCurrentWidget(ui->gamepage);
+    }
+}
