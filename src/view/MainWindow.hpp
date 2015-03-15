@@ -45,6 +45,8 @@ private:
 
     void helpMessage();
 
+    void changeCursor();
+
 private slots:
     void humanVsHumanMove();
 

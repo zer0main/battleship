@@ -59,6 +59,14 @@ void MainWindow::helpMessage() {
     QErrorMessage::qtHandler()->showMessage(help_message);
 }
 
+void MainWindow::changeCursor() {
+    if (moving_player_number_ == 1) {
+        setCursor(Qt::ArrowCursor);
+    } else {
+        setCursor(Qt::PointingHandCursor);
+    }
+}
+
 void MainWindow::humanVsHumanMove() {
     ui->stackedWidget->setCurrentWidget(ui->waitingpage);
 }
