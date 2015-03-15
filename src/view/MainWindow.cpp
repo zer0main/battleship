@@ -72,15 +72,19 @@ void MainWindow::humanVsHumanMove() {
 }
 
 void MainWindow::botVsHumanMove() {
-    Point p = game_->bot1->getIndex();
-    game_->controller->makeMove(1, p);
-    game_->t_model1->updateData();
-    if (game_->desk->getCellState(p, 2)) {
-        QTimer::singleShot(3000, this,
-                           SLOT(botVsHumanMove()));
-    } else {
-        moving_player_number_ = 2;
-        changeCursor();
+    try {
+        Point p = game_->bot1->getIndex();
+        game_->controller->makeMove(1, p);
+        game_->t_model1->updateData();
+        if (game_->desk->getCellState(p, 2)) {
+            QTimer::singleShot(3000, this,
+                               SLOT(botVsHumanMove()));
+        } else {
+            moving_player_number_ = 2;
+            changeCursor();
+        }
+    } catch (std::exception& e) {
+        errorHandling(e);
     }
 }
 
