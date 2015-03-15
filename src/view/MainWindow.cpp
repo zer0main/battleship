@@ -58,19 +58,20 @@ void MainWindow::helpMessage() {
     QErrorMessage::qtHandler()->showMessage(help_message);
 }
 
-void MainWindow::botVsHumanMove() {
-    bool success = true;
-    while (success) {
-        Point p = game_->bot1->getIndex();
-        game_->controller
-        ->makeMove(1, p);
-        game_->t_model1->updateData();
-        success = game_->desk->getCellState(p, 2);
-    }
-}
-
 void MainWindow::humanVsHumanMove() {
     ui->stackedWidget->setCurrentWidget(ui->waitingpage);
+}
+
+void MainWindow::botVsHumanMove() {
+    Point p = game_->bot1->getIndex();
+    game_->controller
+    ->makeMove(1, p);
+    game_->t_model1->updateData();
+    if (game_->desk->getCellState(p, 2)) {
+        QTimer::singleShot(3000, this,
+                           SLOT(botVsHumanMove()));
+    }
+    moving_player_number_ = 2;
 }
 
 void MainWindow::on_quitButton_clicked() {
@@ -93,6 +94,7 @@ void MainWindow::on_humanVsHuman_clicked() {
 }
 
 void MainWindow::on_playButton_clicked() {
+    moving_player_number_ = 2;
     try {
         ui->stackedWidget->setCurrentWidget(ui->gamepage);
         settingOfBoards();
@@ -123,6 +125,9 @@ void MainWindow::on_playButton_clicked() {
 
 void MainWindow::on_board2_clicked(const QModelIndex&
                                    index) {
+    if (moving_player_number_ != 2) {
+        return;
+    }
     Point pt;
     pt.col = index.column();
     pt.row = index.row();
@@ -137,9 +142,13 @@ void MainWindow::on_board2_clicked(const QModelIndex&
             return;
         }
         if (game_type_ == BOT_VS_HUMAN) {
-            botVsHumanMove();
+            moving_player_number_ = 1;
+            QTimer::singleShot(3000, this,
+                               SLOT(botVsHumanMove()));
         } else if (game_type_ == HUMAN_VS_HUMAN) {
-            humanVsHumanMove();
+            moving_player_number_ = 1;
+            QTimer::singleShot(3000, this,
+                               SLOT(humanVsHumanMove()));
         }
     } catch (std::exception& e) {
         errorHandling(e);

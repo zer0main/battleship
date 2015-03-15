@@ -35,17 +35,19 @@ private:
 
     GameType game_type_;
 
+    int moving_player_number_;
+
     void settingOfBoards();
 
     void errorHandling(std::exception& e);
 
     void helpMessage();
 
-    void botVsHumanMove();
-
+private slots:
     void humanVsHumanMove();
 
-private slots:
+    void botVsHumanMove();
+
     void on_quitButton_clicked();
 
     void on_botVsBot_clicked();
