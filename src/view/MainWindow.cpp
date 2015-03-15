@@ -78,8 +78,9 @@ void MainWindow::botVsHumanMove() {
     if (game_->desk->getCellState(p, 2)) {
         QTimer::singleShot(3000, this,
                            SLOT(botVsHumanMove()));
+    } else {
+        moving_player_number_ = 2;
     }
-    moving_player_number_ = 2;
 }
 
 void MainWindow::on_quitButton_clicked() {
