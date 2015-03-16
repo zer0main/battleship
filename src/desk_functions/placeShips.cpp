@@ -12,34 +12,38 @@
 
 void placeShips(GameController& controller,
                 const GameDesk& desk, int player_number) {
-    for (int i = 1; i <= 4; i++) {
+    for (int i = 4; i >= 1; i--) {
         for (int x = 0; x < 5 - i; x++) {
+            int try_number = 0;
             Points ship;
             bool is_valid = false;
             while (!is_valid) {
-                if (std::rand() <= (RAND_MAX / 2)) {
-                    ship.is_horizontal = true;
-                    ship.p1.col = std::rand() %
-                                  desk.getLength();
-                    ship.p2.col = ship.p1.col;
-                    ship.p1.row = std::rand() %
-                                  desk.getWidth() - i;
-                    ship.p2.row = ship.p1.row + i;
-                    is_valid = spaceForShip(desk,
-                                            ship,
-                                            player_number);
-                } else {
-                    ship.is_horizontal = false;
-                    ship.p1.row = std::rand() %
-                                  desk.getWidth();
-                    ship.p2.row = ship.p1.row;
-                    ship.p1.col = std::rand() %
-                                  desk.getLength() - i;
-                    ship.p2.col = ship.p1.col + i;
-                    is_valid = spaceForShip(desk,
-                                            ship,
-                                            player_number);
+                try_number++;
+                // Check if there is no possibility to
+                // place ship (all the board is occupied).
+                if (try_number > desk.getWidth() *
+                        desk.getLength() * 10) {
+                    controller.initialStateOfBoard();
+                    placeShips(controller, desk,
+                               player_number);
+                    return;
                 }
+                bool rand = std::rand() <= (RAND_MAX / 2);
+                ship.is_horizontal = (rand) ? true : false;
+                int rand_length = std::rand() %
+                    (desk.getLength() - i);
+                int rand_width = std::rand() %
+                    (desk.getWidth() - i);
+                ship.p1.col = (rand) ? std::rand() %
+                    desk.getLength() : rand_length;
+                ship.p2.col = (rand) ?  ship.p1.col :
+                    rand_length + i;
+                ship.p1.row = (rand) ? rand_width :
+                    std::rand() % desk.getWidth();
+                ship.p2.row = (rand) ? rand_width + i :
+                    ship.p1.row;
+                is_valid = spaceForShip(desk, ship,
+                                        player_number);
             }
             controller.setShip(player_number, ship);
         }
