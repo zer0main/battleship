@@ -29,7 +29,6 @@ void placeShips(GameController& controller,
                     return;
                 }
                 bool rand = std::rand() <= (RAND_MAX / 2);
-                ship.is_horizontal = (rand) ? true : false;
                 int rand_length = std::rand() %
                     (desk.getLength() - i);
                 int rand_width = std::rand() %

@@ -74,11 +74,6 @@ Points getShipCoordinates(const T& desk, const Point& p,
     while (nextNeighbor<T>(desk, out.p2, player_number,
                            true)) {
     }
-    if (out.p1.col == out.p2.col) {
-        out.is_horizontal = true;
-    } else {
-        out.is_horizontal = false;
-    }
     return out;
 }
 

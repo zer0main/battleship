@@ -51,14 +51,14 @@ Cells specified in ship argument.
 template<typename T>
 bool spaceForShip(const T& desk, const Points& ship,
                   int player_number) {
-    int beginning = (ship.is_horizontal) ? ship.p1.row :
+    int beginning = (ship.isHorizontal()) ? ship.p1.row :
                     ship.p1.col;
-    int end = (ship.is_horizontal) ? ship.p2.row :
+    int end = (ship.isHorizontal()) ? ship.p2.row :
               ship.p2.col;
     for (int i = beginning; i <= end; i++) {
         Point pt;
-        pt.col = (ship.is_horizontal) ? ship.p1.col : i;
-        pt.row = (ship.is_horizontal) ? i : ship.p1.row;
+        pt.col = (ship.isHorizontal()) ? ship.p1.col : i;
+        pt.row = (ship.isHorizontal()) ? i : ship.p1.row;
         int n = shipItemsNumber<T>(desk, pt,
                                    player_number);
         if (n != 0) {
