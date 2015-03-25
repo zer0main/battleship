@@ -27,9 +27,7 @@ GameController* GameController::make(GameDesk* desk) {
 void GameController::initialStateOfBoard() {
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
-            Point pt;
-            pt.col = i;
-            pt.row = x;
+            Point pt(i, x);
             desk_->setCellState(pt, false, 1);
             desk_->setCellState(pt, false, 2);
             desk_->setFlooding(pt, false, 1);
@@ -58,11 +56,11 @@ void GameController::makeMove(int player_number,
             int end = (pts.isHorizontal()) ?
                       pts.p2.row : pts.p2.col;
             for (int i = beginning; i <= end; i++) {
-                Point pt;
-                pt.col = (pts.isHorizontal()) ?
-                         pts.p1.col : i;
-                pt.row = (pts.isHorizontal()) ? i :
-                         pts.p1.row;
+                int col = (pts.isHorizontal()) ?
+                          pts.p1.col : i;
+                int row = (pts.isHorizontal()) ? i :
+                          pts.p1.row;
+                Point pt(col, row);
                 desk_->setFlooding(pt, true, enemy);
             }
         }
@@ -77,11 +75,11 @@ void GameController::setShip(int player_number,
         int end = (ship.isHorizontal()) ?
                   ship.p2.row : ship.p2.col;
         for (int i = beginning; i <= end; i++) {
-            Point pt;
-            pt.col = (ship.isHorizontal()) ?
-                     ship.p1.col : i;
-            pt.row = (ship.isHorizontal()) ? i :
-                     ship.p1.row;
+            int col = (ship.isHorizontal()) ?
+                      ship.p1.col : i;
+            int row = (ship.isHorizontal()) ? i :
+                      ship.p1.row;
+            Point pt(col, row);
             desk_->setCellState(pt, true, player_number);
         }
     } else {
@@ -100,9 +98,9 @@ bool GameController::checkBurst(const Points& ship,
     int end = (ship.isHorizontal()) ? ship.p2.row :
               ship.p2.col;
     for (int i = beginning; i <= end; i++) {
-        Point pt;
-        pt.col = (ship.isHorizontal()) ? ship.p1.col : i;
-        pt.row = (ship.isHorizontal()) ? i : ship.p1.row;
+        int col = (ship.isHorizontal()) ? ship.p1.col : i;
+        int row = (ship.isHorizontal()) ? i : ship.p1.row;
+        Point pt(col, row);
         if (!desk_->getVisibility(pt, player_number)) {
             return false;
         }

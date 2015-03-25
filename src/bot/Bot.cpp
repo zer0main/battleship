@@ -61,9 +61,7 @@ Point Bot::getIndex() const {
     }
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
-            Point pt;
-            pt.col = i;
-            pt.row = x;
+            Point pt(i, x);
             if (checkCoordinate(pt)) {
                 return pt;
             }
@@ -73,11 +71,12 @@ Point Bot::getIndex() const {
        hasn't sunken ship near itself
     */
     bool is_visible = true;
-    Point pt;
+    Point pt(rand() % desk_->getLength(),
+             rand() % desk_->getWidth());
     int enemy = getEnemysNumber(bot_number_);
     while ((!checkNeighboringCells(pt)) || (is_visible)) {
-        pt.col = std::rand() % desk_->getLength();
-        pt.row = std::rand() % desk_->getWidth();
+        pt.col = rand() % desk_->getLength();
+        pt.row = rand() % desk_->getWidth();
         is_visible = desk_->getVisibility(pt, enemy);
     }
     return pt;
@@ -105,9 +104,7 @@ bool Bot::checkCoordinate(const Point& p) const {
             } else if (j >= desk_->getLength()) {
                 break;
             }
-            Point pt;
-            pt.row = i;
-            pt.col = j;
+            Point pt(j, i);
             if (isSunkOrBurning(pt, enemy, desk_) &&
                     !desk_->getFlooding(pt, enemy)) {
                 return true;
@@ -132,9 +129,7 @@ bool Bot::checkNeighboringCells(const Point& p) const {
             } else if (j >= desk_->getLength()) {
                 break;
             }
-            Point pt;
-            pt.row = i;
-            pt.col = j;
+            Point pt(j, i);
             if (!isGoodNeighbor(pt, p, enemy, desk_)) {
                 return false;
             }
@@ -147,9 +142,7 @@ bool Bot::thereAreMoves() const {
     int enemy = getEnemysNumber(bot_number_);
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
-            Point pt;
-            pt.col = i;
-            pt.row = x;
+            Point pt(i, x);
             if (checkNeighboringCells(pt)) {
                 if (!desk_->getVisibility(pt,
                                           enemy)) {

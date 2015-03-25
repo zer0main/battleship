@@ -28,10 +28,7 @@ int TableModel::columnCount(
 QVariant TableModel::data(const Index& index,
                           int role) const {
     if (role == Qt::DecorationRole) {
-        Point pt;
-        // See Point.hpp
-        pt.col = index.column();
-        pt.row = index.row();
+        Point pt(index.column(), index.row());
         int pn = desk_->getPlayerNumber();
         // Enemy's number
         int en = 3 - pn;

@@ -7,6 +7,13 @@
 
 #include "Point.hpp"
 
+Point::Point() {
+}
+
+Point::Point(int col, int row):
+    col(col), row(row) {
+}
+
 bool Points::isHorizontal() const {
     if (p1.col == p2.col) {
         return true;

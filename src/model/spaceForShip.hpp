@@ -30,9 +30,7 @@ int shipItemsNumber(const T& desk, const Point& p,
             } else if (j >= desk.getLength()) {
                 break;
             }
-            Point pt;
-            pt.row = i;
-            pt.col = j;
+            Point pt(j, i);
             correct_cells_number++;
             if (desk.getCellState(pt, player_number)) {
                 number++;
@@ -56,9 +54,9 @@ bool spaceForShip(const T& desk, const Points& ship,
     int end = (ship.isHorizontal()) ? ship.p2.row :
               ship.p2.col;
     for (int i = beginning; i <= end; i++) {
-        Point pt;
-        pt.col = (ship.isHorizontal()) ? ship.p1.col : i;
-        pt.row = (ship.isHorizontal()) ? i : ship.p1.row;
+        int col = (ship.isHorizontal()) ? ship.p1.col : i;
+        int row = (ship.isHorizontal()) ? i : ship.p1.row;
+        Point pt(col, row);
         int n = shipItemsNumber<T>(desk, pt,
                                    player_number);
         if (n != 0) {

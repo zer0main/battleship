@@ -143,9 +143,7 @@ void MainWindow::on_board2_clicked(const QModelIndex&
     if (moving_player_number_ != 2) {
         return;
     }
-    Point pt;
-    pt.col = index.column();
-    pt.row = index.row();
+    Point pt(index.column(), index.row());
     if (game_->desk->getVisibility(pt, 1)) {
         helpMessage();
         return;
@@ -177,9 +175,7 @@ void MainWindow::on_board4_clicked(const QModelIndex&
     if (moving_player_number_ != 1) {
         return;
     }
-    Point pt;
-    pt.col = index.column();
-    pt.row = index.row();
+    Point pt(index.column(), index.row());
     if (game_->desk->getVisibility(pt, 2)) {
         helpMessage();
         return;

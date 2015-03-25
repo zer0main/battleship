@@ -11,6 +11,12 @@
 /** Structure Point contains cell coordinates.
 */
 struct Point {
+    /** Default constructor */
+    Point();
+
+    /** Constructor */
+    Point(int col, int row);
+
     /** Vertical coordinate */
     int col;
 
