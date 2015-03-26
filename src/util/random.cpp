@@ -10,5 +10,5 @@
 #include "random.hpp"
 
 unsigned int random(unsigned int end) {
-    return std::rand() / (RAND_MAX / end + 1);
+    return rand() / (RAND_MAX / end + 1);
 }
