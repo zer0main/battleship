@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 
-#include "rand.hpp"
+#include "random.hpp"
 
 unsigned int random(unsigned int end) {
     return std::rand() / (RAND_MAX / end + 1);
