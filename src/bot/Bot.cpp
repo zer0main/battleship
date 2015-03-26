@@ -5,8 +5,7 @@
  * See the LICENSE file for terms of use.
  */
 
-#include <cstdlib>
-
+#include "random.hpp"
 #include "Bot.hpp"
 
 static int getEnemysNumber(int my_number) {
@@ -71,12 +70,12 @@ Point Bot::getIndex() const {
        hasn't sunken ship near itself
     */
     bool is_visible = true;
-    Point pt(rand() % desk_->getLength(),
-             rand() % desk_->getWidth());
+    Point pt(random(desk_->getLength()),
+             random(desk_->getWidth()));
     int enemy = getEnemysNumber(bot_number_);
     while ((!checkNeighboringCells(pt)) || (is_visible)) {
-        pt.col = rand() % desk_->getLength();
-        pt.row = rand() % desk_->getWidth();
+        pt.col = random(desk_->getLength());
+        pt.row = random(desk_->getWidth());
         is_visible = desk_->getVisibility(pt, enemy);
     }
     return pt;

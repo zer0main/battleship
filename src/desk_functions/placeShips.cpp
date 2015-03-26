@@ -8,6 +8,7 @@
 #include <cstdlib>
 
 #include "Exception.hpp"
+#include "random.hpp"
 #include "placeShips.hpp"
 #include "spaceForShip.hpp"
 
@@ -23,14 +24,14 @@ static Points findPlace(const GameDesk& desk,
         bool horizontal = getOneHalf();
         int col1, col2, row1, row2;
         if (horizontal) {
-            col1 = rand() % desk.getLength();
+            col1 = random(desk.getLength());
             col2 = col1;
-            row1 = rand() % (desk.getWidth() - length);
+            row1 = random(desk.getWidth() - length + 1);
             row2 = row1 + length - 1;
         } else {
-            col1 = rand() % (desk.getLength() - length);
+            col1 = random(desk.getLength() - length + 1);
             col2 = col1 + length - 1;
-            row1 = rand() % desk.getWidth();
+            row1 = random(desk.getWidth());
             row2 = row1;
         }
         try {
