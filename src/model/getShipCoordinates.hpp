@@ -21,7 +21,6 @@ bool nextNeighbor(const T& desk, Point& p,
     if (direction) {
         if (p.row != desk.getWidth() - 1) {
             p.row += 1;
-            p.col = p.col;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
@@ -29,7 +28,6 @@ bool nextNeighbor(const T& desk, Point& p,
         p = p_saver;
         if (p.col != desk.getLength() - 1) {
             p.col += 1;
-            p.row = p.row;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
@@ -38,7 +36,6 @@ bool nextNeighbor(const T& desk, Point& p,
     } else {
         if (p.row != 0) {
             p.row -= 1;
-            p.col = p.col;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
@@ -46,7 +43,6 @@ bool nextNeighbor(const T& desk, Point& p,
         p = p_saver;
         if (p.col != 0) {
             p.col -= 1;
-            p.row = p.row;
             if (desk.getCellState(p, player_number)) {
                 return true;
             }
