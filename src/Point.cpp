@@ -7,11 +7,12 @@
 
 #include "Point.hpp"
 
-Point::Point() {
-}
-
 Point::Point(int col, int row):
     col(col), row(row) {
+}
+
+Points::Points(Point p1, Point p2):
+    p1(p1), p2(p2) {
 }
 
 bool Points::isHorizontal() const {

@@ -8,6 +8,7 @@
 #ifndef SPACE_FOR_SHIP_HPP_
 #define SPACE_FOR_SHIP_HPP_
 
+#include "Exception.hpp"
 #include "Point.hpp"
 
 // This function is static.
@@ -47,7 +48,7 @@ int shipItemsNumber(const T& desk, const Point& p,
 Cells specified in ship argument.
 */
 template<typename T>
-bool spaceForShip(const T& desk, const Points& ship,
+void spaceForShip(const T& desk, const Points& ship,
                   int player_number) {
     int beginning = (ship.isHorizontal()) ? ship.p1.row :
                     ship.p1.col;
@@ -60,10 +61,9 @@ bool spaceForShip(const T& desk, const Points& ship,
         int n = shipItemsNumber<T>(desk, pt,
                                    player_number);
         if (n != 0) {
-            return false;
+            throw Exception("No space for this ship");
         }
     }
-    return true;
 }
 
 #endif

@@ -7,44 +7,63 @@
 
 #include <cstdlib>
 
+#include "Exception.hpp"
 #include "placeShips.hpp"
 #include "spaceForShip.hpp"
 
+static bool getOneHalf() {
+    return rand() <= (RAND_MAX / 2);
+}
+
+static Points findPlace(const GameDesk& desk,
+                        int player, int length) {
+    int square = desk.getWidth() * desk.getLength();
+    int attempts = square * 10;
+    for (int i = 0; i < attempts; i++) {
+        bool horizontal = getOneHalf();
+        int col1, col2, row1, row2;
+        if (horizontal) {
+            col1 = rand() % desk.getLength();
+            col2 = col1;
+            row1 = rand() % (desk.getWidth() - length);
+            row2 = row1 + length - 1;
+        } else {
+            col1 = rand() % (desk.getLength() - length);
+            col2 = col1 + length - 1;
+            row1 = rand() % desk.getWidth();
+            row2 = row1;
+        }
+        try {
+            Points ship(Point(col1, row1),
+                        Point(col2, row2));
+            spaceForShip(desk, ship, player);
+            return ship;
+        } catch (...) {
+        }
+    }
+    throw Exception("");
+}
+
+static void tryPlaceShips(GameController& controller,
+                          const GameDesk& desk,
+                          int player) {
+    // length is ship_length
+    for (int length = 5; length >= 2; length--) {
+        for (int n = 0; n < 6 - length; n++) {
+            Points ship = findPlace(desk, player, length);
+            controller.setShip(player, ship);
+        }
+    }
+}
+
 void placeShips(GameController& controller,
-                const GameDesk& desk, int player_number) {
-    for (int i = 4; i >= 1; i--) {
-        for (int x = 0; x < 5 - i; x++) {
-            int try_number = 0;
-            Points ship;
-            bool is_valid = false;
-            while (!is_valid) {
-                try_number++;
-                // Check if there is no possibility to
-                // place ship (all the board is occupied).
-                if (try_number > desk.getWidth() *
-                        desk.getLength() * 10) {
-                    controller.initialStateOfBoard();
-                    placeShips(controller, desk,
-                               player_number);
-                    return;
-                }
-                bool rand = std::rand() <= (RAND_MAX / 2);
-                int rand_length = std::rand() %
-                    (desk.getLength() - i);
-                int rand_width = std::rand() %
-                    (desk.getWidth() - i);
-                ship.p1.col = (rand) ? std::rand() %
-                    desk.getLength() : rand_length;
-                ship.p2.col = (rand) ?  ship.p1.col :
-                    rand_length + i;
-                ship.p1.row = (rand) ? rand_width :
-                    std::rand() % desk.getWidth();
-                ship.p2.row = (rand) ? rand_width + i :
-                    ship.p1.row;
-                is_valid = spaceForShip(desk, ship,
-                                        player_number);
-            }
-            controller.setShip(player_number, ship);
+                const GameDesk& desk, int player) {
+    while (true) {
+        try {
+            tryPlaceShips(controller, desk, player);
+            break;
+        } catch (...) {
+            controller.initialStateOfBoard();
         }
     }
 }

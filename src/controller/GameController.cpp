@@ -69,22 +69,23 @@ void GameController::makeMove(int player_number,
 
 void GameController::setShip(int player_number,
                              const Points& ship) {
-    if (spaceForShip(*desk_, ship, player_number)) {
-        int beginning = (ship.isHorizontal()) ?
-                        ship.p1.row : ship.p1.col;
-        int end = (ship.isHorizontal()) ?
-                  ship.p2.row : ship.p2.col;
-        for (int i = beginning; i <= end; i++) {
-            int col = (ship.isHorizontal()) ?
-                      ship.p1.col : i;
-            int row = (ship.isHorizontal()) ? i :
-                      ship.p1.row;
-            Point pt(col, row);
-            desk_->setCellState(pt, true, player_number);
-        }
-    } else {
+    try {
+        spaceForShip(*desk_, ship, player_number);
+    } catch (...) {
         throw Exception("Can't set ship in cells with "
                         "this location");
+    }
+    int beginning = (ship.isHorizontal()) ?
+                        ship.p1.row : ship.p1.col;
+    int end = (ship.isHorizontal()) ?
+                  ship.p2.row : ship.p2.col;
+    for (int i = beginning; i <= end; i++) {
+        int col = (ship.isHorizontal()) ?
+                  ship.p1.col : i;
+        int row = (ship.isHorizontal()) ? i :
+                  ship.p1.row;
+        Point pt(col, row);
+        desk_->setCellState(pt, true, player_number);
     }
 }
 

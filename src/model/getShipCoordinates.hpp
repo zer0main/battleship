@@ -65,9 +65,7 @@ Points getShipCoordinates(const T& desk, const Point& p,
                         "coordinates of nonexistent "
                         "ship");
     }
-    Points out;
-    out.p1 = p;
-    out.p2 = p;
+    Points out(p, p);
     while (nextNeighbor<T>(desk, out.p1, player_number,
                            false)) {
     }

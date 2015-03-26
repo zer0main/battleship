@@ -11,9 +11,6 @@
 /** Structure Point contains cell coordinates.
 */
 struct Point {
-    /** Default constructor */
-    Point();
-
     /** Constructor */
     Point(int col, int row);
 
@@ -29,6 +26,9 @@ Use to specify coordinate of the beginning of ship (p1) and
 coordinate of the end of ship (p2).
 */
 struct Points {
+    /** Constructor */
+    Points(Point p1, Point p2);
+
     /** Beginning of ship */
     Point p1;
 
