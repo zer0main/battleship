@@ -5,8 +5,8 @@
  * See the LICENSE file for terms of use.
  */
 
-#ifndef RAND_HPP_
-#define RAND_HPP_
+#ifndef RANDOM_HPP_
+#define RANDOM_HPP_
 
 /** Return random number from interval [0, end).
 \param end End of interval (not included)
