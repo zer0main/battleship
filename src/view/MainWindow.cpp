@@ -61,14 +61,21 @@ void MainWindow::helpMessage() {
 
 void MainWindow::changeCursor() {
     if (moving_player_number_ == 1) {
-        setCursor(Qt::ArrowCursor);
+        ui->board2->setCursor(Qt::ArrowCursor);
     } else {
-        setCursor(Qt::PointingHandCursor);
+        ui->board2->setCursor(Qt::PointingHandCursor);
     }
 }
 
 void MainWindow::humanVsHumanMove() {
     ui->stackedWidget->setCurrentWidget(ui->waitingpage);
+    if (moving_player_number_ == 1) {
+        ui->board3->setCursor(Qt::ArrowCursor);
+        ui->board4->setCursor(Qt::PointingHandCursor);
+    } else {
+        ui->board1->setCursor(Qt::ArrowCursor);
+        ui->board2->setCursor(Qt::PointingHandCursor);
+    }
 }
 
 void MainWindow::botVsHumanMove() {
@@ -161,7 +168,7 @@ void MainWindow::on_board2_clicked(const QModelIndex&
                                SLOT(botVsHumanMove()));
         } else if (game_type_ == HUMAN_VS_HUMAN) {
             moving_player_number_ = 1;
-            changeCursor();
+            ui->board2->setCursor(Qt::ArrowCursor);
             QTimer::singleShot(3000, this,
                                SLOT(humanVsHumanMove()));
         }
@@ -186,7 +193,7 @@ void MainWindow::on_board4_clicked(const QModelIndex&
         if (game_->desk->getCellState(pt, 2)) {
             return;
         }
-        setCursor(Qt::ArrowCursor);
+        ui->board4->setCursor(Qt::ArrowCursor);
         moving_player_number_ = 2;
         QTimer::singleShot(3000, this,
                            SLOT(humanVsHumanMove()));
