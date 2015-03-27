@@ -21,13 +21,13 @@ struct Point {
     int row;
 };
 
-/** Structure Points contains 2 Point structuries.
+/** Structure Ship contains 2 Point structuries.
 Use to specify coordinate of the beginning of ship (p1) and
 coordinate of the end of ship (p2).
 */
-struct Points {
+struct Ship {
     /** Constructor */
-    Points(Point p1, Point p2);
+    Ship(Point p1, Point p2);
 
     /** Beginning of ship */
     Point p1;

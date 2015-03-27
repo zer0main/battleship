@@ -54,14 +54,14 @@ bool nextNeighbor(const T& desk, Point& p,
 
 /** Get coordinates of ship. */
 template<typename T>
-Points getShipCoordinates(const T& desk, const Point& p,
+Ship getShipCoordinates(const T& desk, const Point& p,
                           int player_number) {
     if (!desk.getCellState(p, player_number)) {
         throw Exception("No possibility to get "
                         "coordinates of nonexistent "
                         "ship");
     }
-    Points out(p, p);
+    Ship out(p, p);
     while (nextNeighbor<T>(desk, out.p1, player_number,
                            false)) {
     }

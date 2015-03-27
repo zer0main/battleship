@@ -48,7 +48,7 @@ int shipItemsNumber(const T& desk, const Point& p,
 Cells specified in ship argument.
 */
 template<typename T>
-void spaceForShip(const T& desk, const Points& ship,
+void spaceForShip(const T& desk, const Ship& ship,
                   int player_number) {
     int beginning = (ship.isHorizontal()) ? ship.p1.row :
                     ship.p1.col;

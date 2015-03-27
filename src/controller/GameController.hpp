@@ -36,7 +36,7 @@ public:
     (1 or 2)
     \param ship Specifies ship to set
     */
-    void setShip(int player_number, const Points& ship);
+    void setShip(int player_number, const Ship& ship);
 
     /** Move ship at the beginning of game.
     \param payer_number Defines who wants to move (1 or 2)
@@ -46,15 +46,15 @@ public:
     move
     */
     //void moveShip(int player_number,
-    //              const Points& starting_position,
-    //              const Points& end_position);
+    //              const Ship& starting_position,
+    //              const Ship& end_position);
 
 private:
     GameDesk* desk_;
 
     GameController();
 
-    bool checkBurst(const Points& ship,
+    bool checkBurst(const Ship& ship,
                     int player_number) const;
 };
 

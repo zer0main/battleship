@@ -48,18 +48,18 @@ void GameController::makeMove(int player_number,
     }
     desk_->setVisibility(point, true, enemy);
     if (desk_->getCellState(point, enemy)) {
-        Points pts = getShipCoordinates(*desk_, point,
+        Ship ship = getShipCoordinates(*desk_, point,
                                         enemy);
-        if (checkBurst(pts, enemy)) {
-            int beginning = (pts.isHorizontal()) ?
-                            pts.p1.row : pts.p1.col;
-            int end = (pts.isHorizontal()) ?
-                      pts.p2.row : pts.p2.col;
+        if (checkBurst(ship, enemy)) {
+            int beginning = (ship.isHorizontal()) ?
+                            ship.p1.row : ship.p1.col;
+            int end = (ship.isHorizontal()) ?
+                      ship.p2.row : ship.p2.col;
             for (int i = beginning; i <= end; i++) {
-                int col = (pts.isHorizontal()) ?
-                          pts.p1.col : i;
-                int row = (pts.isHorizontal()) ? i :
-                          pts.p1.row;
+                int col = (ship.isHorizontal()) ?
+                          ship.p1.col : i;
+                int row = (ship.isHorizontal()) ? i :
+                          ship.p1.row;
                 Point pt(col, row);
                 desk_->setFlooding(pt, true, enemy);
             }
@@ -68,7 +68,7 @@ void GameController::makeMove(int player_number,
 }
 
 void GameController::setShip(int player_number,
-                             const Points& ship) {
+                             const Ship& ship) {
     try {
         spaceForShip(*desk_, ship, player_number);
     } catch (...) {
@@ -92,7 +92,7 @@ void GameController::setShip(int player_number,
 GameController::GameController() {
 }
 
-bool GameController::checkBurst(const Points& ship,
+bool GameController::checkBurst(const Ship& ship,
                                 int player_number) const {
     int beginning = (ship.isHorizontal()) ? ship.p1.row :
                     ship.p1.col;

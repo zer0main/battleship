@@ -16,8 +16,8 @@ static bool getOneHalf() {
     return rand() <= (RAND_MAX / 2);
 }
 
-static Points findPlace(const GameDesk& desk,
-                        int player, int length) {
+static Ship findPlace(const GameDesk& desk,
+                      int player, int length) {
     int square = desk.getWidth() * desk.getLength();
     int attempts = square * 10;
     for (int i = 0; i < attempts; i++) {
@@ -35,7 +35,7 @@ static Points findPlace(const GameDesk& desk,
             row2 = row1;
         }
         try {
-            Points ship(Point(col1, row1),
+            Ship ship(Point(col1, row1),
                         Point(col2, row2));
             spaceForShip(desk, ship, player);
             return ship;
@@ -51,7 +51,7 @@ static void tryPlaceShips(GameController& controller,
     // length is ship_length
     for (int length = 5; length >= 2; length--) {
         for (int n = 0; n < 6 - length; n++) {
-            Points ship = findPlace(desk, player, length);
+            Ship ship = findPlace(desk, player, length);
             controller.setShip(player, ship);
         }
     }
