@@ -21,6 +21,21 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::prepareGameBoards() {
+    if (game_type_ == BOT_VS_HUMAN) {
+        ui->board1->setModel(game_->t_model1.data());
+        ui->board2->setModel(game_->t_model2.data());
+    } else if (game_type_ == BOT_VS_BOT) {
+        ui->board5->setModel(game_->t_model1.data());
+        ui->board6->setModel(game_->t_model3.data());
+    } else {
+        ui->board1->setModel(game_->t_model1.data());
+        ui->board2->setModel(game_->t_model2.data());
+        ui->board3->setModel(game_->t_model3.data());
+        ui->board4->setModel(game_->t_model4.data());
+    }
+}
+
 void MainWindow::configureBoard(QTableView* board) {
     board
     ->setSelectionMode(QAbstractItemView::NoSelection);
@@ -35,6 +50,8 @@ void MainWindow::settingOfBoards() {
     configureBoard(ui->board2);
     configureBoard(ui->board3);
     configureBoard(ui->board4);
+    configureBoard(ui->board5);
+    configureBoard(ui->board6);
 }
 
 void MainWindow::errorHandling(std::exception& e) {
@@ -118,7 +135,13 @@ void MainWindow::on_playButton_clicked() {
     moving_player_number_ = 2;
     changeCursor();
     try {
-        ui->stackedWidget->setCurrentWidget(ui->gamepage);
+        if (game_type_ == BOT_VS_BOT) {
+            ui->stackedWidget
+            ->setCurrentWidget(ui->botpage);
+        } else {
+            ui->stackedWidget
+            ->setCurrentWidget(ui->gamepage);
+        }
         settingOfBoards();
         int width = ui->boardWidth->value();
         int length = ui->boardHeight->value();
@@ -128,18 +151,7 @@ void MainWindow::on_playButton_clicked() {
                    *(game_->desk), 1);
         placeShips(*(game_->controller),
                    *(game_->desk), 2);
-        if (game_type_ == BOT_VS_HUMAN) {
-            ui->board1->setModel(game_->t_model1.data());
-            ui->board2->setModel(game_->t_model2.data());
-        } else if (game_type_ == BOT_VS_BOT) {
-            ui->board1->setModel(game_->t_model1.data());
-            ui->board2->setModel(game_->t_model3.data());
-        } else {
-            ui->board1->setModel(game_->t_model1.data());
-            ui->board2->setModel(game_->t_model2.data());
-            ui->board3->setModel(game_->t_model3.data());
-            ui->board4->setModel(game_->t_model4.data());
-        }
+        prepareGameBoards();
     } catch (std::exception& e) {
         errorHandling(e);
     }

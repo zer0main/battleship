@@ -37,6 +37,8 @@ private:
 
     int moving_player_number_;
 
+    void prepareGameBoards();
+
     void configureBoard(QTableView* board);
 
     void settingOfBoards();
