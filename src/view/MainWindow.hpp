@@ -50,6 +50,8 @@ private:
     void changeCursor();
 
 private slots:
+    void botVsBotMove();
+
     void humanVsHumanMove();
 
     void botVsHumanMove();

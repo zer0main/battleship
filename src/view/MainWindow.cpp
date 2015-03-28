@@ -84,6 +84,30 @@ void MainWindow::changeCursor() {
     }
 }
 
+void MainWindow::botVsBotMove() {
+    try {
+        if (moving_player_number_ == 1) {
+            Point p = game_->bot1->getIndex();
+            game_->controller->makeMove(1, p);
+            game_->t_model1->updateData();
+            if (!game_->desk->getCellState(p, 2)) {
+                moving_player_number_ = 2;
+            }
+        } else {
+            Point p = game_->bot2->getIndex();
+            game_->controller->makeMove(2, p);
+            game_->t_model3->updateData();
+            if (!game_->desk->getCellState(p, 1)) {
+                moving_player_number_ = 1;
+            }
+        }
+        QTimer::singleShot(3000, this,
+                           SLOT(botVsBotMove()));
+    } catch (std::exception& e) {
+        errorHandling(e);
+    }
+}
+
 void MainWindow::humanVsHumanMove() {
     ui->stackedWidget->setCurrentWidget(ui->waitingpage);
     if (moving_player_number_ == 1) {
@@ -135,13 +159,6 @@ void MainWindow::on_playButton_clicked() {
     moving_player_number_ = 2;
     changeCursor();
     try {
-        if (game_type_ == BOT_VS_BOT) {
-            ui->stackedWidget
-            ->setCurrentWidget(ui->botpage);
-        } else {
-            ui->stackedWidget
-            ->setCurrentWidget(ui->gamepage);
-        }
         settingOfBoards();
         int width = ui->boardWidth->value();
         int length = ui->boardHeight->value();
@@ -152,6 +169,14 @@ void MainWindow::on_playButton_clicked() {
         placeShips(*(game_->controller),
                    *(game_->desk), 2);
         prepareGameBoards();
+        if (game_type_ == BOT_VS_BOT) {
+            ui->stackedWidget
+            ->setCurrentWidget(ui->botpage);
+            botVsBotMove();
+        } else {
+            ui->stackedWidget
+            ->setCurrentWidget(ui->gamepage);
+        }
     } catch (std::exception& e) {
         errorHandling(e);
     }
