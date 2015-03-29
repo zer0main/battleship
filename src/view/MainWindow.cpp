@@ -241,7 +241,6 @@ void MainWindow::on_board4_clicked(const QModelIndex&
 }
 
 void MainWindow::on_nextMove_clicked() {
-    setCursor(Qt::PointingHandCursor);
     if (moving_player_number_ == 1) {
         ui->stackedWidget->setCurrentWidget(ui->gamepage2);
     } else {
