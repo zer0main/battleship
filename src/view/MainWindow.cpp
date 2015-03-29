@@ -172,7 +172,8 @@ void MainWindow::on_playButton_clicked() {
         if (game_type_ == BOT_VS_BOT) {
             ui->stackedWidget
             ->setCurrentWidget(ui->botpage);
-            botVsBotMove();
+            QTimer::singleShot(3000, this,
+                               SLOT(botVsBotMove()));
         } else {
             ui->stackedWidget
             ->setCurrentWidget(ui->gamepage);
