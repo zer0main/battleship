@@ -48,10 +48,10 @@ static Ship findPlace(const GameDesk& desk,
 static void tryPlaceShips(GameController& controller,
                           const GameDesk& desk,
                           int player) {
-    // length is ship_length
-    for (int length = 5; length >= 2; length--) {
-        for (int n = 0; n < 6 - length; n++) {
-            Ship ship = findPlace(desk, player, length);
+    // len is ship_length
+    for (int len = MAX_LENGTH; len >= MIN_LENGTH; len--) {
+        for (int n = 0; n < MAX_LENGTH + 1 - len; n++) {
+            Ship ship = findPlace(desk, player, len);
             controller.setShip(player, ship);
         }
     }

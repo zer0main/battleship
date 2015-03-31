@@ -10,6 +10,12 @@
 
 #include "GameController.hpp"
 
+/** Maximum allowable length of ships */
+const int MAX_LENGTH = 5;
+
+/** Minimum allowable length of ships */
+const int MIN_LENGTH = 2;
+
 /** To place ships in the beginning of game at random.
 \param controller GameController to set ships
 \param desk Game board to receive information
