@@ -12,8 +12,7 @@
 
 #include "MainWindow.hpp"
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     srand(time(NULL));
     QApplication a(argc, argv);
     MainWindow w;
