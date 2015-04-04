@@ -37,7 +37,7 @@ static Ship findPlace(const GameDesk& desk,
         }
         try {
             Ship ship(Point(col1, row1),
-                        Point(col2, row2));
+                      Point(col2, row2));
             spaceForShip(desk, ship, player);
             return ship;
         } catch (...) {
