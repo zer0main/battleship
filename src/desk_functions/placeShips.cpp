@@ -9,6 +9,7 @@
 
 #include "Exception.hpp"
 #include "random.hpp"
+#include "constants.hpp"
 #include "placeShips.hpp"
 #include "spaceForShip.hpp"
 
@@ -48,9 +49,11 @@ static Ship findPlace(const GameDesk& desk,
 static void tryPlaceShips(GameController& controller,
                           const GameDesk& desk,
                           int player) {
+    int max = MAX_SHIP_LENGTH;
+    int min = MIN_SHIP_LENGTH;
     // len is ship_length
-    for (int len = MAX_LENGTH; len >= MIN_LENGTH; len--) {
-        for (int n = 0; n < MAX_LENGTH + 1 - len; n++) {
+    for (int len = max; len >= min; len--) {
+        for (int n = 0; n < max + 1 - len; n++) {
             Ship ship = findPlace(desk, player, len);
             controller.setShip(player, ship);
         }

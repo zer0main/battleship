@@ -10,6 +10,7 @@
 
 #include <vector>
 
+#include "constants.hpp"
 #include "Exception.hpp"
 #include "Point.hpp"
 #include "Cell.hpp"
