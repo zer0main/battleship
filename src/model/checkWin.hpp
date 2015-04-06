@@ -13,7 +13,7 @@
 
 /** Check that one of players won.
 \param desk Game board
-\param player Number of player (1, 2) to check up on win
+\param player Number of player (1, 2) who checked for win
 */
 template<typename T>
 bool checkWin(const T& desk, int player) {
