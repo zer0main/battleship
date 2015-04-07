@@ -157,7 +157,6 @@ void MainWindow::on_humanVsHuman_clicked() {
 
 void MainWindow::on_playButton_clicked() {
     moving_player_number_ = 2;
-    changeCursor();
     try {
         settingOfBoards();
         int width = ui->boardWidth->value();
@@ -175,6 +174,7 @@ void MainWindow::on_playButton_clicked() {
             QTimer::singleShot(3000, this,
                                SLOT(botVsBotMove()));
         } else {
+            changeCursor();
             ui->stackedWidget
             ->setCurrentWidget(ui->gamepage);
         }
