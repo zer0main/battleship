@@ -84,6 +84,19 @@ void MainWindow::changeCursor() {
     }
 }
 
+void MainWindow::preparingToPlay() {
+    settingOfBoards();
+    int width = ui->boardWidth->value();
+    int length = ui->boardHeight->value();
+    game_ = startGame(this, width, length);
+    game_->controller->initialStateOfBoard();
+    placeShips(*(game_->controller),
+               *(game_->desk), 1);
+    placeShips(*(game_->controller),
+               *(game_->desk), 2);
+    prepareGameBoards();
+}
+
 void MainWindow::botVsBotMove() {
     try {
         if (moving_player_number_ == 1) {
@@ -158,16 +171,7 @@ void MainWindow::on_humanVsHuman_clicked() {
 void MainWindow::on_playButton_clicked() {
     moving_player_number_ = 2;
     try {
-        settingOfBoards();
-        int width = ui->boardWidth->value();
-        int length = ui->boardHeight->value();
-        game_ = startGame(this, width, length);
-        game_->controller->initialStateOfBoard();
-        placeShips(*(game_->controller),
-                   *(game_->desk), 1);
-        placeShips(*(game_->controller),
-                   *(game_->desk), 2);
-        prepareGameBoards();
+        preparingToPlay();
         if (game_type_ == BOT_VS_BOT) {
             ui->stackedWidget
             ->setCurrentWidget(ui->botpage);

@@ -49,6 +49,8 @@ private:
 
     void changeCursor();
 
+    void preparingToPlay();
+
 private slots:
     void botVsBotMove();
 
