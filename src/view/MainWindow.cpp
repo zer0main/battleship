@@ -5,6 +5,7 @@
  * See the LICENSE file for terms of use.
  */
 
+#include "constants.hpp"
 #include "checkWin.hpp"
 #include "placeShips.hpp"
 #include "startGame.hpp"
@@ -104,7 +105,8 @@ void MainWindow::winningActions() {
             ui->board2->setModel(game_->t_model3.data());
         }
     }
-    QTimer::singleShot(10000, this, SLOT(winMessage()));
+    QTimer::singleShot(MOVE_WAIT, this,
+                       SLOT(winMessage()));
 }
 
 void MainWindow::botMove() {
@@ -154,7 +156,7 @@ void MainWindow::botVsBotMove() {
             winningActions();
         } else {
             botMove();
-            QTimer::singleShot(10, this,
+            QTimer::singleShot(MOVE_WAIT, this,
                                SLOT(botVsBotMove()));
         }
     } catch (std::exception& e) {
@@ -183,7 +185,7 @@ void MainWindow::botVsHumanMove() {
                 return;
         }
         if (game_->desk->getCellState(p, 2)) {
-            QTimer::singleShot(3000, this,
+            QTimer::singleShot(MOVE_WAIT, this,
                                SLOT(botVsHumanMove()));
         } else {
             moving_player_number_ = 2;
@@ -220,7 +222,7 @@ void MainWindow::on_playButton_clicked() {
         if (game_type_ == BOT_VS_BOT) {
             ui->stackedWidget
             ->setCurrentWidget(ui->botpage);
-            QTimer::singleShot(3000, this,
+            QTimer::singleShot(MOVE_WAIT, this,
                                SLOT(botVsBotMove()));
         } else {
             changeCursor();
@@ -255,11 +257,11 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         moving_player_number_ = 1;
         if (game_type_ == BOT_VS_HUMAN) {
             changeCursor();
-            QTimer::singleShot(3000, this,
+            QTimer::singleShot(MOVE_WAIT, this,
                                SLOT(botVsHumanMove()));
         } else if (game_type_ == HUMAN_VS_HUMAN) {
             ui->board2->setCursor(Qt::ArrowCursor);
-            QTimer::singleShot(3000, this,
+            QTimer::singleShot(MOVE_WAIT, this,
                                SLOT(humanVsHumanMove()));
         }
     } catch (std::exception& e) {
@@ -289,7 +291,7 @@ void MainWindow::on_board4_clicked(const QModelIndex&
         }
         ui->board4->setCursor(Qt::ArrowCursor);
         moving_player_number_ = 2;
-        QTimer::singleShot(3000, this,
+        QTimer::singleShot(MOVE_WAIT, this,
                            SLOT(humanVsHumanMove()));
     } catch (std::exception& e) {
         errorHandling(e);

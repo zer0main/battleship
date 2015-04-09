@@ -8,6 +8,9 @@
 #ifndef CONSTANTS_HPP_
 #define CONSTANTS_HPP_
 
+/** Waiting time between moves (msec) */
+const int MOVE_WAIT = 3000;
+
 /** Minimum width of game board */
 const int MIN_WIDTH = 11;
 
