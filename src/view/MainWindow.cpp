@@ -181,8 +181,8 @@ void MainWindow::botVsHumanMove() {
         game_->controller->makeMove(1, p);
         game_->t_model1->updateData();
         if (checkWin(*(game_->desk), 1)) {
-                winningActions();
-                return;
+            winningActions();
+            return;
         }
         if (game_->desk->getCellState(p, 2)) {
             QTimer::singleShot(MOVE_WAIT, this,
