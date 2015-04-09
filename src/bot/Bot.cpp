@@ -55,9 +55,8 @@ Bot* Bot::make(const GameDeskProxy* desk, int bot_number) {
 
 Point Bot::getIndex() const {
     if (checkWin(*desk_, bot_number_)) {
-        throw Exception("Bot can't make any move, there "
-                        "is no possibility to make moves "
-                        "with this state of board");
+        throw Exception("Bot won and shouldn't make any "
+                        "moves.");
     }
     for (int i = 0; i < desk_->getLength(); i++) {
         for (int x = 0; x < desk_->getWidth(); x++) {
