@@ -5,6 +5,7 @@
  * See the LICENSE file for terms of use.
  */
 
+#include "checkWin.hpp"
 #include "random.hpp"
 #include "Bot.hpp"
 
@@ -53,7 +54,7 @@ Bot* Bot::make(const GameDeskProxy* desk, int bot_number) {
 }
 
 Point Bot::getIndex() const {
-    if (!thereAreMoves()) {
+    if (checkWin(*desk_, bot_number_)) {
         throw Exception("Bot can't make any move, there "
                         "is no possibility to make moves "
                         "with this state of board");
@@ -135,22 +136,6 @@ bool Bot::checkNeighboringCells(const Point& p) const {
         }
     }
     return true;
-}
-
-bool Bot::thereAreMoves() const {
-    int enemy = getEnemysNumber(bot_number_);
-    for (int i = 0; i < desk_->getLength(); i++) {
-        for (int x = 0; x < desk_->getWidth(); x++) {
-            Point pt(i, x);
-            if (checkNeighboringCells(pt)) {
-                if (!desk_->getVisibility(pt,
-                                          enemy)) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
 }
 
 Bot::Bot() {
