@@ -237,13 +237,12 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         if (game_->desk->getCellState(pt, 1)) {
             return;
         }
+        moving_player_number_ = 1;
         if (game_type_ == BOT_VS_HUMAN) {
-            moving_player_number_ = 1;
             changeCursor();
             QTimer::singleShot(3000, this,
                                SLOT(botVsHumanMove()));
         } else if (game_type_ == HUMAN_VS_HUMAN) {
-            moving_player_number_ = 1;
             ui->board2->setCursor(Qt::ArrowCursor);
             QTimer::singleShot(3000, this,
                                SLOT(humanVsHumanMove()));
