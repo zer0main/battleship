@@ -97,6 +97,14 @@ void MainWindow::preparingToPlay() {
     prepareGameBoards();
 }
 
+void MainWindow::winningActions() {
+    if (game_type_ == BOT_VS_HUMAN) {
+        if (moving_player_number_ == 1) {
+            ui->board2->setModel(game_->t_model3.data());
+        }
+    }
+    QTimer::singleShot(10000, this, SLOT(winMessage()));
+}
 
 void MainWindow::winMessage() {
     QString winner =

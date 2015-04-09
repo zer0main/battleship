@@ -51,6 +51,8 @@ private:
 
     void preparingToPlay();
 
+    void winningActions();
+
 private slots:
     void winMessage();
 
