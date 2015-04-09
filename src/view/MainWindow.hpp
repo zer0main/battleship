@@ -53,6 +53,8 @@ private:
 
     void winningActions();
 
+    void botMove();
+
 private slots:
     void winMessage();
 

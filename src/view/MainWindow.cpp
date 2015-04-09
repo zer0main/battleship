@@ -107,6 +107,32 @@ void MainWindow::winningActions() {
     QTimer::singleShot(10000, this, SLOT(winMessage()));
 }
 
+void botMove() {
+    if (moving_player_number_ == 1) {
+        Point p = game_->bot1->getIndex();
+        game_->controller->makeMove(1, p);
+        game_->t_model1->updateData();
+        if (checkWin(*(game_->desk), 1)) {
+            winningActions();
+            return;
+        }
+        if (!game_->desk->getCellState(p, 2)) {
+            moving_player_number_ = 2;
+        }
+    } else {
+        Point p = game_->bot2->getIndex();
+        game_->controller->makeMove(2, p);
+        game_->t_model3->updateData();
+        if (checkWin(*(game_->desk), 2)) {
+            winningActions();
+            return;
+        }
+        if (!game_->desk->getCellState(p, 1)) {
+            moving_player_number_ = 1;
+        }
+    }
+}
+
 void MainWindow::winMessage() {
     QString winner =
         QString::number(moving_player_number_);
@@ -130,21 +156,7 @@ void MainWindow::winMessage() {
 
 void MainWindow::botVsBotMove() {
     try {
-        if (moving_player_number_ == 1) {
-            Point p = game_->bot1->getIndex();
-            game_->controller->makeMove(1, p);
-            game_->t_model1->updateData();
-            if (!game_->desk->getCellState(p, 2)) {
-                moving_player_number_ = 2;
-            }
-        } else {
-            Point p = game_->bot2->getIndex();
-            game_->controller->makeMove(2, p);
-            game_->t_model3->updateData();
-            if (!game_->desk->getCellState(p, 1)) {
-                moving_player_number_ = 1;
-            }
-        }
+        botMove();
         QTimer::singleShot(3000, this,
                            SLOT(botVsBotMove()));
     } catch (std::exception& e) {
