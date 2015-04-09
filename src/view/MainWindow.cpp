@@ -107,7 +107,7 @@ void MainWindow::winningActions() {
     QTimer::singleShot(10000, this, SLOT(winMessage()));
 }
 
-void botMove() {
+void MainWindow::botMove() {
     if (moving_player_number_ == 1) {
         Point p = game_->bot1->getIndex();
         game_->controller->makeMove(1, p);
