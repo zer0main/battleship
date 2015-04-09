@@ -180,6 +180,10 @@ void MainWindow::botVsHumanMove() {
         Point p = game_->bot1->getIndex();
         game_->controller->makeMove(1, p);
         game_->t_model1->updateData();
+        if (checkWin(*(game_->desk), 1)) {
+                winningActions();
+                return;
+        }
         if (game_->desk->getCellState(p, 2)) {
             QTimer::singleShot(3000, this,
                                SLOT(botVsHumanMove()));
@@ -245,6 +249,7 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         game_->t_model2->updateData();
         if (checkWin(*(game_->desk), 2)) {
             winningActions();
+            return;
         }
         if (game_->desk->getCellState(pt, 1)) {
             return;
@@ -279,6 +284,7 @@ void MainWindow::on_board4_clicked(const QModelIndex&
         game_->t_model4->updateData();
         if (checkWin(*(game_->desk), 1)) {
             winningActions();
+            return;
         }
         if (game_->desk->getCellState(pt, 2)) {
             return;
