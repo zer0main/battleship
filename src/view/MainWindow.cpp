@@ -76,6 +76,27 @@ void MainWindow::helpMessage() {
     QErrorMessage::qtHandler()->showMessage(help_message);
 }
 
+void MainWindow::winMessage() {
+    QString winner =
+        QString::number(moving_player_number_);
+    QString win_message;
+    if (game_type_ == BOT_VS_BOT) {
+        win_message = "<b>Bot under number " + winner +
+                      " won!</b>";
+    } else if (game_type_ == HUMAN_VS_HUMAN) {
+        win_message = "<b>You won!</b>";
+    } else {
+        if (moving_player_number_ == 2) {
+            win_message = "<b>You won!</b>";
+        } else {
+            win_message = "<b>Bot won...</b>";
+        }
+    }
+    QMessageBox winInfo;
+    winInfo.setText(win_message);
+    winInfo.exec();
+}
+
 void MainWindow::changeCursor() {
     if (moving_player_number_ == 1) {
         ui->board2->setCursor(Qt::ArrowCursor);

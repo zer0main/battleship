@@ -47,6 +47,8 @@ private:
 
     void helpMessage();
 
+    void winMessage();
+
     void changeCursor();
 
     void preparingToPlay();
