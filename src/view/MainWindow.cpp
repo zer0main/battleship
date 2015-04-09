@@ -112,10 +112,6 @@ void MainWindow::botMove() {
         Point p = game_->bot1->getIndex();
         game_->controller->makeMove(1, p);
         game_->t_model1->updateData();
-        if (checkWin(*(game_->desk), 1)) {
-            winningActions();
-            return;
-        }
         if (!game_->desk->getCellState(p, 2)) {
             moving_player_number_ = 2;
         }
@@ -123,10 +119,6 @@ void MainWindow::botMove() {
         Point p = game_->bot2->getIndex();
         game_->controller->makeMove(2, p);
         game_->t_model3->updateData();
-        if (checkWin(*(game_->desk), 2)) {
-            winningActions();
-            return;
-        }
         if (!game_->desk->getCellState(p, 1)) {
             moving_player_number_ = 1;
         }
@@ -152,13 +144,19 @@ void MainWindow::winMessage() {
     QMessageBox winInfo;
     winInfo.setText(win_message);
     winInfo.exec();
+    ui->stackedWidget->setCurrentWidget(ui->startpage);
 }
 
 void MainWindow::botVsBotMove() {
     try {
-        botMove();
-        QTimer::singleShot(3000, this,
-                           SLOT(botVsBotMove()));
+        if (checkWin(*(game_->desk),
+                     moving_player_number_)) {
+            winningActions();
+        } else {
+            botMove();
+            QTimer::singleShot(10, this,
+                               SLOT(botVsBotMove()));
+        }
     } catch (std::exception& e) {
         errorHandling(e);
     }
