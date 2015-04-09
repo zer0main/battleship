@@ -47,13 +47,13 @@ private:
 
     void helpMessage();
 
-    void winMessage();
-
     void changeCursor();
 
     void preparingToPlay();
 
 private slots:
+    void winMessage();
+
     void botVsBotMove();
 
     void humanVsHumanMove();
