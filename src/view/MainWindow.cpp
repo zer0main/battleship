@@ -5,6 +5,7 @@
  * See the LICENSE file for terms of use.
  */
 
+#include "checkWin.hpp"
 #include "placeShips.hpp"
 #include "startGame.hpp"
 #include "MainWindow.hpp"
@@ -230,6 +231,9 @@ void MainWindow::on_board2_clicked(const QModelIndex&
     try {
         game_->controller->makeMove(2, pt);
         game_->t_model2->updateData();
+        if (checkWin(*(game_->desk), 2)) {
+            winningActions();
+        }
         if (game_->desk->getCellState(pt, 1)) {
             return;
         }
@@ -262,6 +266,9 @@ void MainWindow::on_board4_clicked(const QModelIndex&
     try {
         game_->controller->makeMove(1, pt);
         game_->t_model4->updateData();
+        if (checkWin(*(game_->desk), 1)) {
+            winningActions();
+        }
         if (game_->desk->getCellState(pt, 2)) {
             return;
         }
