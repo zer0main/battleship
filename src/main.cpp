@@ -13,6 +13,8 @@
 #include "MainWindow.hpp"
 
 int main(int argc, char* argv[]) {
+    // FIXME
+    // Use boost.random instead of rand() and srand()
     srand(time(NULL));
     QApplication a(argc, argv);
     MainWindow w;
