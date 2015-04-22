@@ -14,7 +14,8 @@
 
 int main(int argc, char* argv[]) {
     // FIXME
-    // Use boost.random instead of rand() and srand()
+    // Use boost.random or /dev/urandom instead of rand()
+    // and srand()
     srand(time(NULL));
     QApplication a(argc, argv);
     MainWindow w;
