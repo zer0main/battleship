@@ -48,6 +48,13 @@ private:
     */
     Point randomCorrectCell() const;
 
+    /* This method returns true if cell with coordinates
+       described in point argument is visible or if it has
+       sunken ships near itself or burning ships
+       diagonally.
+    */
+    bool visibleOrSunksNeighbor(const Point& point) const;
+
     Bot();
 };
 

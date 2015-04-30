@@ -141,5 +141,15 @@ Point Bot::randomCorrectCell() const {
     return pt;
 }
 
+bool Bot::visibleOrSunksNeighbor(const Point& p) const {
+    int enemy = getEnemysNumber(bot_number_);
+    if (desk_->getVisibility(p, enemy) ||
+            !checkNeighboringCells(p)) {
+        return true;
+    }
+    return false;
+}
+
 Bot::Bot() {
 }
+
