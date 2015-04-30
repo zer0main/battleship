@@ -71,9 +71,7 @@ Point Bot::getIndex() const {
 
 bool Bot::checkCoordinate(const Point& p) const {
     int enemy = getEnemysNumber(bot_number_);
-    if (desk_->getVisibility(p, enemy)) {
-        return false;
-    } else if (!checkNeighboringCells(p)) {
+    if (visibleOrSunksNeighbor(p)) {
         return false;
     }
     for (int i = p.row - 1; i <= p.row + 1; i++) {
@@ -131,12 +129,9 @@ Point Bot::randomCorrectCell() const {
     */
     Point pt(random(desk_->getLength()),
              random(desk_->getWidth()));
-    int enemy = getEnemysNumber(bot_number_);
-    bool is_visible = desk_->getVisibility(pt, enemy);
-    while ((!checkNeighboringCells(pt)) || (is_visible)) {
+    while (visibleOrSunksNeighbor(pt)) {
         pt.col = random(desk_->getLength());
         pt.row = random(desk_->getWidth());
-        is_visible = desk_->getVisibility(pt, enemy);
     }
     return pt;
 }
