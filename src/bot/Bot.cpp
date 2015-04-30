@@ -66,19 +66,7 @@ Point Bot::getIndex() const {
             }
         }
     }
-    /* search random cell which isn't visible and which
-       hasn't sunken ship near itself
-    */
-    bool is_visible = true;
-    Point pt(random(desk_->getLength()),
-             random(desk_->getWidth()));
-    int enemy = getEnemysNumber(bot_number_);
-    while ((!checkNeighboringCells(pt)) || (is_visible)) {
-        pt.col = random(desk_->getLength());
-        pt.row = random(desk_->getWidth());
-        is_visible = desk_->getVisibility(pt, enemy);
-    }
-    return pt;
+    return randomCorrectCell();
 }
 
 bool Bot::checkCoordinate(const Point& p) const {
@@ -135,6 +123,22 @@ bool Bot::checkNeighboringCells(const Point& p) const {
         }
     }
     return true;
+}
+
+Point Bot::randomCorrectCell() const {
+    /* search random cell which isn't visible and which
+       hasn't sunken ship near itself
+    */
+    Point pt(random(desk_->getLength()),
+             random(desk_->getWidth()));
+    int enemy = getEnemysNumber(bot_number_);
+    bool is_visible = desk_->getVisibility(pt, enemy);
+    while ((!checkNeighboringCells(pt)) || (is_visible)) {
+        pt.col = random(desk_->getLength());
+        pt.row = random(desk_->getWidth());
+        is_visible = desk_->getVisibility(pt, enemy);
+    }
+    return pt;
 }
 
 Bot::Bot() {

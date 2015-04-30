@@ -43,6 +43,11 @@ private:
     */
     bool checkNeighboringCells(const Point& point) const;
 
+    /* Get random cell which isn't visible and which
+       hasn't sunken ship near itself.
+    */
+    Point randomCorrectCell() const;
+
     Bot();
 };
 
