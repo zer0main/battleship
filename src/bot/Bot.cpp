@@ -66,7 +66,7 @@ Point Bot::getIndex() const {
             }
         }
     }
-    return randomCorrectCell();
+    return randomRationalCell();
 }
 
 bool Bot::checkCoordinate(const Point& p) const {
@@ -123,7 +123,7 @@ bool Bot::checkNeighboringCells(const Point& p) const {
     return true;
 }
 
-Point Bot::randomCorrectCell() const {
+Point Bot::randomRationalCell() const {
     /* search random cell which isn't visible and which
        hasn't sunken ship near itself
     */

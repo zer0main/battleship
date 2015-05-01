@@ -46,7 +46,7 @@ private:
     /* Get random cell which isn't visible and which
        hasn't sunken ship near itself.
     */
-    Point randomCorrectCell() const;
+    Point randomRationalCell() const;
 
     /* This method returns true if cell with coordinates
        described in point argument is visible or if it has
