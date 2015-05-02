@@ -38,6 +38,18 @@ static bool isGoodNeighbor(const Point& p1,
     return true;
 }
 
+/* p2 is neighbor of p1. Get coordinates of another
+   p1's neighbor in direction p1-p2 (p1, p2, result belongs
+   to one line)
+*/
+static Point getCellOfLine(const Point& p1,
+                           const Point& p2) {
+    Point result(p1.col, p1.row);
+    result.col += p1.col - p2.col;
+    result.row += p1.row - p2.row;
+    return result;
+}
+
 Bot* Bot::make(const GameDeskProxy* desk, int bot_number) {
     if (desk == NULL) {
         throw Exception("Received NULL pointer to "
