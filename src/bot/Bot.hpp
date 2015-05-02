@@ -57,8 +57,10 @@ private:
 
 
     /* This method returns Point structure which contains
-       coordinates of the neighboring (for specified in
-       argument cell) burning cell
+       coordinates of the neighboring (for cell with
+       coordinates specified in argument) burning cell.
+       It throws Exception if there is no neighboring
+       burning cell for this argument.
     */
     Point neighboringBurningCell(const Point& point) const;
 
