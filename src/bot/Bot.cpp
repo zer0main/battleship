@@ -70,33 +70,15 @@ Point Bot::getIndex() const {
 }
 
 bool Bot::checkCoordinate(const Point& p) const {
-    int enemy = getEnemysNumber(bot_number_);
     if (visibleOrSunksNeighbor(p)) {
         return false;
     }
-    for (int i = p.row - 1; i <= p.row + 1; i++) {
-        if (i < 0) {
-            continue;
-        } else if (i >= desk_->getWidth()) {
-            break;
-        }
-        for (int j = p.col - 1; j <= p.col + 1; j++) {
-            if ((j < 0) || ((j != p.col) &&
-                            (i != p.row)) ||
-                           ((i == p.row) &&
-                            (j == p.col))) {
-                continue;
-            } else if (j >= desk_->getLength()) {
-                break;
-            }
-            Point pt(j, i);
-            if (isSunkOrBurning(pt, enemy, desk_) &&
-                    !desk_->getFlooding(pt, enemy)) {
-                return true;
-            }
-        }
+    try {
+        Point pt = neighboringBurningCell(p);
+        return true;
+    } catch (...) {
+        return false;
     }
-    return false;
 }
 
 bool Bot::checkNeighboringCells(const Point& p) const {
