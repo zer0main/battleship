@@ -55,6 +55,13 @@ private:
     */
     bool visibleOrSunksNeighbor(const Point& point) const;
 
+
+    /* This method returns Point structure which contains
+       coordinates of the neighboring (for specified in
+       argument cell) burning cell
+    */
+    Point neighboringBurningCell(const Point& point) const;
+
     Bot();
 };
 
