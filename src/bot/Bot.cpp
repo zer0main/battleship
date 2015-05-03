@@ -139,6 +139,26 @@ bool Bot::visibleOrSunksNeighbor(const Point& p) const {
     return false;
 }
 
+
+int Bot::evaluateCell(Point& p) const {
+    int mark = 0;
+    try {
+        Point pt = neighboringBurningCell(p);
+        Point next = getCellOfLine(p, pt);
+        mark++;
+        while (!visibleOrSunksNeighbor(next)) {
+            Point saver = p;
+            p = next;
+            pt = saver;
+            next = getCellOfLine(p, pt);
+            mark++;
+        }
+    } catch (...) {
+        return mark;
+    }
+    return mark;
+}
+
 Point Bot::neighboringBurningCell(const Point& p) const {
     int enemy = getEnemysNumber(bot_number_);
     for (int i = p.row - 1; i <= p.row + 1; i++) {
