@@ -56,7 +56,10 @@ private:
     bool visibleOrSunksNeighbor(const Point& point) const;
 
 
-    int evaluateCell(const Point& point) const;
+    /* Evaluate the cell with coordinates specified in
+       argument.
+    */
+    int evaluateCell(Point& point) const;
 
     /* This method returns Point structure which contains
        coordinates of the neighboring (for cell with
