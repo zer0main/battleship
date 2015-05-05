@@ -8,6 +8,8 @@
 #ifndef BOT_HPP_
 #define BOT_HPP_
 
+#include <vector>
+
 #include "GameDeskProxy.hpp"
 
 /** Bot class contains all bot logic.
@@ -55,6 +57,8 @@ private:
     */
     bool visibleOrSunksNeighbor(const Point& point) const;
 
+    std::vector<int> evaluateCells(std::vector<Point>&
+                                   cells) const;
 
     /* Evaluate the cell with coordinates specified in
        argument (method returns max. number of different
