@@ -9,6 +9,17 @@
 #include "random.hpp"
 #include "Bot.hpp"
 
+/* Check that coordinates (specified in argument) belongs
+   to interval [0, max_length/max_width).
+*/
+static bool isValidCoordinate(const Point& p,
+                              const GameDeskProxy* desk) {
+    bool greater = (p.col >= 0) && (p.row >= 0);
+    bool less = (p.col < desk->getLength()) &&
+                (p.row < desk->getWidth());
+    return less && greater;
+}
+
 static int getEnemysNumber(int my_number) {
     return 3 - my_number;
 }
