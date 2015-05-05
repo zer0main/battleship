@@ -166,7 +166,7 @@ int Bot::evaluateCell(Point& p) const {
         Point next = getCellOfLine(p, pt);
         mark++;
         while (!visibleOrSunksNeighbor(next) &&
-                isValidCoordinate(next)) {
+                isValidCoordinate(next, desk_)) {
             Point saver = p;
             p = next;
             pt = saver;
