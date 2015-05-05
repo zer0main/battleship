@@ -57,7 +57,8 @@ private:
 
 
     /* Evaluate the cell with coordinates specified in
-       argument.
+       argument (method returns max. number of different
+       situations when this cell belongs to ship).
     */
     int evaluateCell(Point& point) const;
 
