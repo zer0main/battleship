@@ -60,10 +60,6 @@ private:
     std::vector<int> evaluateCells(std::vector<Point>&
                                    cells) const;
 
-    /* Evaluate the cell with coordinates specified in
-       argument (method returns max. number of different
-       situations when this cell belongs to ship).
-    */
     int evaluateCell(Point& point) const;
 
     /* This method returns Point structure which contains
