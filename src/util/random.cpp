@@ -7,11 +7,11 @@
 
 #include "random.hpp"
 
-/* Get sum of elements of std::vector<int> */
-static int sumOfElements(std::vector<int>& v) {
+static int vectorOfSums(std::vector<int>& v) {
     int sum = 0;
     for (int i = 0; i < v.size(); i++) {
         sum += v[i];
+        v[i] = sum;
     }
     return sum;
 }
