@@ -77,6 +77,7 @@ Bot* Bot::make(const GameDeskProxy* desk, int bot_number) {
 }
 
 Point Bot::getIndex() const {
+    std::vector<Point> good_cells;
     if (checkWin(*desk_, bot_number_)) {
         throw Exception("Bot won and shouldn't make any "
                         "moves.");
@@ -85,9 +86,12 @@ Point Bot::getIndex() const {
         for (int x = 0; x < desk_->getWidth(); x++) {
             Point pt(i, x);
             if (checkCoordinate(pt)) {
-                return pt;
+                good_cells.push_back(pt);
             }
         }
+    }
+    if (good_cells.size() != 0) {
+        return theBestCell(good_cells);
     }
     return randomRationalCell();
 }
