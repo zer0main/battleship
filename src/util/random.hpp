@@ -16,4 +16,7 @@
 */
 unsigned int random(unsigned int end);
 
+unsigned int randomWithUnequalChances(std::vector<int>&
+                                      chances);
+
 #endif

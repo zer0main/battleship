@@ -28,3 +28,19 @@ static int vectorOfSums(std::vector<int>& v) {
 unsigned int random(unsigned int end) {
     return rand() / (RAND_MAX / end + 1);
 }
+
+unsigned int randomWithUnequalChances(std::vector<int>&
+                                      chances) {
+    int sum = vectorOfSums(chances);
+    int random_number = random(sum);
+    int start = 0;
+    for (int i = 0; i < chances.size(); i++) {
+        if (random_number >= start) {
+            if (random_number < chances[i]) {
+                return i;
+            }
+        }
+        start = chances[i];
+    }
+}
+
