@@ -16,6 +16,11 @@
 */
 unsigned int random(unsigned int end);
 
+/** Function returns random index from argument.
+    Elements of vector (argument) are chances for random
+    function.
+\param chances Chances (chance of current index = arg[index])
+*/
 unsigned int randomWithUnequalChances(std::vector<int>&
                                       chances);
 
