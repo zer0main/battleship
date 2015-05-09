@@ -9,7 +9,7 @@
 
 /* Function retunrns sum of all elements of vector
    (argument). All the elements of argument will be
-   replaced by sums of elements berfore it (include current
+   replaced by sums of elements before it (include current
    element).
 */
 static int vectorOfSums(std::vector<int>& v) {
