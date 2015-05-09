@@ -70,6 +70,8 @@ private:
     */
     Point neighboringBurningCell(const Point& point) const;
 
+    Point theBestCell(std::vector<Point> cells) const;
+
     Bot();
 };
 

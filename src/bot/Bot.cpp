@@ -206,6 +206,12 @@ Point Bot::neighboringBurningCell(const Point& p) const {
     throw Exception("");
 }
 
+Point Bot::theBestCell(std::vector<Point> cells) const {
+    std::vector<int> estimates = evaluateCells(cells);
+    int rand_index = randomWithUnequalChances(estimates);
+    return cells[rand_index];
+}
+
 Bot::Bot() {
 }
 
