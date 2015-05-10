@@ -154,8 +154,8 @@ bool Bot::visibleOrSunksNeighbor(const Point& p) const {
     return false;
 }
 
-std::vector<int> Bot::evaluateCells(std::vector<Point>&
-                                    cells) const {
+std::vector<int> Bot::evaluateCells(const std::vector
+                                    <Point>& cells) const {
     std::vector<int> estimates;
     for (int i = 0; i < cells.size(); i++) {
         estimates.push_back(evaluateCell(cells[i]));
