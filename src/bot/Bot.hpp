@@ -57,10 +57,10 @@ private:
     */
     bool visibleOrSunksNeighbor(const Point& point) const;
 
-    std::vector<int> evaluateCells(std::vector<Point>&
-                                   cells) const;
+    std::vector<int> evaluateCells(const std::vector
+                                   <Point>& cells) const;
 
-    int evaluateCell(Point& point) const;
+    int evaluateCell(const Point& point) const;
 
     /* This method returns Point structure which contains
        coordinates of the neighboring (for cell with

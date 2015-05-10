@@ -163,22 +163,17 @@ std::vector<int> Bot::evaluateCells(const std::vector
     return estimates;
 }
 
-int Bot::evaluateCell(Point& p) const {
-    int mark = 0;
-    try {
-        Point pt = neighboringBurningCell(p);
-        Point next = getCellOfLine(p, pt);
+int Bot::evaluateCell(const Point& p) const {
+    int mark = 1;
+    Point p2 = neighboringBurningCell(p);
+    Point next = getCellOfLine(p, p2);
+    Point saver = p;
+    while (!visibleOrSunksNeighbor(next) &&
+            isValidCoordinate(next, desk_)) {
+        p2 = saver;
+        saver = next;
+        next = getCellOfLine(saver, p2);
         mark++;
-        while (!visibleOrSunksNeighbor(next) &&
-                isValidCoordinate(next, desk_)) {
-            Point saver = p;
-            p = next;
-            pt = saver;
-            next = getCellOfLine(p, pt);
-            mark++;
-        }
-    } catch (...) {
-        return mark;
     }
     return mark;
 }
@@ -210,7 +205,8 @@ Point Bot::neighboringBurningCell(const Point& p) const {
     throw Exception("");
 }
 
-Point Bot::theBestCell(std::vector<Point> cells) const {
+Point Bot::theBestCell(const std::vector<Point>&
+                       cells) const {
     std::vector<int> estimates = evaluateCells(cells);
     int rand_index = randomWithUnequalChances(estimates);
     return cells[rand_index];
