@@ -168,8 +168,10 @@ int Bot::evaluateCell(const Point& p) const {
     Point p2 = neighboringBurningCell(p);
     Point next = getCellOfLine(p, p2);
     Point saver = p;
-    while (!visibleOrSunksNeighbor(next) &&
-            isValidCoordinate(next, desk_)) {
+    while (isValidCoordinate(next, desk_)) {
+        if (visibleOrSunksNeighbor(next)) {
+            break;
+        }
         p2 = saver;
         saver = next;
         next = getCellOfLine(saver, p2);
