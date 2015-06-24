@@ -21,7 +21,7 @@ public:
     static GameController* make(GameDesk* desk);
 
     /** Set the initial state of game board.
-    (no ships, no visible cells, nu sunken ships).
+    (no ships, no visible cells, no sunken ships).
     */
     void initialStateOfBoard();
 
