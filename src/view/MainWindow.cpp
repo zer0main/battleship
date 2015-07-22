@@ -128,12 +128,9 @@ void MainWindow::botMove() {
 }
 
 void MainWindow::winMessage() {
-    QString winner =
-        QString::number(moving_player_number_);
     QString win_message;
     if (game_type_ == BOT_VS_BOT) {
-        win_message = "<b>Bot under number " + winner +
-                      " won!</b>";
+        win_message = "<b>The game is finished</b>";
     } else if (game_type_ == HUMAN_VS_HUMAN) {
         win_message = "<b>You won!</b>";
     } else {
