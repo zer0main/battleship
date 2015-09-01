@@ -206,16 +206,19 @@ void MainWindow::on_quitButton_clicked() {
 
 void MainWindow::on_botVsBot_clicked() {
     game_type_ = BOT_VS_BOT;
+    configureSpinBox();
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
 void MainWindow::on_botVsHuman_clicked() {
     game_type_ = BOT_VS_HUMAN;
+    configureSpinBox();
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
 void MainWindow::on_humanVsHuman_clicked() {
     game_type_ = HUMAN_VS_HUMAN;
+    configureSpinBox();
     ui->stackedWidget->setCurrentWidget(ui->inputpage);
 }
 
