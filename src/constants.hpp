@@ -11,6 +11,9 @@
 /** Waiting time between moves (msec) */
 const int MOVE_WAIT = 3000;
 
+/** Default width of game board */
+const int DEFAULT_WIDTH = 13;
+
 /** Minimum width of game board */
 const int MIN_WIDTH = 11;
 
