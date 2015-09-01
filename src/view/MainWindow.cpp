@@ -23,6 +23,13 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::configureSpinBox() {
+    ui->boardWidth->setRange(MIN_WIDTH, MAX_WIDTH);
+    ui->boardWidth->setValue(DEFAULT_WIDTH);
+    ui->boardHeight->setRange(MIN_LENGTH, MAX_LENGTH);
+    ui->boardHeight->setValue(DEFAULT_LENGTH);
+}
+
 void MainWindow::prepareGameBoards() {
     if (game_type_ == BOT_VS_HUMAN) {
         ui->board1->setModel(game_->t_model1.data());
