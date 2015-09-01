@@ -20,6 +20,9 @@ const int MIN_WIDTH = 11;
 /** Maximum width of game board */
 const int MAX_WIDTH = 16;
 
+/** Default width of game board */
+const int DEFAULT_LENGTH = 13;
+
 /** Minimum height of game board */
 const int MIN_LENGTH = 11;
 
