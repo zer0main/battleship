@@ -16,10 +16,9 @@ include_directories("${PROJECT_SOURCE_DIR}/src/view"
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
 
-file(GLOB sources "src/model/*.cpp", "src/bot/*.cpp",
-    "src/util/*.cpp", "src/controller/*.cpp",
-    "src/desk_functions/*.cpp", "src/view/*.cpp",
-    "src/*.cpp")
+file(GLOB sources "src/model/*.cpp" "src/bot/*.cpp"
+    "src/util/*.cpp" "src/controller/*.cpp"
+    "src/desk_functions/*.cpp" "src/view/*.cpp" "src/*.cpp")
 file(GLOB uis "src/view/*.ui")
 file(GLOB qheaders "src/view/*.hpp")
 
