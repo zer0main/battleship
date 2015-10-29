@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(battleship)
 
+cmake_policy(SET CMP0017 NEW)
+
 include_directories(src/bot)
 include_directories(src/model)
 include_directories(src/util)
