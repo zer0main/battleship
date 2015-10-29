@@ -1,11 +1,18 @@
 language: c
 
+env:
+  matrix:
+    - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake
+    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='cmake -DCMAKE_TOOLCHAIN_FILE=/usr/lib/mxe/usr/i686-w64-mingw32.static/share/cmake/mxe-conf.cmake'
+
 install:
+  - echo "deb http://mxe.redjohn.tk/repos/apt/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mxeapt.list
+  - cat mxeapt.gpg | sudo apt-key add -
   - sudo apt-get update
-  - sudo apt-get install g++ cmake make libqt4-dev
+  - sudo apt-get install $PACKAGES
 
 script:
-  - cmake . -Bbuild-dir
+  - $CMAKE . -Bbuild-dir
   - cmake --build build-dir --config Release
 
 deploy:
