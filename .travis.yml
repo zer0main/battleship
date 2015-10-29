@@ -7,3 +7,12 @@ install:
 script:
   - cmake . -Bbuild-dir
   - cmake --build build-dir --config Release
+
+deploy:
+  provider: releases
+  api_key:
+    secure: RAYIUKdy71W8RUy5BNvagr92dFJsaj3GK9zvcxr5qd1BoxJzXqVfuH7zgCg2+Ts9K4kxC03wkoLatCiQYFXcwkuppb7jVPOWDBAs0ba/FamzEvjgUNlKBRunXKGYhcMPANuN9M3HMk93SSeT/jT/QKTJeRJgbJY+KUdSFfok6Wo=
+  file: "$(ls build-dir/battleship*)"
+  skip_cleanup: true
+  on:
+    tags: true
