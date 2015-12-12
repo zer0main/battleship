@@ -16,7 +16,7 @@ script:
   - cmake --build build-dir --config Release
 
 before_deploy:
-    - upx -9 build-dir/battleship*
+  - upx -9 build-dir/battleship*
 
 deploy:
   provider: releases
