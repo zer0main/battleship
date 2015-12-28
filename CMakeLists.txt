@@ -31,3 +31,7 @@ QT4_ADD_RESOURCES(RCSrcs "src/view/qbattleship.qrc")
 add_executable(battleship ${sources} ${MOCrcs} ${UISrcs}
     ${RCSrcs})
 TARGET_LINK_LIBRARIES(battleship ${QT_LIBRARIES})
+
+IF (MINGW)
+    SET(CMAKE_EXE_LINKER_FLAGS -mwindows)
+ENDIF (MINGW)
