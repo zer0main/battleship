@@ -165,7 +165,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QWidget" name="inputpage">
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="1">
-            <widget class="QSpinBox" name="boardWidth"/>
+         <widget class="QSpinBox" name="boardWidth"/>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="widthOfGameBoardLabel">
@@ -175,7 +175,7 @@ color: rgb(255, 255, 255);</string>
          </widget>
         </item>
         <item row="2" column="1">
-            <widget class="QSpinBox" name="boardHeight"/>
+         <widget class="QSpinBox" name="boardHeight"/>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="heightOfGameBoardLabel">
@@ -298,7 +298,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(0, 255, 0);</string>
             </property>
             <property name="text">
-             <string>  </string>
+             <string/>
             </property>
            </widget>
           </item>
