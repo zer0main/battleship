@@ -139,12 +139,14 @@ void MainWindow::winMessage() {
     if (game_type_ == BOT_VS_BOT) {
         win_message = "<b>The game is finished</b>";
     } else if (game_type_ == HUMAN_VS_HUMAN) {
-        win_message = "<b>You won!</b>";
+        win_message = "<b>Congratulations. You won!</b>";
     } else {
         if (moving_player_number_ == 2) {
-            win_message = "<b>You won!</b>";
+            win_message =
+                "<b>Congratulations. You won!</b>";
         } else {
-            win_message = "<b>Bot won...</b>";
+            win_message =
+                "<b>Bot won. Try again next time</b>";
         }
     }
     QMessageBox winInfo;
