@@ -3,7 +3,7 @@ language: c
 env:
   matrix:
     - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake
-    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='cmake -DCMAKE_TOOLCHAIN_FILE=/usr/lib/mxe/usr/i686-w64-mingw32.static/share/cmake/mxe-conf.cmake'
+    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-cmake'
 
 install:
   - echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mxeapt.list
