@@ -2,8 +2,9 @@ language: c
 
 env:
   matrix:
-    - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake
-    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='cmake -DCMAKE_TOOLCHAIN_FILE=/usr/lib/mxe/usr/i686-w64-mingw32.static/share/cmake/mxe-conf.cmake'
+    - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake DEPLOY_FILE='battleship-linux64.exe'
+    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-cmake' DEPLOY_FILE='battleship-windows32.exe'
+    - PACKAGES='mxe-x86-64-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/x86_64-w64-mingw32.static-cmake' DEPLOY_FILE='battleship-windows64.exe'
 
 install:
   - echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mxeapt.list
@@ -16,12 +17,13 @@ script:
   - cmake --build build-dir --config Release
 
 before_deploy:
-  - upx -9 build-dir/battleship*
+  - cp build-dir/battleship* $DEPLOY_FILE
+  - upx -9 $DEPLOY_FILE
 
 deploy:
   provider: releases
   api_key: "$GH_API_KEY"
-  file: "$(ls build-dir/battleship*)"
+  file: "$DEPLOY_FILE"
   skip_cleanup: true
   on:
     tags: true
