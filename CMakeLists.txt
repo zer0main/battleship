@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.6)
 project(battleship)
 
-IF (CMP0017)
+IF (POLICY CMP0017)
     cmake_policy(SET CMP0017 NEW)
-ENDIF(CMP0017)
+ENDIF (POLICY CMP0017)
 
 include_directories(src/bot)
 include_directories(src/model)
