@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 2.6)
 project(battleship)
 
+set(VERSION_MAJOR 0)
+set(VERSION_MINOR 0)
+set(VERSION_PATCH 1)
+
+set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+
 IF (POLICY CMP0017)
     cmake_policy(SET CMP0017 NEW)
 ENDIF (POLICY CMP0017)
