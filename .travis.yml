@@ -20,6 +20,7 @@ script:
   - source build-dir/rename_exe.sh
 
 before_deploy:
+  - strip $DEPLOY_FILE
   - upx -9 $DEPLOY_FILE
 
 deploy:
