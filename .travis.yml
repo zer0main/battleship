@@ -19,6 +19,7 @@ script:
   - cmake --build build-dir --config Release
 
 before_deploy:
+  - cat -n /home/travis/build.sh
   - source build-dir/deploy.sh
 
 deploy:
