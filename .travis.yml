@@ -17,8 +17,6 @@ install:
 script:
   - $CMAKE . -Bbuild-dir
   - cmake --build build-dir --config Release
-
-after_script:
   - source build-dir/rename_exe.sh
 
 before_deploy:
