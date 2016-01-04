@@ -3,12 +3,12 @@ project(battleship)
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
-set(VERSION_PATCH 5)
+set(VERSION_PATCH 6)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/deploy.sh.in
-    ${CMAKE_CURRENT_BINARY_DIR}/deploy.sh)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rename_exe.sh.in
+    ${CMAKE_CURRENT_BINARY_DIR}/rename_exe.sh)
 
 IF (POLICY CMP0017)
     cmake_policy(SET CMP0017 NEW)

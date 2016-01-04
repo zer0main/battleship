@@ -18,9 +18,11 @@ script:
   - $CMAKE . -Bbuild-dir
   - cmake --build build-dir --config Release
 
+after_script:
+  - source build-dir/rename_exe.sh
+
 before_deploy:
-  - cat -n /home/travis/build.sh
-  - source build-dir/deploy.sh
+  - upx -9 $DEPLOY_FILE
 
 deploy:
   provider: releases
