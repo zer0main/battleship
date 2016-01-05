@@ -151,6 +151,7 @@ void MainWindow::winMessage() {
     }
     QMessageBox winInfo;
     winInfo.setText(win_message);
+    winInfo.setWindowTitle("battleship");
     winInfo.exec();
     ui->stackedWidget->setCurrentWidget(ui->startpage);
 }
