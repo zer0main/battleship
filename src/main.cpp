@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
     // and srand()
     srand(time(NULL));
     QApplication a(argc, argv);
+    a.setApplicationName("battleship");
     MainWindow w;
     w.showMaximized();
     return a.exec();
