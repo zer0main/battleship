@@ -22,7 +22,6 @@ script:
 before_deploy:
   - strip $DEPLOY_FILE
   - upx -9 $DEPLOY_FILE
-  - echo "$PATH"
 
 deploy:
   provider: releases
