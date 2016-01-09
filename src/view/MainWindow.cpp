@@ -259,6 +259,7 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         game_->t_model2->updateData();
         if (checkWin(*(game_->desk), 2)) {
             moving_player_number_ = 1;
+            ui->board2->setCursor(Qt::ArrowCursor);
             winningActions();
             return;
         }
@@ -295,6 +296,7 @@ void MainWindow::on_board4_clicked(const QModelIndex&
         game_->t_model4->updateData();
         if (checkWin(*(game_->desk), 1)) {
             moving_player_number_ = 2;
+            ui->board4->setCursor(Qt::ArrowCursor);
             winningActions();
             return;
         }
