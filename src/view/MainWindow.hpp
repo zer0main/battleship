@@ -37,6 +37,8 @@ private:
 
     int moving_player_number_;
 
+    bool end_of_game_;
+
     void configureSpinBox();
 
     void prepareGameBoards();

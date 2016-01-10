@@ -160,6 +160,7 @@ void MainWindow::botVsBotMove() {
     try {
         if (checkWin(*(game_->desk),
                      moving_player_number_)) {
+            end_of_game_ = true;
             winningActions();
         } else {
             botMove();
@@ -188,6 +189,7 @@ void MainWindow::botVsHumanMove() {
         game_->controller->makeMove(1, p);
         game_->t_model1->updateData();
         if (checkWin(*(game_->desk), 1)) {
+            end_of_game_ = true;
             winningActions();
             return;
         }
@@ -226,6 +228,7 @@ void MainWindow::on_humanVsHuman_clicked() {
 }
 
 void MainWindow::on_playButton_clicked() {
+    end_of_game_ = false;
     moving_player_number_ = 2;
     try {
         preparingToPlay();
@@ -246,7 +249,7 @@ void MainWindow::on_playButton_clicked() {
 
 void MainWindow::on_board2_clicked(const QModelIndex&
                                    index) {
-    if (moving_player_number_ != 2) {
+    if ((moving_player_number_ != 2) || end_of_game_) {
         return;
     }
     Point pt(index.column(), index.row());
@@ -258,8 +261,8 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         game_->controller->makeMove(2, pt);
         game_->t_model2->updateData();
         if (checkWin(*(game_->desk), 2)) {
-            moving_player_number_ = 1;
             ui->board2->setCursor(Qt::ArrowCursor);
+            end_of_game_ = true;
             winningActions();
             return;
         }
@@ -283,7 +286,7 @@ void MainWindow::on_board2_clicked(const QModelIndex&
 
 void MainWindow::on_board4_clicked(const QModelIndex&
                                    index) {
-    if (moving_player_number_ != 1) {
+    if ((moving_player_number_ != 1) || end_of_game_) {
         return;
     }
     Point pt(index.column(), index.row());
@@ -295,8 +298,8 @@ void MainWindow::on_board4_clicked(const QModelIndex&
         game_->controller->makeMove(1, pt);
         game_->t_model4->updateData();
         if (checkWin(*(game_->desk), 1)) {
-            moving_player_number_ = 2;
             ui->board4->setCursor(Qt::ArrowCursor);
+            end_of_game_ = true;
             winningActions();
             return;
         }
