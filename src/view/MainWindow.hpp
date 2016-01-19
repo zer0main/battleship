@@ -39,6 +39,8 @@ private:
 
     bool end_of_game_;
 
+    void configureLabel();
+
     void configureSpinBox();
 
     void prepareGameBoards();

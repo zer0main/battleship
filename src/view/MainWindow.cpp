@@ -17,10 +17,23 @@ MainWindow::MainWindow(QWidget* parent) :
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
     setWindowIcon(QIcon(":/images/battleship.ico"));
+    configureLabel();
 }
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::configureLabel() {
+    ui->infoLabel->setWordWrap(true);
+    ui->infoLabel->setTextFormat(Qt::RichText);
+    ui->infoLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    ui->infoLabel->setOpenExternalLinks(true);
+    ui->infoLabel
+    ->setText("Copyright (C) 2014-2016 Pavel Dolgov.\n"
+              "E-mail: pdolgov99@gmail.com.\n"
+              "<a href=\"https://github.com/zer0main/battleship/\">"
+              "Source code.</a>");
 }
 
 void MainWindow::configureSpinBox() {
