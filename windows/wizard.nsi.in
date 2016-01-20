@@ -1,0 +1,177 @@
+!define APPNAME "battleship"
+!define COMPANYNAME "zer0main's classic games"
+!define DESCRIPTION "Battleship game with bot and many other modes"
+!define VERSIONMAJOR @VERSION_MAJOR@
+!define VERSIONMINOR @VERSION_MINOR@
+!define VERSIONBUILD @VERSION_PATCH@
+!define HELPURL "https://github.com/zer0main/battleship/issues/new"
+!define UPDATEURL "https://github.com/zer0main/battleship/releases"
+!define ABOUTURL "https://github.com/zer0main/battleship/blob/master/README.md"
+
+!define INSTALLSIZE 16000
+
+RequestExecutionLevel admin
+
+InstallDir "$PROGRAMFILES\${APPNAME}"
+
+# rtf or txt file - remember if it is txt, \
+# it must be in the DOS text format (\r\n)
+LicenseData "LICENSE.txt"
+Name "${APPNAME} - ${COMPANYNAME}"
+Icon "battleship.ico"
+outFile "battleship_@VERSION@_win32.exe"
+
+!include LogicLib.nsh
+!include "@CMAKE_CURRENT_SOURCE_DIR@/EnvVarUpdate.nsh"
+
+page license
+page directory
+Page instfiles
+
+!macro VerifyUserIsAdmin
+UserInfo::GetAccountType
+pop $0
+${If} $0 != "admin" ;Require admin rights on NT4+
+    messageBox mb_iconstop "Administrator rights required!"
+    setErrorLevel 740 ;ERROR_ELEVATION_REQUIRED
+    quit
+${EndIf}
+!macroend
+
+function .onInit
+    setShellVarContext all
+    !insertmacro VerifyUserIsAdmin
+functionEnd
+
+section "install"
+    setOutPath $INSTDIR
+    file "battleship.exe"
+    file "battleship.ico"
+    file "README.md"
+    file "LICENSE.txt"
+
+    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" $INSTDIR
+
+    writeUninstaller "$INSTDIR\uninstall.exe"
+
+    # Start Menu
+    createDirectory "$SMPROGRAMS\${APPNAME}"
+    createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" \
+        "$INSTDIR\battleship.exe" "" "$INSTDIR\battleship.ico"
+    createShortCut "$SMPROGRAMS\${APPNAME}\README.lnk" \
+        "$INSTDIR\README.md"
+    createShortCut "$SMPROGRAMS\${APPNAME}\LICENSE.lnk" \
+        "$INSTDIR\LICENSE.txt"
+    createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" \
+        "$INSTDIR\uninstall.exe"
+
+    # Registry information for add/remove programs
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} \
+    ${APPNAME}" "DisplayName" "${APPNAME} - ${DESCRIPTION}"
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} \
+    ${APPNAME}" "UninstallString" \
+    "$\"$INSTDIR\uninstall.exe$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "InstallLocation" "$\"$INSTDIR$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "DisplayIcon" "$\"$INSTDIR\battleship.ico$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "Publisher" "$\"${COMPANYNAME}$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "HelpLink" "$\"${HELPURL}$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "URLUpdateInfo" "$\"${UPDATEURL}$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "URLInfoAbout" "$\"${ABOUTURL}$\""
+
+    WriteRegStr HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "DisplayVersion" \
+    "$\"${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}$\""
+
+    WriteRegDWORD HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "VersionMajor" ${VERSIONMAJOR}
+
+    WriteRegDWORD HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "VersionMinor" ${VERSIONMINOR}
+
+    # There is no option for modifying or repairing the install
+    WriteRegDWORD HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "NoModify" 1
+
+    WriteRegDWORD HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "NoRepair" 1
+
+    # Set the INSTALLSIZE constant
+    # (!defined at the top of this script)
+    # so Add/Remove Programs can accurately report the size
+    WriteRegDWORD HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" \
+    "EstimatedSize" ${INSTALLSIZE}
+sectionEnd
+
+# Uninstaller
+
+function un.onInit
+    SetShellVarContext all
+
+    #Verify the uninstaller - last chance to back out
+    MessageBox MB_OKCANCEL \
+    "Permanantly remove ${APPNAME}?" IDOK next
+        Abort
+    next:
+    !insertmacro VerifyUserIsAdmin
+functionEnd
+
+section "uninstall"
+    # Remove Start Menu launcher
+    delete "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
+    delete "$SMPROGRAMS\${APPNAME}\README.lnk"
+    delete "$SMPROGRAMS\${APPNAME}\LICENSE.lnk"
+    delete "$SMPROGRAMS\${APPNAME}\Uninstall.lnk"
+    # Try to remove the Start Menu folder -
+    # this will only happen if it is empty
+    rmDir "$SMPROGRAMS\${APPNAME}"
+
+    # Remove files
+    delete $INSTDIR\battleship.exe
+    delete $INSTDIR\battleship.ico
+    delete $INSTDIR\README.md
+    delete $INSTDIR\LICENSE.txt
+
+    ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" $INSTDIR
+
+    # Always delete uninstaller as the last action
+    delete $INSTDIR\uninstall.exe
+
+    # Try to remove the install directory - this will only happen if it is empty
+    rmDir $INSTDIR
+
+    # Remove uninstaller information from the registry
+    DeleteRegKey HKLM \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}"
+sectionEnd
+
