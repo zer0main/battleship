@@ -22,7 +22,6 @@ Icon "battleship.ico"
 outFile "battleship_@VERSION@_win32.exe"
 
 !include LogicLib.nsh
-!include "@CMAKE_CURRENT_SOURCE_DIR@/EnvVarUpdate.nsh"
 
 page license
 page directory
