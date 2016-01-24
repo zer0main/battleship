@@ -46,5 +46,5 @@ TARGET_LINK_LIBRARIES(battleship ${QT_LIBRARIES})
 IF (MINGW)
     SET(CMAKE_EXE_LINKER_FLAGS -mwindows)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/windows/wizard.nsi.in
-        ${CMAKE_CURRENT_BINARY_DIR}/windows/wizard.nsi @ONLY)
+        ${CMAKE_CURRENT_BINARY_DIR}/wizard.nsi @ONLY)
 ENDIF (MINGW)
