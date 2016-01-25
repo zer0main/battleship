@@ -19,7 +19,7 @@ InstallDir "$PROGRAMFILES\${APPNAME}"
 LicenseData "LICENSE.txt"
 Name "${APPNAME} - ${COMPANYNAME}"
 Icon "battleship.ico"
-outFile "battleship_@VERSION@_win32.exe"
+outFile "battleship_@VERSION@_windows32.exe"
 
 !include LogicLib.nsh
 
