@@ -4,7 +4,6 @@ set -xue
 
 MAKENSIS=/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-makensis
 
-cp ${CMAKE_CURRENT_BINARY_DIR}/wizard.nsi build-dir
 cd build-dir
 $MAKENSIS wizard.nsi
 mv battleship_${VERSION}_windows32.exe ../battleship_${VERSION}_${FILENAME_SUFFIX}.exe
