@@ -19,7 +19,7 @@ script:
   - cmake --build build-dir --config Release
   - source build-dir/rename_exe.sh
   - file="build-dir/wizard.nsi"
-  - if [ -f "$file" ] ; then source build-dir/nsis_wizard.sh
+    if [ -f "$file" ] ; then source build-dir/nsis_wizard.sh
     fi
 
 before_deploy:
