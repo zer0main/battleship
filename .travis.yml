@@ -5,8 +5,8 @@ dist: trusty # modern upx
 env:
   matrix:
     - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake FILENAME_SUFFIX='linux64'
-    - PACKAGES='mxe-i686-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-cmake' FILENAME_SUFFIX='windows32'
-    - PACKAGES='mxe-x86-64-w64-mingw32.static-qt' CMAKE='/usr/lib/mxe/usr/bin/x86_64-w64-mingw32.static-cmake' FILENAME_SUFFIX='windows64'
+    - PACKAGES='mxe-i686-w64-mingw32.static-qt mxe-i686-w64-mingw32.static-nsis' CMAKE='/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-cmake' FILENAME_SUFFIX='windows32'
+    - PACKAGES='mxe-x86-64-w64-mingw32.static-qt mxe-i686-w64-mingw32.static-nsis' CMAKE='/usr/lib/mxe/usr/bin/x86_64-w64-mingw32.static-cmake' FILENAME_SUFFIX='windows64'
 
 install:
   - echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mxeapt.list
