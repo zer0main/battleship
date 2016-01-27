@@ -19,7 +19,6 @@ script:
   - cmake --build build-dir --config Release
   - source build-dir/rename_exe.sh
   - if [ -f "build-dir/wizard.nsi" ]; then
-      source build-dir/cp_files_to_build-dir.sh
       source build-dir/nsis_wizard.sh;
     fi
 

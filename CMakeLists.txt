@@ -49,6 +49,4 @@ IF (MINGW)
         ${CMAKE_CURRENT_BINARY_DIR}/wizard.nsi @ONLY)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/windows/nsis_wizard.sh.in
         ${CMAKE_CURRENT_BINARY_DIR}/nsis_wizard.sh)
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/windows/cp_files_to_build-dir.sh.in
-        ${CMAKE_CURRENT_BINARY_DIR}/cp_files_to_build-dir.sh)
 ENDIF (MINGW)
