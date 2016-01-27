@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -xue
+
+cp ${PROJECT_SOURCE_DIR}/LICENSE build-dir/LICENSE.txt
+cp ${PROJECT_SOURCE_DIR}/README.md build-dir
+cp ${PROJECT_SOURCE_DIR}/src/view/images/battleship.ico build-dir
+
+set +xue
