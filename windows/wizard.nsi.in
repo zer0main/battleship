@@ -49,8 +49,6 @@ section "install"
     file "README.md"
     file "LICENSE.txt"
 
-    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" $INSTDIR
-
     writeUninstaller "$INSTDIR\uninstall.exe"
 
     # Start Menu
@@ -160,8 +158,6 @@ section "uninstall"
     delete $INSTDIR\battleship.ico
     delete $INSTDIR\README.md
     delete $INSTDIR\LICENSE.txt
-
-    ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" $INSTDIR
 
     # Always delete uninstaller as the last action
     delete $INSTDIR\uninstall.exe
