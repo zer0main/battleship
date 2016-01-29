@@ -22,6 +22,7 @@ Icon "battleship.ico"
 outFile "battleship_@VERSION@_windows32.exe"
 
 !include LogicLib.nsh
+!include "@CMAKE_CURRENT_SOURCE_DIR@/EnvVarUpdate.nsh"
 
 page license
 page directory
@@ -48,6 +49,8 @@ section "install"
     file "battleship.ico"
     file "README.md"
     file "LICENSE.txt"
+
+    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" $INSTDIR
 
     writeUninstaller "$INSTDIR\uninstall.exe"
 
@@ -158,6 +161,8 @@ section "uninstall"
     delete $INSTDIR\battleship.ico
     delete $INSTDIR\README.md
     delete $INSTDIR\LICENSE.txt
+
+    ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" $INSTDIR
 
     # Always delete uninstaller as the last action
     delete $INSTDIR\uninstall.exe
