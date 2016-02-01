@@ -5,9 +5,12 @@ set -xue
 MAKENSIS=/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-makensis
 
 
-cp ${PROJECT_SOURCE_DIR}/LICENSE build-dir/LICENSE.txt
-cp ${PROJECT_SOURCE_DIR}/README.md build-dir
 cp ${PROJECT_SOURCE_DIR}/src/view/images/battleship.ico build-dir
+
+awk 'sub("$", "\r")' ${PROJECT_SOURCE_DIR}/README.md > \
+    build-dir/README.txt
+awk 'sub("$", "\r")' ${PROJECT_SOURCE_DIR}/LICENSE > \
+    build-dir/LICENSE.txt
 
 cd build-dir
 $MAKENSIS wizard.nsi
