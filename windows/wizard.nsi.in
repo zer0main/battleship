@@ -8,7 +8,7 @@
 !define UPDATEURL "https://github.com/zer0main/battleship/releases"
 !define ABOUTURL "https://github.com/zer0main/battleship/blob/master/README.md"
 
-!define INSTALLSIZE 16000
+!define INSTALLSIZE 160
 
 RequestExecutionLevel admin
 
