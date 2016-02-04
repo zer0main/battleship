@@ -47,7 +47,7 @@ section "install"
     setOutPath $INSTDIR
     file "battleship.exe"
     file "battleship.ico"
-    file "README.md"
+    file "README.txt"
     file "LICENSE.txt"
 
     ${EnvVarUpdate} $0 "PATH" "A" "HKLM" $INSTDIR
@@ -59,7 +59,7 @@ section "install"
     createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" \
         "$INSTDIR\battleship.exe" "" "$INSTDIR\battleship.ico"
     createShortCut "$SMPROGRAMS\${APPNAME}\README.lnk" \
-        "$INSTDIR\README.md"
+        "$INSTDIR\README.txt"
     createShortCut "$SMPROGRAMS\${APPNAME}\LICENSE.lnk" \
         "$INSTDIR\LICENSE.txt"
     createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" \
@@ -159,7 +159,7 @@ section "uninstall"
     # Remove files
     delete $INSTDIR\battleship.exe
     delete $INSTDIR\battleship.ico
-    delete $INSTDIR\README.md
+    delete $INSTDIR\README.txt
     delete $INSTDIR\LICENSE.txt
 
     ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" $INSTDIR
