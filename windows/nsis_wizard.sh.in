@@ -4,6 +4,7 @@ set -xue
 
 MAKENSIS=/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-makensis
 
+PROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR-.}"
 
 cp ${PROJECT_SOURCE_DIR}/src/view/images/battleship.ico build-dir
 
