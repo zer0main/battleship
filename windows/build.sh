@@ -14,6 +14,6 @@ fi
 
 $MXE_DIR/usr/bin/MXE_TARGET-cmake . -Bbuild-dir
 cmake --build build-dir --config Release
-build-dir/rename_exe.sh
+source build-dir/rename_exe.sh
 
 set +xue
