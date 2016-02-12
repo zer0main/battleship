@@ -4,20 +4,17 @@ dist: trusty # modern upx
 
 env:
   matrix:
-    - PACKAGES='g++ cmake make libqt4-dev' CMAKE=cmake FILENAME_SUFFIX='linux64'
-    - PACKAGES='mxe-i686-w64-mingw32.static-qt mxe-i686-w64-mingw32.static-nsis' CMAKE='/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-cmake' FILENAME_SUFFIX='windows32'
-    - PACKAGES='mxe-x86-64-w64-mingw32.static-qt mxe-i686-w64-mingw32.static-nsis' CMAKE='/usr/lib/mxe/usr/bin/x86_64-w64-mingw32.static-cmake' FILENAME_SUFFIX='windows64'
+    - BATTLESHIP_TARGET=linux FILENAME_SUFFIX='linux64'
+    - BATTLESHIP_TARGET=windows FILENAME_SUFFIX='windows32'
+    - BATTLESHIP_TARGET=windows FILENAME_SUFFIX='windows64'
 
 before_install:
-  - echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mxeapt.list
-  - sudo apt-key adv --keyserver x-hkp://keys.gnupg.net --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
   - sudo apt-get update
-  - sudo apt-get install --yes upx-ucl $PACKAGES
+  - ./linux/requirements.sh
+  - ./${BATTLESHIP_TARGET}/requirements.sh
 
 install:
-  - $CMAKE . -Bbuild-dir
-  - cmake --build build-dir --config Release
-  - source build-dir/rename_exe.sh
+  - ./${BATTLESHIP_TARGET}/build.sh
 
 script:
   - echo "Nothing."
