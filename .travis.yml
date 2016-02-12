@@ -20,11 +20,7 @@ script:
   - echo "Nothing."
 
 before_deploy:
-  - strip $DEPLOY_FILE
-  - upx -9 $DEPLOY_FILE
-  - if [ -f "build-dir/wizard.nsi" ]; then
-      source build-dir/nsis_wizard.sh;
-    fi
+  - ./${BATTLESHIP_TARGET}/package.sh
 
 deploy:
   provider: releases
