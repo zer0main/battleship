@@ -20,8 +20,7 @@ script:
   - echo "Nothing."
 
 before_deploy:
-  - echo $DEPLOY_FILE
-  - ./${BATTLESHIP_TARGET}/package.sh
+  - source ./${BATTLESHIP_TARGET}/package.sh
 
 deploy:
   provider: releases
