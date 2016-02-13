@@ -32,7 +32,7 @@ $ source ./build/windows/build.sh
 Create Installation Wizard for Windows:
 
 ```bash
-$ source ./build/windows/package.sh
+$ source build-dir/package.sh
 ```
 
 ## Linux
@@ -51,5 +51,5 @@ Build the program:
 
 ```bash
 $ source ./build/linux/build.sh
-$ source ./build/linux/package.sh
+$ source build-dir/package.sh
 ```
