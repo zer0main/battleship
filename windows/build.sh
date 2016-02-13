@@ -12,7 +12,7 @@ if [ "$FILENAME_SUFFIX" = "windows64" ]; then
     MXE_TARGET=x86_64-w64-mingw32.static
 fi
 
-$MXE_DIR/usr/bin/$MXE2_TARGET-cmake . -Bbuild-dir
+$MXE_DIR/usr/bin/$MXE_TARGET-cmake . -Bbuild-dir
 cmake --build build-dir --config Release
 source build-dir/rename_exe.sh
 
