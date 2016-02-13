@@ -1,0 +1,13 @@
+Author:
+* Pavel Dolgov <pdolgov99@gmail.com>
+
+Contributors:
+* Boris Nagaev (github.com/starius)
+
+Included source:
+
+windows/EnvVarUpdate.nsh
+downloaded from
+http://nsis.sourceforge.net/mediawiki/images/a/ad/EnvVarUpdate.7z
+with patch by 129.130.40.208 23:37, 29 June 2011 (UTC)
+(see http://nsis.sourceforge.net/Environmental_Variables:_append,_prepend,_and_remove_entries#Usage)

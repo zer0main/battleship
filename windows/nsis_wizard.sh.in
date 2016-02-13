@@ -13,6 +13,9 @@ awk 'sub("$", "\r")' ${PROJECT_SOURCE_DIR}/README.md > \
 awk 'sub("$", "\r")' ${PROJECT_SOURCE_DIR}/LICENSE > \
     build-dir/LICENSE.txt
 
+awk 'sub("$", "\r")' ${PROJECT_SOURCE_DIR}/AUTHORS > \
+    build-dir/AUTHORS.txt
+
 cd build-dir
 $MAKENSIS wizard.nsi
 mv battleship_@VERSION@_windows32.exe ../battleship_@VERSION@_$FILENAME_SUFFIX.exe

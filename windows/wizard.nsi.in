@@ -49,6 +49,7 @@ section "install"
     file "battleship.ico"
     file "README.txt"
     file "LICENSE.txt"
+    file "AUTHORS.txt"
 
     ${EnvVarUpdate} $0 "PATH" "A" "HKLM" $INSTDIR
 
@@ -62,6 +63,8 @@ section "install"
         "$INSTDIR\README.txt"
     createShortCut "$SMPROGRAMS\${APPNAME}\LICENSE.lnk" \
         "$INSTDIR\LICENSE.txt"
+    createShortCut "$SMPROGRAMS\${APPNAME}\AUTHORS.lnk" \
+        "$INSTDIR\AUTHORS.txt"
     createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" \
         "$INSTDIR\uninstall.exe"
 
@@ -151,6 +154,7 @@ section "uninstall"
     delete "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
     delete "$SMPROGRAMS\${APPNAME}\README.lnk"
     delete "$SMPROGRAMS\${APPNAME}\LICENSE.lnk"
+    delete "$SMPROGRAMS\${APPNAME}\AUTHORS.lnk"
     delete "$SMPROGRAMS\${APPNAME}\Uninstall.lnk"
     # Try to remove the Start Menu folder -
     # this will only happen if it is empty
@@ -161,6 +165,7 @@ section "uninstall"
     delete $INSTDIR\battleship.ico
     delete $INSTDIR\README.txt
     delete $INSTDIR\LICENSE.txt
+    delete $INSTDIR\AUTHORS.txt
 
     ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" $INSTDIR
 
