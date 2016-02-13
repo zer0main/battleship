@@ -4,9 +4,9 @@ dist: trusty # modern upx
 
 env:
   matrix:
-    - BATTLESHIP_TARGET=linux FILENAME_SUFFIX='linux64'
-    - BATTLESHIP_TARGET=windows FILENAME_SUFFIX='windows32'
-    - BATTLESHIP_TARGET=windows FILENAME_SUFFIX='windows64'
+    - BATTLESHIP_TARGET=linux BATTLESHIP_PLATFORM='linux64'
+    - BATTLESHIP_TARGET=windows BATTLESHIP_PLATFORM='windows32'
+    - BATTLESHIP_TARGET=windows BATTLESHIP_PLATFORM='windows64'
 
 before_install:
   - sudo apt-get update

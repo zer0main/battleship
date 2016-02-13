@@ -2,7 +2,7 @@
 
 set -xue
 
-DEPLOY_FILE="battleship_@VERSION@_$FILENAME_SUFFIX.exe"
+DEPLOY_FILE="battleship_@VERSION@_$BATTLESHIP_PLATFORM.exe"
 cp build-dir/battleship* $DEPLOY_FILE
 
 set +xue

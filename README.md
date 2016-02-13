@@ -50,13 +50,13 @@ using MinGW cross-compiler.
 For Windows 32 bit:
 
 ```bash
-$ export FILENAME_SUFFIX='windows32'
+$ export BATTLESHIP_PLATFORM='windows32'
 ```
 
 For Windows 64 bit:
 
 ```bash
-$ export FILENAME_SUFFIX='windows64'
+$ export BATTLESHIP_PLATFORM='windows64'
 ```
 
 Install build requirements:
@@ -80,7 +80,7 @@ $ source ./build/windows/package.sh
 ##### Linux
 
 ```bash
-$ export FILENAME_SUFFIX='linux64'
+$ export BATTLESHIP_PLATFORM='linux64'
 ```
 
 Install build requirements:
