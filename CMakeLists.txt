@@ -8,7 +8,7 @@ set(VERSION_PATCH 4)
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/rename_exe.sh.in
-    ${CMAKE_CURRENT_BINARY_DIR}/rename_exe.sh)
+    ${CMAKE_CURRENT_BINARY_DIR}/rename_exe.sh @ONLY)
 
 IF (POLICY CMP0017)
     cmake_policy(SET CMP0017 NEW)
@@ -48,5 +48,5 @@ IF (MINGW)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/wizard.nsi.in
         ${CMAKE_CURRENT_BINARY_DIR}/wizard.nsi @ONLY)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/nsis_wizard.sh.in
-        ${CMAKE_CURRENT_BINARY_DIR}/nsis_wizard.sh)
+        ${CMAKE_CURRENT_BINARY_DIR}/nsis_wizard.sh @ONLY)
 ENDIF (MINGW)
