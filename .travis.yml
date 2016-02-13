@@ -10,17 +10,17 @@ env:
 
 before_install:
   - sudo apt-get update
-  - ./linux/requirements.sh
-  - ./${BATTLESHIP_TARGET}/requirements.sh
+  - ./build/linux/requirements.sh
+  - ./build/${BATTLESHIP_TARGET}/requirements.sh
 
 install:
-  - source ./${BATTLESHIP_TARGET}/build.sh
+  - source ./build/${BATTLESHIP_TARGET}/build.sh
 
 script:
   - echo "Nothing."
 
 before_deploy:
-  - source ./${BATTLESHIP_TARGET}/package.sh
+  - source ./build/${BATTLESHIP_TARGET}/package.sh
 
 deploy:
   provider: releases
