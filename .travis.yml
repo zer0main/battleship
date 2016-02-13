@@ -21,7 +21,7 @@ script:
   - echo "Nothing."
 
 before_deploy:
-  - source ./build/${BATTLESHIP_TARGET}/package.sh
+  - source build-dir/package.sh
 
 deploy:
   provider: releases
