@@ -7,7 +7,7 @@ set(VERSION_PATCH 4)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rename_exe.sh.in
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/rename_exe.sh.in
     ${CMAKE_CURRENT_BINARY_DIR}/rename_exe.sh)
 
 IF (POLICY CMP0017)
