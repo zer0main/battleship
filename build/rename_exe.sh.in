@@ -3,6 +3,10 @@
 set -xue
 
 DEPLOY_FILE="battleship_@VERSION@_$BATTLESHIP_PLATFORM.exe"
-cp build-dir/battleship_* $DEPLOY_FILE
+if [ -f "build-dir/battleship.exe" ]; then
+    cp build-dir/battleship.exe $DEPLOY_FILE
+else
+    cp build-dir/battleship $DEPLOY_FILE
+fi
 
 set +xue
