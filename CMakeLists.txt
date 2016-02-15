@@ -5,6 +5,15 @@ set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
 set(VERSION_PATCH 5)
 
+if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
+    execute_process(COMMAND
+        git --git-dir=${PROJECT_SOURCE_DIR}/.git rev-parse HEAD
+        OUTPUT_VARIABLE VERSION_COMMIT)
+    string(STRIP ${VERSION_COMMIT} VERSION_COMMIT)
+else ()
+    set(VERSION_COMMIT "unknown")
+endif ()
+
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 set(PRODUCT_NAME "battleship")
