@@ -1,6 +1,6 @@
-!define APPNAME "battleship"
-!define COMPANYNAME "zer0main's classic games"
-!define DESCRIPTION "Battleship game with bot and many other modes"
+!define APPNAME "@PRODUCT_NAME@"
+!define COMPANYNAME "@COMPANY_NAME@"
+!define DESCRIPTION "@PRODUCT_DESCRIPTION@"
 !define VERSIONMAJOR @VERSION_MAJOR@
 !define VERSIONMINOR @VERSION_MINOR@
 !define VERSIONBUILD @VERSION_PATCH@
