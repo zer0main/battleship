@@ -1,0 +1,24 @@
+// http://fragglet.livejournal.com/4448.html
+// http://stackoverflow.com/a/708382/2534648
+
+1 ICON "@PROJECT_SOURCE_DIR@/src/view/images/battleship.ico"
+1 VERSIONINFO
+FILEVERSION     @VERSION_MAJOR@,@VERSION_MINOR@,@VERSION_PATCH@,0
+PRODUCTVERSION  @VERSION_MAJOR@,@VERSION_MINOR@,@VERSION_PATCH@,0
+// lines below do not work
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "080904E4"
+    BEGIN
+      VALUE "CompanyName", "@COMPANY_NAME@"
+      VALUE "FileDescription", "@PRODUCT_DESCRIPTION@"
+      VALUE "FileVersion", "@VERSION_COMMIT@"
+      VALUE "InternalName", "@BATTLESHIP_RC_INTERNAL@"
+      VALUE "LegalCopyright", "Pavel Dolgov"
+      VALUE "OriginalFilename", "@BATTLESHIP_RC_FILENAME@"
+      VALUE "ProductName", "@PRODUCT_NAME@"
+      VALUE "ProductVersion", "@VERSION@"
+    END
+  END
+END

@@ -68,3 +68,14 @@ IF (MINGW)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/package.sh.in
         ${CMAKE_CURRENT_BINARY_DIR}/package.sh @ONLY)
 ENDIF (MINGW)
+
+set(BATTLESHIP_RC_FILENAME "battleship.exe")
+set(BATTLESHIP_RC_INTERNAL "battleship")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/battleship.rc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/battleship.rc @ONLY)
+unset(BATTLESHIP_RC_FILENAME)
+unset(BATTLESHIP_RC_INTERNAL)
+
+if (CMAKE_RC_COMPILER)
+    set(sources ${sources};${CMAKE_CURRENT_BINARY_DIR}/battleship.rc)
+endif()
