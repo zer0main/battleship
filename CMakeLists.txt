@@ -55,6 +55,17 @@ QT4_WRAP_UI(UISrcs ${uis})
 QT4_WRAP_CPP(MOCrcs ${qheaders})
 QT4_ADD_RESOURCES(RCSrcs "src/view/qbattleship.qrc")
 
+set(BATTLESHIP_RC_FILENAME "battleship.exe")
+set(BATTLESHIP_RC_INTERNAL "battleship")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/battleship.rc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/battleship.rc @ONLY)
+unset(BATTLESHIP_RC_FILENAME)
+unset(BATTLESHIP_RC_INTERNAL)
+
+if (CMAKE_RC_COMPILER)
+    set(sources ${sources};${CMAKE_CURRENT_BINARY_DIR}/battleship.rc)
+endif()
+
 add_executable(battleship ${sources} ${MOCrcs} ${UISrcs}
     ${RCSrcs})
 TARGET_LINK_LIBRARIES(battleship ${QT_LIBRARIES})
@@ -68,14 +79,3 @@ IF (MINGW)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/package.sh.in
         ${CMAKE_CURRENT_BINARY_DIR}/package.sh @ONLY)
 ENDIF (MINGW)
-
-set(BATTLESHIP_RC_FILENAME "battleship.exe")
-set(BATTLESHIP_RC_INTERNAL "battleship")
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/battleship.rc.in
-    ${CMAKE_CURRENT_BINARY_DIR}/battleship.rc @ONLY)
-unset(BATTLESHIP_RC_FILENAME)
-unset(BATTLESHIP_RC_INTERNAL)
-
-if (CMAKE_RC_COMPILER)
-    set(sources ${sources};${CMAKE_CURRENT_BINARY_DIR}/battleship.rc)
-endif()
