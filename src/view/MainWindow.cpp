@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    setWindowIcon(QIcon(":/images/battleship.ico"));
+    setWindowIcon(QIcon(QString::fromUtf8(":/images/battleship.ico")));
     configureLabel();
 }
 
