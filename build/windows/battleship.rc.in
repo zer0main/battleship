@@ -1,6 +1,8 @@
 // http://fragglet.livejournal.com/4448.html
 // http://stackoverflow.com/a/708382/2534648
 
+IDI_ICON1    ICON    DISCARDABLE    "@PROJECT_SOURCE_DIR@/src/view/images/battleship.ico"
+
 1 ICON "@PROJECT_SOURCE_DIR@/src/view/images/battleship.ico"
 1 VERSIONINFO
 FILEVERSION     @VERSION_MAJOR@,@VERSION_MINOR@,@VERSION_PATCH@,0
