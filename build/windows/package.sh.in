@@ -5,6 +5,8 @@ set -xue
 strip build-dir/battleship.exe
 upx -9 build-dir/battleship.exe
 
+cp build-dir/battleship.exe $PORTABLE_FILE
+
 cp @PROJECT_SOURCE_DIR@/src/view/images/battleship.ico build-dir
 
 awk 'sub("$", "\r")' @PROJECT_SOURCE_DIR@/README.md > \
