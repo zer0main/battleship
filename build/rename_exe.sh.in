@@ -3,9 +3,8 @@
 set -xue
 
 DEPLOY_FILE="battleship_@VERSION@_$BATTLESHIP_PLATFORM.exe"
-if [ -f "build-dir/battleship.exe" ]; then
-    cp build-dir/battleship.exe $DEPLOY_FILE
-else
+PORTABLE_FILE="battleship_@VERSION@_$BATTLESHIP_PLATFORM-portable.exe"
+if [ -f "build-dir/battleship" ]; then
     cp build-dir/battleship $DEPLOY_FILE
 fi
 
