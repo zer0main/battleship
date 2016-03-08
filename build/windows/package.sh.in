@@ -2,8 +2,8 @@
 
 set -xue
 
-strip $DEPLOY_FILE
-upx -9 $DEPLOY_FILE
+strip build-dir/battleship.exe
+upx -9 build-dir/battleship.exe
 
 cp @PROJECT_SOURCE_DIR@/src/view/images/battleship.ico build-dir
 
