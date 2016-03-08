@@ -11,7 +11,6 @@ awk 'sub("$", "\r")' @PROJECT_SOURCE_DIR@/README.md > \
     build-dir/README.txt
 awk 'sub("$", "\r")' @PROJECT_SOURCE_DIR@/LICENSE > \
     build-dir/LICENSE.txt
-
 awk 'sub("$", "\r")' @PROJECT_SOURCE_DIR@/AUTHORS > \
     build-dir/AUTHORS.txt
 
