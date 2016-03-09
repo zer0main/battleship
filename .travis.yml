@@ -1,5 +1,6 @@
 language: cpp
 sudo: required
+dist: trusty # modern upx
 
 env:
   matrix:
@@ -26,8 +27,8 @@ deploy:
   provider: releases
   api_key: "$GH_API_KEY"
   file:
-      - "$(ls battleship_*_${BATTLESHIP_PLATFORM}.exe 2>/dev/null)"
-      - "$(ls battleship_*_*-portable.exe 2>/dev/null)"
+      - "$(ls battleship_*_${BATTLESHIP_PLATFORM}.exe)"
+      - "$(ls battleship_*_*-portable.exe 2>/dev/null || echo build-dir/README.txt)"
   skip_cleanup: true
   on:
     tags: true

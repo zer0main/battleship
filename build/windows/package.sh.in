@@ -3,7 +3,7 @@
 set -xue
 
 strip build-dir/battleship.exe
-#upx -9 build-dir/battleship.exe
+upx -9 build-dir/battleship.exe
 
 PORTABLE_FILE=battleship_@VERSION@_${BATTLESHIP_PLATFORM}-portable.exe
 
