@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.6)
 project(battleship)
 
 set(VERSION_MAJOR 0)
-set(VERSION_MINOR 1)
-set(VERSION_PATCH 7)
+set(VERSION_MINOR 2)
+set(VERSION_PATCH 0)
 
 if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     execute_process(COMMAND
