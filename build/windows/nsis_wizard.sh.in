@@ -6,7 +6,8 @@ MAKENSIS=/usr/lib/mxe/usr/bin/i686-w64-mingw32.static-makensis
 
 cd build-dir
 $MAKENSIS wizard.nsi
-mv battleship_@VERSION@_windows32.exe ../battleship_@VERSION@_$BATTLESHIP_PLATFORM.exe
+mv battleship_@VERSION@_windows32.exe \
+    ../battleship_@VERSION@_${BATTLESHIP_PLATFORM}.exe
 cd ..
 
 set +xue
