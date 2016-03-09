@@ -20,9 +20,6 @@ set(PRODUCT_NAME "battleship")
 set(COMPANY_NAME "zer0main's classic games")
 set(PRODUCT_DESCRIPTION "Battleship game with bot and many other modes")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/rename_exe.sh.in
-    ${CMAKE_CURRENT_BINARY_DIR}/rename_exe.sh @ONLY)
-
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/linux/package.sh.in
     ${CMAKE_CURRENT_BINARY_DIR}/package.sh @ONLY)
 
