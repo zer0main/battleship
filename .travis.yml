@@ -26,9 +26,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: "$GH_API_KEY"
-  file:
-      - "$(ls battleship_*_${BATTLESHIP_PLATFORM}.exe 2>/dev/null)"
-      - "$(ls battleship_*_*-portable.exe 2>/dev/null)"
+  file: battleship_*_${BATTLESHIP_PLATFORM}*.exe
   skip_cleanup: true
   on:
     tags: true
