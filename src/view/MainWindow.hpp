@@ -49,8 +49,6 @@ private:
 
     void settingOfBoards();
 
-    void errorHandling(std::exception& e);
-
     void helpMessage();
 
     void changeCursor();

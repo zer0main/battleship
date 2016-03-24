@@ -76,21 +76,6 @@ void MainWindow::settingOfBoards() {
     configureBoard(ui->board6);
 }
 
-void MainWindow::errorHandling(std::exception& e) {
-    QString what = QString::fromStdString(e.what());
-    QString error = "<b>The error occurred</b>."
-                    "<br/><br/>Contact developers! "
-                    "<b>pdolgov99@gmail.com</b>";
-    what = what.replace("&", "&amp;");
-    what = what.replace("'", "&apos;");
-    what = what.replace("<", "&lt;");
-    what = what.replace(">", "&gt;");
-    what = what.replace("\"", "&quot;");
-    QString m = error + "<br/><br/>" + what;
-    QErrorMessage::qtHandler()->resize(400, 300);
-    QErrorMessage::qtHandler()->showMessage(m);
-}
-
 void MainWindow::helpMessage() {
     QString help_message = "<b>Do not shoot at cell which "
                            "has already shot down.</b>";
@@ -170,18 +155,14 @@ void MainWindow::winMessage() {
 }
 
 void MainWindow::botVsBotMove() {
-    try {
-        if (checkWin(*(game_->desk),
-                     moving_player_number_)) {
-            end_of_game_ = true;
-            winningActions();
-        } else {
-            botMove();
-            QTimer::singleShot(MOVE_WAIT, this,
-                               SLOT(botVsBotMove()));
-        }
-    } catch (std::exception& e) {
-        errorHandling(e);
+    if (checkWin(*(game_->desk),
+                 moving_player_number_)) {
+        end_of_game_ = true;
+        winningActions();
+    } else {
+        botMove();
+        QTimer::singleShot(MOVE_WAIT, this,
+                           SLOT(botVsBotMove()));
     }
 }
 
@@ -197,24 +178,20 @@ void MainWindow::humanVsHumanMove() {
 }
 
 void MainWindow::botVsHumanMove() {
-    try {
-        Point p = game_->bot1->getIndex();
-        game_->controller->makeMove(1, p);
-        game_->t_model1->updateData();
-        if (checkWin(*(game_->desk), 1)) {
-            end_of_game_ = true;
-            winningActions();
-            return;
-        }
-        if (game_->desk->getCellState(p, 2)) {
-            QTimer::singleShot(MOVE_WAIT, this,
-                               SLOT(botVsHumanMove()));
-        } else {
-            moving_player_number_ = 2;
-            changeCursor();
-        }
-    } catch (std::exception& e) {
-        errorHandling(e);
+    Point p = game_->bot1->getIndex();
+    game_->controller->makeMove(1, p);
+    game_->t_model1->updateData();
+    if (checkWin(*(game_->desk), 1)) {
+        end_of_game_ = true;
+        winningActions();
+        return;
+    }
+    if (game_->desk->getCellState(p, 2)) {
+        QTimer::singleShot(MOVE_WAIT, this,
+                           SLOT(botVsHumanMove()));
+    } else {
+        moving_player_number_ = 2;
+        changeCursor();
     }
 }
 
@@ -243,20 +220,16 @@ void MainWindow::on_humanVsHuman_clicked() {
 void MainWindow::on_playButton_clicked() {
     end_of_game_ = false;
     moving_player_number_ = 2;
-    try {
-        preparingToPlay();
-        if (game_type_ == BOT_VS_BOT) {
-            ui->stackedWidget
-            ->setCurrentWidget(ui->botpage);
-            QTimer::singleShot(MOVE_WAIT, this,
-                               SLOT(botVsBotMove()));
-        } else {
-            changeCursor();
-            ui->stackedWidget
-            ->setCurrentWidget(ui->gamepage);
-        }
-    } catch (std::exception& e) {
-        errorHandling(e);
+    preparingToPlay();
+    if (game_type_ == BOT_VS_BOT) {
+        ui->stackedWidget
+        ->setCurrentWidget(ui->botpage);
+        QTimer::singleShot(MOVE_WAIT, this,
+                           SLOT(botVsBotMove()));
+    } else {
+        changeCursor();
+        ui->stackedWidget
+        ->setCurrentWidget(ui->gamepage);
     }
 }
 
@@ -270,30 +243,26 @@ void MainWindow::on_board2_clicked(const QModelIndex&
         helpMessage();
         return;
     }
-    try {
-        game_->controller->makeMove(2, pt);
-        game_->t_model2->updateData();
-        if (checkWin(*(game_->desk), 2)) {
-            ui->board2->setCursor(Qt::ArrowCursor);
-            end_of_game_ = true;
-            winningActions();
-            return;
-        }
-        if (game_->desk->getCellState(pt, 1)) {
-            return;
-        }
-        moving_player_number_ = 1;
-        if (game_type_ == BOT_VS_HUMAN) {
-            changeCursor();
-            QTimer::singleShot(MOVE_WAIT, this,
-                               SLOT(botVsHumanMove()));
-        } else if (game_type_ == HUMAN_VS_HUMAN) {
-            ui->board2->setCursor(Qt::ArrowCursor);
-            QTimer::singleShot(MOVE_WAIT, this,
-                               SLOT(humanVsHumanMove()));
-        }
-    } catch (std::exception& e) {
-        errorHandling(e);
+    game_->controller->makeMove(2, pt);
+    game_->t_model2->updateData();
+    if (checkWin(*(game_->desk), 2)) {
+        ui->board2->setCursor(Qt::ArrowCursor);
+        end_of_game_ = true;
+        winningActions();
+        return;
+    }
+    if (game_->desk->getCellState(pt, 1)) {
+        return;
+    }
+    moving_player_number_ = 1;
+    if (game_type_ == BOT_VS_HUMAN) {
+        changeCursor();
+        QTimer::singleShot(MOVE_WAIT, this,
+                           SLOT(botVsHumanMove()));
+    } else if (game_type_ == HUMAN_VS_HUMAN) {
+        ui->board2->setCursor(Qt::ArrowCursor);
+        QTimer::singleShot(MOVE_WAIT, this,
+                           SLOT(humanVsHumanMove()));
     }
 }
 
@@ -307,25 +276,21 @@ void MainWindow::on_board4_clicked(const QModelIndex&
         helpMessage();
         return;
     }
-    try {
-        game_->controller->makeMove(1, pt);
-        game_->t_model4->updateData();
-        if (checkWin(*(game_->desk), 1)) {
-            ui->board4->setCursor(Qt::ArrowCursor);
-            end_of_game_ = true;
-            winningActions();
-            return;
-        }
-        if (game_->desk->getCellState(pt, 2)) {
-            return;
-        }
+    game_->controller->makeMove(1, pt);
+    game_->t_model4->updateData();
+    if (checkWin(*(game_->desk), 1)) {
         ui->board4->setCursor(Qt::ArrowCursor);
-        moving_player_number_ = 2;
-        QTimer::singleShot(MOVE_WAIT, this,
-                           SLOT(humanVsHumanMove()));
-    } catch (std::exception& e) {
-        errorHandling(e);
+        end_of_game_ = true;
+        winningActions();
+        return;
     }
+    if (game_->desk->getCellState(pt, 2)) {
+        return;
+    }
+    ui->board4->setCursor(Qt::ArrowCursor);
+    moving_player_number_ = 2;
+    QTimer::singleShot(MOVE_WAIT, this,
+                       SLOT(humanVsHumanMove()));
 }
 
 void MainWindow::on_nextMove_clicked() {
