@@ -1,1 +1,1 @@
-brew install qt4
+brew install qt4 cmake
