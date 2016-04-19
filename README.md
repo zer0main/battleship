@@ -46,5 +46,5 @@ instructions](build).
 [download]: https://github.com/zer0main/battleship/releases/latest
 [rules]: https://en.wikipedia.org/wiki/Battleship_%28game%29
 [license]: https://img.shields.io/badge/License-GPL2-brightgreen.png
-[travis]: https://travis-ci.org/zer0main/battleship
-[build-status]: https://travis-ci.org/zer0main/battleship.png?branch=master
+[travis]: https://travis-ci.org/mkinney/battleship
+[build-status]: https://travis-ci.org/mkinney/battleship.png?branch=master
