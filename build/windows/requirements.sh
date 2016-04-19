@@ -11,7 +11,7 @@ sudo apt-key adv --keyserver x-hkp://keys.gnupg.net \
 
 sudo apt-get update
 
-sudo apt-get --yes upgrade
+sudo apt-get upgrade -y
 
 sudo apt-get --yes install upx-ucl
 

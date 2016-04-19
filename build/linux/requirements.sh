@@ -6,7 +6,7 @@ sudo rm -rf /var/lib/apt/lists
 
 sudo apt-get update
 
-sudo apt-get --yes upgrade
+sudo apt-get upgrade -y
 
 sudo apt-get --yes install \
     g++ make cmake \
