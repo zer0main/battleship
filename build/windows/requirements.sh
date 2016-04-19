@@ -2,7 +2,7 @@
 
 set -xue
 
-rm -rf /var/lib/apt/lists
+sudo rm -rf /var/lib/apt/lists
 
 echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" \
     | sudo tee /etc/apt/sources.list.d/mxeapt.list
