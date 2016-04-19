@@ -1,16 +1,29 @@
 language: cpp
-sudo: required
-dist: trusty # modern upx
 
 env:
   matrix:
     - BATTLESHIP_PLATFORM='linux64'
+      os: linux
+      dist: trusty
+      sudo: required
+      compiler: gcc
     - BATTLESHIP_PLATFORM='windows32'
+      os: linux
+      dist: trusty
+      sudo: required
+      compiler: gcc
     - BATTLESHIP_PLATFORM='windows64'
+      os: linux
+      dist: trusty
+      sudo: required
+      compiler: gcc
+    - BATTLESHIP_PLATFORM='mac'
+      os: osx
+      osx_image: xcode7.2
+      compiler: clang
 
 before_install:
   - BATTLESHIP_TARGET="${BATTLESHIP_PLATFORM::${#BATTLESHIP_PLATFORM}-2}"
-  - sudo apt-get update
   - ./build/linux/requirements.sh
   - ./build/${BATTLESHIP_TARGET}/requirements.sh
 
