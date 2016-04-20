@@ -29,6 +29,7 @@ matrix:
 
 before_install:
   - BATTLESHIP_TARGET="${BATTLESHIP_PLATFORM::${#BATTLESHIP_PLATFORM}-2}"
+  - sudo apt-get update
   - ./build/${BATTLESHIP_TARGET}/requirements.sh
 
 install:
