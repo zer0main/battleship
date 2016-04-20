@@ -4,6 +4,8 @@ set -xue
 
 sudo rm -rf /var/lib/apt/lists
 
+sudo apt-get update
+
 echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" \
     | sudo tee /etc/apt/sources.list.d/mxeapt.list
 sudo apt-key adv --keyserver x-hkp://keys.gnupg.net \
