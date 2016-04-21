@@ -2,8 +2,6 @@
 
 set -xue
 
-sudo rm -rf /var/lib/apt/lists
-
 sudo apt-get update
 
 sudo apt-get --yes install \
