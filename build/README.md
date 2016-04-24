@@ -1,10 +1,13 @@
 # Advanced build
 
+## Mac
+
+The mac version is compiled from Travis-CI.
+
 ## Windows
 
 Windows executables are cross-compiled from Linux
-using MinGW cross-compiler. The mac version is compiled
-from Travis-CI.
+using MinGW cross-compiler.
 
 For Windows 32 bit:
 
