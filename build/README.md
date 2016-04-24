@@ -3,7 +3,8 @@
 ## Windows
 
 Windows executables are cross-compiled from Linux
-using MinGW cross-compiler.
+using MinGW cross-compiler. The mac version is compiled
+from Travis-CI.
 
 For Windows 32 bit:
 
