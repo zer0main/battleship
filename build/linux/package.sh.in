@@ -12,6 +12,6 @@ DEPLOY_FILE=battleship_@VERSION@_${BATTLESHIP_PLATFORM}.exe
 cp build-dir/battleship $DEPLOY_FILE
 
 strip $DEPLOY_FILE
-upx -9 $DEPLOY_FILE
+upx --best $DEPLOY_FILE
 
 set +xue
