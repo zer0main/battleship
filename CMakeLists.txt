@@ -3,7 +3,7 @@ project(battleship)
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 1)
+set(VERSION_PATCH 2)
 
 if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     execute_process(COMMAND
