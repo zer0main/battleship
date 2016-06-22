@@ -11,7 +11,7 @@ Classic battleship game.
 
 ### Download battleship
 
-You just need to [download][download] executable for Windows or Linux.
+You just need to [download][download] executable for Windows, Mac or Linux.
 
 **Warning**. The installer and the program doesn't work
 from a directory with non-ascii letters in name.

@@ -1,1 +1,1 @@
-brew install qt4 cmake
+brew install qt4 cmake upx
