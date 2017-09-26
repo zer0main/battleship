@@ -32,7 +32,7 @@ const int MAX_LENGTH = 16;
 /** Maximum allowable length of ship */
 const int MAX_SHIP_LENGTH = 5;
 
-/** Mimimum allowable length of ship */
+/** Minimum allowable length of ship */
 const int MIN_SHIP_LENGTH = 2;
 
 /** Total number of ship items in the game board */
