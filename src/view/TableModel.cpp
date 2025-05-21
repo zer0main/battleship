@@ -70,5 +70,6 @@ QVariant TableModel::data(const Index& index,
 }
 
 void TableModel::updateData() {
-    reset();
+    beginResetModel();
+    endResetModel();
 }

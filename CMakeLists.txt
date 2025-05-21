@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.5)
 project(battleship)
 
 set(VERSION_MAJOR 0)
@@ -23,35 +23,40 @@ set(PRODUCT_DESCRIPTION "Battleship game with bot and many other modes")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/linux/package.sh.in
     ${CMAKE_CURRENT_BINARY_DIR}/package.sh @ONLY)
 
-IF (POLICY CMP0017)
-    cmake_policy(SET CMP0017 NEW)
-ENDIF (POLICY CMP0017)
+include_directories(
+    src/bot
+    src/model
+    src/util
+    src/controller
+    src/desk_functions
+    src/view
+    src
+    "${PROJECT_BINARY_DIR}"
+)
 
-include_directories(src/bot)
-include_directories(src/model)
-include_directories(src/util)
-include_directories(src/controller)
-include_directories(src/desk_functions)
-include_directories(src/view)
-include_directories(src)
+# Qt5 Setup
+find_package(Qt5 REQUIRED COMPONENTS Widgets)
 
-include_directories("${PROJECT_SOURCE_DIR}/src/view"
-    "${PROJECT_BINARY_DIR}/src/view"
-    "${PROJECT_BINARY_DIR}")
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 
-FIND_PACKAGE(Qt4 REQUIRED)
-INCLUDE(${QT_USE_FILE})
+# Source files
+file(GLOB sources
+    "src/model/*.cpp"
+    "src/bot/*.cpp"
+    "src/util/*.cpp"
+    "src/controller/*.cpp"
+    "src/desk_functions/*.cpp"
+    "src/view/*.cpp"
+    "src/*.cpp"
+)
 
-file(GLOB sources "src/model/*.cpp" "src/bot/*.cpp"
-    "src/util/*.cpp" "src/controller/*.cpp"
-    "src/desk_functions/*.cpp" "src/view/*.cpp" "src/*.cpp")
+file(GLOB headers "src/view/*.hpp")
 file(GLOB uis "src/view/*.ui")
-file(GLOB qheaders "src/view/*.hpp")
+set(resources "src/view/qbattleship.qrc")
 
-QT4_WRAP_UI(UISrcs ${uis})
-QT4_WRAP_CPP(MOCrcs ${qheaders})
-QT4_ADD_RESOURCES(RCSrcs "src/view/qbattleship.qrc")
-
+# Windows .rc generation
 set(BATTLESHIP_RC_FILENAME "battleship.exe")
 set(BATTLESHIP_RC_INTERNAL "battleship")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/battleship.rc.in
@@ -60,19 +65,24 @@ unset(BATTLESHIP_RC_FILENAME)
 unset(BATTLESHIP_RC_INTERNAL)
 
 if (CMAKE_RC_COMPILER)
-    set(sources ${sources};${CMAKE_CURRENT_BINARY_DIR}/battleship.rc)
+    list(APPEND sources ${CMAKE_CURRENT_BINARY_DIR}/battleship.rc)
 endif()
 
-add_executable(battleship ${sources} ${MOCrcs} ${UISrcs}
-    ${RCSrcs})
-TARGET_LINK_LIBRARIES(battleship ${QT_LIBRARIES})
+add_executable(battleship
+    ${sources}
+    ${headers}
+    ${uis}
+    ${resources}
+)
 
-IF (MINGW)
-    SET(CMAKE_EXE_LINKER_FLAGS -mwindows)
+target_link_libraries(battleship Qt5::Widgets)
+
+if (MINGW)
+    set(CMAKE_EXE_LINKER_FLAGS "-mwindows")
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/wizard.nsi.in
         ${CMAKE_CURRENT_BINARY_DIR}/wizard.nsi @ONLY)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/nsis_wizard.sh.in
         ${CMAKE_CURRENT_BINARY_DIR}/nsis_wizard.sh @ONLY)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build/windows/package.sh.in
         ${CMAKE_CURRENT_BINARY_DIR}/package.sh @ONLY)
-ENDIF (MINGW)
+endif ()

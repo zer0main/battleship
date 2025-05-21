@@ -9,6 +9,8 @@
 #define MAINWINDOW_HPP_
 
 #include <QtGui>
+#include <QMainWindow>
+#include <QTableView>
 
 #include "Game.hpp"
 
