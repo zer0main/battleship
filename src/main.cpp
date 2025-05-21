@@ -9,7 +9,10 @@
 #include <ctime>
 #include <exception>
 
-#include <QtGui/QApplication>
+#include <QApplication>
+#include <QErrorMessage>
+#include <QEvent>
+#include <QObject>
 
 #include "MainWindow.hpp"
 

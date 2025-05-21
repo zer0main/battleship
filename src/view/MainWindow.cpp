@@ -12,6 +12,10 @@
 #include "MainWindow.hpp"
 #include "ui_MainWindow.h"
 
+#include <QErrorMessage>
+#include <QHeaderView>
+#include <QMessageBox>
+
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
@@ -62,9 +66,9 @@ void MainWindow::configureBoard(QTableView* board) {
     board
     ->setSelectionMode(QAbstractItemView::NoSelection);
     board->horizontalHeader()
-    ->setResizeMode(QHeaderView::Stretch);
+    ->setSectionResizeMode(QHeaderView::Stretch);
     board->verticalHeader()
-    ->setResizeMode(QHeaderView::Stretch);
+    ->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::settingOfBoards() {

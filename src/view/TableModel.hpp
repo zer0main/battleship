@@ -9,6 +9,7 @@
 #define TABLE_MODEL_HPP_
 
 #include <QtGui>
+#include <QAbstractTableModel>
 
 #include "GameDeskProxy.hpp"
 

@@ -6,6 +6,7 @@ sudo apt-get update
 
 sudo apt-get --yes install \
     g++ make cmake \
-    libqt4-dev upx-ucl \
+    qtbase5-dev qttools5-dev qttools5-dev-tools \
+    upx-ucl
 
 set +xue
